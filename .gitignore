@@ -1,0 +1,19 @@
+# Skills library lives next to the website; not part of the deploy
+Skills/
+
+# unused asset folders
+Assets/Icons/
+Assets/Videos/
+
+# Claude / planning artifacts
+.claude/
+CLAUDE.md
+
+# Vercel local
+.vercel/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
