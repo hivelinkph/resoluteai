@@ -322,257 +322,85 @@
       max-width:780px;
     }
 
-    /* ---------- HEROES — COMMAND CENTER SCENE ---------- */
-    .command-center{
+    /* ---------- HEROES — single command-center photo + roster ---------- */
+    .cc-photo{
       position:relative;
+      margin:0 0 32px;
       border:1px solid var(--line-strong);
-      border-radius:20px;
+      border-radius:18px;
       overflow:hidden;
-      padding:64px 32px 28px;
+      background:#02050f;
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.55),
+        0 0 80px rgba(0,212,255,.20),
+        0 0 0 1px rgba(0,212,255,.10) inset;
       isolation:isolate;
+    }
+    .cc-photo img{
+      width:100%; height:auto; display:block;
+    }
+    .cc-photo .scan-overlay{
+      position:absolute; inset:0;
       background:
-        radial-gradient(ellipse at 50% 0%,rgba(0,212,255,.20),transparent 55%),
-        radial-gradient(ellipse at 12% 90%,rgba(122,92,255,.16),transparent 55%),
-        radial-gradient(ellipse at 90% 80%,rgba(0,212,255,.10),transparent 55%),
-        linear-gradient(180deg,#050a25 0%,#03061a 60%,#02050f 100%);
-      box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 60px rgba(0,212,255,.06) inset;
-    }
-    /* command center grid floor */
-    .command-center::before{
-      content:"";
-      position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(0,212,255,.08) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,212,255,.08) 1px,transparent 1px);
-      background-size:40px 40px;
-      mask-image:radial-gradient(ellipse at 50% 70%,black 25%,transparent 80%);
-      -webkit-mask-image:radial-gradient(ellipse at 50% 70%,black 25%,transparent 80%);
+        repeating-linear-gradient(180deg,rgba(0,212,255,.045) 0,rgba(0,212,255,.045) 1px,transparent 1px,transparent 4px),
+        radial-gradient(ellipse at 50% 50%,transparent 30%,rgba(4,8,28,.35) 100%);
       pointer-events:none;
-      z-index:0;
+      mix-blend-mode:overlay;
     }
-    /* twinkling tiny stars dust */
-    .command-center::after{
-      content:"";
-      position:absolute; inset:0;
-      background-image:
-        radial-gradient(circle at 12% 18%,rgba(255,255,255,.5) 0.5px,transparent 1px),
-        radial-gradient(circle at 28% 8%, rgba(255,255,255,.4) 0.5px,transparent 1px),
-        radial-gradient(circle at 62% 22%,rgba(255,255,255,.5) 0.5px,transparent 1px),
-        radial-gradient(circle at 80% 12%,rgba(255,255,255,.35) 0.5px,transparent 1px),
-        radial-gradient(circle at 94% 30%,rgba(255,255,255,.5) 0.5px,transparent 1px),
-        radial-gradient(circle at 6% 38%, rgba(255,255,255,.3) 0.5px,transparent 1px);
-      background-repeat:no-repeat;
-      opacity:.8;
-      pointer-events:none;
-      z-index:0;
-    }
-    .command-center > *{ position:relative; z-index:1; }
-
-    /* Neon Resolute Logo */
-    .cc-neon{
-      display:flex; align-items:center; justify-content:center;
-      margin-bottom:38px;
-      position:relative;
-    }
-    .cc-neon .neon-logo{
-      width:clamp(200px,24vw,300px);
-      height:auto;
-      filter:
-        drop-shadow(0 0 6px rgba(0,212,255,.95))
-        drop-shadow(0 0 18px rgba(0,212,255,.6))
-        drop-shadow(0 0 36px rgba(0,212,255,.32));
-      animation:neon-flicker 6s ease-in-out infinite;
-    }
-    @keyframes neon-flicker{
-      0%, 88%, 100%{ opacity:1; }
-      89%{ opacity:.55; }
-      90%{ opacity:1; }
-      92%{ opacity:.75; }
-      93%{ opacity:1; }
-    }
-    .cc-neon::after{
-      content:"";
-      position:absolute; bottom:-18px; left:50%;
-      transform:translateX(-50%);
-      width:60%; height:24px;
-      background:radial-gradient(ellipse at center,rgba(0,212,255,.55),transparent 70%);
-      filter:blur(10px);
-      pointer-events:none;
-    }
-    /* mounting bracket cables */
-    .cc-neon::before{
-      content:"";
-      position:absolute; top:-40px; left:50%;
-      width:2px; height:32px;
-      background:linear-gradient(180deg,transparent,rgba(0,212,255,.5));
-      transform:translateX(-50%);
-    }
-
-    /* Status ticker */
-    .cc-ticker{
-      display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
-      font-family:var(--font-mono); font-size:11px;
-      letter-spacing:.16em; color:var(--muted);
-      text-transform:uppercase;
-      margin-bottom:36px;
-    }
-    .cc-ticker .tk{
+    .cc-photo .live-tag{
+      position:absolute; top:14px; left:14px;
       display:inline-flex; align-items:center; gap:8px;
-      padding:6px 12px;
-      border:1px solid var(--line);
-      border-radius:4px;
-      background:rgba(4,8,28,.55);
+      padding:6px 10px;
+      font-family:var(--font-mono); font-size:11px; letter-spacing:.18em;
+      text-transform:uppercase;
+      background:rgba(4,8,28,.7);
+      border:1px solid var(--line-strong);
+      border-radius:999px;
+      color:var(--cy);
       backdrop-filter:blur(6px);
     }
-    .cc-ticker .tk b{ color:var(--cy); font-weight:500; }
-    .cc-ticker .tk .ld{
-      width:6px; height:6px; border-radius:50%;
+    .cc-photo .live-tag::before{
+      content:""; width:7px; height:7px; border-radius:50%;
       background:var(--gn); box-shadow:0 0 8px var(--gn);
-    }
-
-    /* Workstations */
-    .cc-workstations{
-      display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
-      margin-bottom:24px;
-    }
-    .ws{
-      position:relative;
-      border-radius:14px;
-      overflow:hidden;
-      background:linear-gradient(180deg,rgba(10,19,48,.85),rgba(4,8,28,.92));
-      border:1px solid var(--line);
-      transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-    }
-    .ws:hover{ transform:translateY(-6px); border-color:var(--line-strong); }
-    .ws.v-green:hover { box-shadow:0 0 36px rgba(109,255,140,.28); }
-    .ws.v-violet:hover{ box-shadow:0 0 36px rgba(122,92,255,.32); }
-    .ws.v-cyan:hover  { box-shadow:0 0 36px rgba(0,212,255,.32); }
-    .ws.v-amber:hover { box-shadow:0 0 36px rgba(255,164,84,.24); }
-
-    /* The alien crop, extracted from photo 6 (HUMAN/happy mode) */
-    .ws-alien{
-      position:relative;
-      width:100%;
-      aspect-ratio:3/4;
-      background-image:url('Assets/Photos/6.png');
-      background-repeat:no-repeat;
-      background-size:400% auto;
-      background-position-y:30%;
-      background-color:#04081c;
-    }
-    .ws-alien.a1{ background-position-x:0%; }
-    .ws-alien.a2{ background-position-x:33.33%; }
-    .ws-alien.a3{ background-position-x:66.66%; }
-    .ws-alien.a4{ background-position-x:100%; }
-
-    /* Scanlines + lower-fade for legibility under the monitor */
-    .ws-alien::after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        linear-gradient(180deg,transparent 35%,rgba(4,8,28,.55) 75%,rgba(4,8,28,.92) 100%),
-        repeating-linear-gradient(180deg,rgba(0,212,255,.05) 0,rgba(0,212,255,.05) 1px,transparent 1px,transparent 3px);
-      pointer-events:none;
-    }
-
-    /* Floating holographic monitor over alien's lower body */
-    .ws-monitor{
-      position:absolute;
-      left:12px; right:12px;
-      bottom:14px;
-      padding:18px 10px 8px;
-      background:linear-gradient(180deg,rgba(0,212,255,.14),rgba(122,92,255,.10));
-      border:1px solid var(--line-strong);
-      border-radius:6px;
-      font-family:var(--font-mono); font-size:9px; line-height:1.55;
-      color:var(--cy);
-      letter-spacing:.04em;
-      backdrop-filter:blur(4px);
-      box-shadow:0 0 20px rgba(0,212,255,.25),0 0 0 1px rgba(0,212,255,.08) inset;
-      z-index:2;
-    }
-    .ws-monitor::before{
-      content:"● ● ●";
-      position:absolute; top:4px; left:8px;
-      font-size:5px; letter-spacing:.3em;
-      color:var(--gn);
-      filter:drop-shadow(0 0 3px var(--gn));
-    }
-    .ws-monitor::after{
-      content:"LIVE";
-      position:absolute; top:3px; right:8px;
-      font-size:7px; letter-spacing:.18em;
-      color:var(--gn);
-    }
-    .ws-monitor pre{
-      margin:0; font:inherit; white-space:pre-wrap;
-      color:#cfe7ff;
-    }
-    .ws-monitor pre .ok{ color:var(--gn); }
-    .ws-monitor pre .vi{ color:var(--vi); }
-    .ws-monitor pre .cy{ color:var(--cy); }
-
-    /* LED status pip on each workstation */
-    .ws-led{
-      position:absolute; top:12px; right:12px;
-      width:8px; height:8px; border-radius:50%;
-      background:var(--gn);
-      box-shadow:0 0 8px var(--gn);
       animation:ws-blink 2.4s ease-in-out infinite;
-      z-index:3;
     }
     @keyframes ws-blink{ 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
 
-    /* Name plate below */
-    .ws-label{
-      padding:14px 14px 16px;
-      border-top:1px solid var(--line);
-      background:linear-gradient(180deg,rgba(4,8,28,.7),rgba(4,8,28,.92));
+    .cc-roster{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+    }
+    .rost{
       position:relative;
-    }
-    .ws-label::before{
-      content:"";
-      position:absolute; top:-1px; left:18px; right:18px; height:1px;
-      background:linear-gradient(90deg,transparent,currentColor,transparent);
-      opacity:.6;
-    }
-    .ws.v-green  .ws-label{ color:var(--gn); }
-    .ws.v-violet .ws-label{ color:var(--vi); }
-    .ws.v-cyan   .ws-label{ color:var(--cy); }
-    .ws.v-amber  .ws-label{ color:var(--amber); }
-
-    .ws-label .role{
-      font-family:var(--font-mono); font-size:10px; letter-spacing:.18em;
-      text-transform:uppercase; color:var(--muted);
-    }
-    .ws-label .name{
-      font-family:var(--font-display); font-weight:800; font-size:1rem;
-      letter-spacing:.02em; margin-top:2px;
-      color:currentColor;
-    }
-
-    /* Bottom metrics row inside the command center */
-    .cc-metrics{
-      display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
-      padding:18px 22px;
+      padding:22px 20px 20px;
       border:1px solid var(--line);
-      border-radius:10px;
-      background:rgba(4,8,28,.65);
-      backdrop-filter:blur(4px);
+      border-radius:12px;
+      background:linear-gradient(180deg,var(--bg-surface),rgba(10,19,48,.5));
+      transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
     }
-    .cc-metrics .m .l{
+    .rost:hover{ transform:translateY(-4px); border-color:var(--line-strong); }
+    .rost.v-green:hover { box-shadow:0 0 32px rgba(109,255,140,.22); }
+    .rost.v-violet:hover{ box-shadow:0 0 32px rgba(122,92,255,.26); }
+    .rost.v-cyan:hover  { box-shadow:0 0 32px rgba(0,212,255,.26); }
+    .rost.v-amber:hover { box-shadow:0 0 32px rgba(255,164,84,.20); }
+    .rost .led{
+      position:absolute; top:14px; right:14px;
+      width:8px; height:8px; border-radius:50%;
+      background:var(--gn); box-shadow:0 0 8px var(--gn);
+      animation:ws-blink 2.4s ease-in-out infinite;
+    }
+    .rost .role{
       font-family:var(--font-mono); font-size:10px; letter-spacing:.18em;
       text-transform:uppercase; color:var(--muted);
-      margin-bottom:4px;
     }
-    .cc-metrics .m .v{
-      font-family:var(--font-display); font-weight:800; font-size:1.1rem;
-      color:var(--cy);
-      letter-spacing:.02em;
+    .rost .name{
+      font-family:var(--font-display); font-weight:800; font-size:1.05rem;
+      letter-spacing:.02em; margin-top:4px;
     }
-    .cc-metrics .m .v .unit{
-      color:var(--muted); font-weight:500; font-size:.78em; margin-left:6px;
-    }
+    .rost.v-green  .name{ color:var(--gn); }
+    .rost.v-violet .name{ color:var(--vi); }
+    .rost.v-cyan   .name{ color:var(--cy); }
+    .rost.v-amber  .name{ color:var(--amber); }
+    .rost .blurb{ color:#c2cce8; font-size:.9rem; margin-top:10px; line-height:1.5; }
 
     /* ---------- PROJECTS — NATIVE schematic, no photo 3 ---------- */
     .schematic{
@@ -910,8 +738,7 @@
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width:1100px){
-      .cc-workstations{ grid-template-columns:repeat(2,1fr); }
-      .cc-metrics{ grid-template-columns:repeat(2,1fr); }
+      .cc-roster{ grid-template-columns:repeat(2,1fr); }
       .grid-current{ grid-template-columns:repeat(2,1fr); }
       .grid-upcoming{ grid-template-columns:repeat(2,1fr); }
     }
@@ -925,8 +752,7 @@
       .founder-avatar{ width:120px; height:160px; }
     }
     @media (max-width:560px){
-      .cc-workstations{ grid-template-columns:1fr; }
-      .cc-metrics{ grid-template-columns:1fr; }
+      .cc-roster{ grid-template-columns:1fr; }
       .grid-current,.grid-upcoming{ grid-template-columns:1fr; }
       .nav{ padding:10px 18px; }
       .nav-logo{ height:40px; }
@@ -936,7 +762,6 @@
       .foot-grid{ grid-template-columns:1fr; }
       .foot-bot{ flex-direction:column; }
       .founder{ padding:22px; }
-      .command-center{ padding:36px 18px 22px; }
     }
 
     @media (prefers-reduced-motion:reduce){
@@ -995,7 +820,7 @@
     <div class="hero-scroll">Engaging warp drive</div>
   </section>
 
-  <!-- ============== HEROES / ALIEN DEVS — COMMAND CENTER ============== -->
+  <!-- ============== HEROES / ALIEN DEVS — COMMAND CENTER PHOTO ============== -->
   <section id="heroes">
     <div class="wrap">
       <div class="section-head reveal">
@@ -1004,98 +829,38 @@
         <p class="sub">Production-grade AI engineers — <b style="color:var(--text)">Verda, Korbin, Aelara, and Gearlock</b> — shipping in parallel from a futuristic ops floor, under the glow of the Resolute sign.</p>
       </div>
 
-      <div class="command-center reveal">
-        <!-- Neon Resolute Sign -->
-        <div class="cc-neon">
-          <img src="Assets/Photos/4.png" alt="Resolute A.I. Inc — illuminated sign in the command center" class="neon-logo" />
-        </div>
+      <figure class="cc-photo reveal hud">
+        <span class="hk1"></span><span class="hk2"></span><span class="hk3"></span><span class="hk4"></span>
+        <span class="live-tag">// Command Center · Live</span>
+        <img src="Assets/Photos/12.png" alt="The Resolute A.I. Inc command center — Verda Florin, Korbin Quinn, Aelara Lumen, and Gearlock Solenix at their workstations under the illuminated Resolute A.I. Inc sign, flanked by Philippine flags, with holographic UIs and a futuristic city skyline behind them." />
+        <span class="scan-overlay" aria-hidden="true"></span>
+      </figure>
 
-        <!-- Status ticker -->
-        <div class="cc-ticker" aria-label="Command center status">
-          <span class="tk"><span class="ld" aria-hidden="true"></span>UPTIME · <b>99.998%</b></span>
-          <span class="tk">SECTOR · <b>VN · IN</b></span>
-          <span class="tk">CREW · <b>4 ALIENS</b> + HGF</span>
-          <span class="tk">STATUS · <b>SHIPPING</b></span>
-        </div>
-
-        <!-- 4 Workstations: each alien extracted from photo 6, programming happily -->
-        <div class="cc-workstations">
-          <article class="ws v-green">
-            <div class="ws-led" aria-hidden="true"></div>
-            <div class="ws-alien a1" role="img" aria-label="Verda Florin programming at her workstation"></div>
-            <div class="ws-monitor">
-<pre>&gt; verda.<span class="ok">build</span>()
- ✓ 142 components
- ✓ a11y · pass</pre>
-            </div>
-            <div class="ws-label">
-              <div class="role">Front-end Developer</div>
-              <div class="name">Verda Florin</div>
-            </div>
-          </article>
-
-          <article class="ws v-violet">
-            <div class="ws-led" aria-hidden="true"></div>
-            <div class="ws-alien a2" role="img" aria-label="Korbin Quinn programming at his workstation"></div>
-            <div class="ws-monitor">
-<pre>&gt; korbin.<span class="ok">deploy</span>()
- ✓ <span class="vi">api/*</span> 12ms p99
- ✓ 0 errors</pre>
-            </div>
-            <div class="ws-label">
-              <div class="role">Back-end Developer</div>
-              <div class="name">Korbin Quinn</div>
-            </div>
-          </article>
-
-          <article class="ws v-cyan">
-            <div class="ws-led" aria-hidden="true"></div>
-            <div class="ws-alien a3" role="img" aria-label="Aelara Lumen designing at her workstation"></div>
-            <div class="ws-monitor">
-<pre>&gt; aelara.<span class="ok">render</span>()
- ✓ 60fps stable
- ✓ <span class="cy">motion · live</span></pre>
-            </div>
-            <div class="ws-label">
-              <div class="role">UI Developer</div>
-              <div class="name">Aelara Lumen</div>
-            </div>
-          </article>
-
-          <article class="ws v-amber">
-            <div class="ws-led" aria-hidden="true"></div>
-            <div class="ws-alien a4" role="img" aria-label="Gearlock Solenix prototyping at his workstation"></div>
-            <div class="ws-monitor">
-<pre>&gt; gearlock.<span class="ok">flow</span>()
- ✓ −42% friction
- ✓ task · done</pre>
-            </div>
-            <div class="ws-label">
-              <div class="role">UX Developer</div>
-              <div class="name">Gearlock Solenix</div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Live metrics bar -->
-        <div class="cc-metrics" aria-label="Live command center metrics">
-          <div class="m">
-            <div class="l">Deploys / day</div>
-            <div class="v">37<span class="unit">avg</span></div>
-          </div>
-          <div class="m">
-            <div class="l">Active sprints</div>
-            <div class="v">12<span class="unit">parallel</span></div>
-          </div>
-          <div class="m">
-            <div class="l">PRs merged · wk</div>
-            <div class="v">214<span class="unit">/wk</span></div>
-          </div>
-          <div class="m">
-            <div class="l">Human fallback</div>
-            <div class="v">24/7<span class="unit">VN · IN</span></div>
-          </div>
-        </div>
+      <div class="cc-roster">
+        <article class="rost v-green reveal">
+          <span class="led" aria-hidden="true"></span>
+          <div class="role">Front-end Developer</div>
+          <div class="name">Verda Florin</div>
+          <div class="blurb">Verdant systems engineer. Grows component libraries that bloom across every viewport — pixel-perfect, accessible, alive.</div>
+        </article>
+        <article class="rost v-violet reveal">
+          <span class="led" aria-hidden="true"></span>
+          <div class="role">Back-end Developer</div>
+          <div class="name">Korbin Quinn</div>
+          <div class="blurb">Architects resilient services from the dark side of the moon. APIs, pipelines, and infra that hold under any load curve.</div>
+        </article>
+        <article class="rost v-cyan reveal">
+          <span class="led" aria-hidden="true"></span>
+          <div class="role">UI Developer</div>
+          <div class="name">Aelara Lumen</div>
+          <div class="blurb">Pure plasma. Translates design intent into motion-rich, real-time interfaces that feel like they were always supposed to exist.</div>
+        </article>
+        <article class="rost v-amber reveal">
+          <span class="led" aria-hidden="true"></span>
+          <div class="role">UX Developer</div>
+          <div class="name">Gearlock Solenix</div>
+          <div class="blurb">Builder of patient, considered flows. Reduces friction by orders of magnitude so humans land exactly where they intended.</div>
+        </article>
       </div>
     </div>
   </section>
