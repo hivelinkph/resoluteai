@@ -164,26 +164,21 @@
     }
     .nav.scrolled{ background:rgba(4,8,28,.85); padding:10px 28px; }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      font-family:var(--font-display);
-      font-weight:900;
-      letter-spacing:.16em;
-      font-size:18px;
+      display:inline-flex; align-items:center;
+      transition:filter .2s ease, transform .2s ease;
     }
-    .brand .pip{
-      width:10px; height:10px;
-      background:var(--cy);
-      box-shadow:0 0 12px var(--cy);
-      transform:rotate(45deg);
+    .brand-logo{
+      height:42px; width:auto;
+      display:block;
+      /* white-ish jpg background → blend it into the dark nav so only the inked
+         logo glyphs remain visible */
+      mix-blend-mode:screen;
+      filter:drop-shadow(0 0 10px rgba(0,212,255,.35)) contrast(1.05);
+      transition:filter .25s ease, transform .25s ease;
     }
-    .brand .pill{
-      font-family:var(--font-mono);
-      font-size:10px;
-      letter-spacing:.18em;
-      padding:3px 8px;
-      border:1px solid var(--line-strong);
-      border-radius:999px;
-      color:var(--cy);
+    .brand:hover .brand-logo{
+      filter:drop-shadow(0 0 18px rgba(0,212,255,.7)) contrast(1.1);
+      transform:scale(1.03);
     }
     .nav-links{
       display:flex; gap:32px;
@@ -201,12 +196,6 @@
       transition:transform .25s ease;
     }
     .nav-links a:hover::after{ transform:scaleX(1); }
-    .nav-logo{
-      height:48px; width:auto;
-      filter:drop-shadow(0 0 14px rgba(0,212,255,.35));
-      transition:filter .2s ease, transform .2s ease;
-    }
-    .nav-logo:hover{ filter:drop-shadow(0 0 22px rgba(0,212,255,.7)); transform:scale(1.04); }
 
     /* ---------- HERO ---------- */
     .hero{
@@ -663,10 +652,20 @@
       font-style:italic; font-size:1.02rem; line-height:1.55; color:var(--text);
       quotes:"\201C" "\201D";
     }
-    .testi-meta{ display:flex; justify-content:space-between; align-items:end; gap:14px; padding-top:14px; border-top:1px solid var(--line); }
-    .testi-meta .who{ font-size:.9rem; }
+    .testi-meta{ display:flex; align-items:center; gap:12px; padding-top:14px; border-top:1px solid var(--line); }
+    .testi-meta .avatar{
+      width:46px; height:46px;
+      border-radius:50%;
+      border:1px solid var(--line-strong);
+      background:linear-gradient(180deg,rgba(0,212,255,.10),rgba(122,92,255,.10));
+      box-shadow:0 0 14px rgba(0,212,255,.18);
+      flex:none;
+      object-fit:cover;
+    }
+    .testi-meta .who{ font-size:.9rem; flex:1; min-width:0; }
     .testi-meta .who b{ display:block; font-family:var(--font-display); font-weight:800; letter-spacing:.04em; font-size:.95rem; }
     .testi-meta .who span{ color:var(--muted); font-size:.85rem; }
+    .testi-meta .mchip{ margin-left:auto; }
     .testi-meta .mchip{
       font-family:var(--font-mono); font-size:11px; letter-spacing:.06em;
       padding:6px 10px; border:1px solid var(--line-strong); border-radius:6px;
@@ -755,8 +754,7 @@
       .cc-roster{ grid-template-columns:1fr; }
       .grid-current,.grid-upcoming{ grid-template-columns:1fr; }
       .nav{ padding:10px 18px; }
-      .nav-logo{ height:40px; }
-      .brand .pill{ display:none; }
+      .brand-logo{ height:34px; }
       .hero{ padding-top:100px; }
       .testi .logo{ position:static; align-self:flex-start; margin-bottom:-6px; }
       .foot-grid{ grid-template-columns:1fr; }
@@ -775,9 +773,7 @@
   <!-- ============== NAV ============== -->
   <nav class="nav" id="nav">
     <a href="#hero" class="brand" aria-label="Resolute A.I. Inc">
-      <span class="pip" aria-hidden="true"></span>
-      RESOLUTE
-      <span class="pill">A.I. INC</span>
+      <img class="brand-logo" src="Assets/Photos/8.jpg" alt="Resolute A.I. Inc" />
     </a>
     <div class="nav-links">
       <a href="#heroes">Heroes</a>
@@ -785,9 +781,6 @@
       <a href="#founders">Founders</a>
       <a href="#testimonials">Testimonials</a>
     </div>
-    <a href="#hero" aria-label="Resolute home">
-      <img class="nav-logo" src="Assets/Photos/4.png" alt="Resolute A.I. Inc logo" />
-    </a>
   </nav>
 
   <!-- ============== HERO ============== -->
@@ -802,8 +795,7 @@
         using our <span class="aliens">Alien&nbsp;Developers.</span>
       </h1>
       <p class="hero-sub">
-        Production-grade AI engineers — <b>Verda, Korbin, Aelara, and Gearlock</b> —
-        backed by a human global fallback layer in Vietnam and India.
+        Production-grade AI engineers — <b>Verda, Korbin, Aelara, and Gearlock</b>.
         <b>Built to deploy today. Designed to dominate tomorrow.</b>
       </p>
       <div class="hero-ctas">
@@ -811,7 +803,7 @@
         <a class="btn btn-ghost" href="#heroes">Meet the Heroes</a>
       </div>
       <div class="hero-strip">
-        <span class="chip"><span class="dot"></span> Closure.AI · live</span>
+        <span class="chip"><span class="dot"></span> Clocksure.AI · live</span>
         <span class="chip"><span class="dot"></span> AI BPO · live</span>
         <span class="chip"><span class="dot"></span> AI Drive-Thru · live</span>
       </div>
@@ -826,7 +818,6 @@
       <div class="section-head reveal">
         <span class="eyebrow">// AI Developer Workforce</span>
         <h2>Inside the command center.</h2>
-        <p class="sub">Production-grade AI engineers — <b style="color:var(--text)">Verda, Korbin, Aelara, and Gearlock</b> — shipping in parallel from a futuristic ops floor, under the glow of the Resolute sign.</p>
       </div>
 
       <figure class="cc-photo reveal hud">
@@ -896,7 +887,7 @@
         <div class="grid-current">
           <article class="cell">
             <div class="top"><span>01 · LIVE</span><span class="mono">CL</span></div>
-            <div class="pname">Closure.AI</div>
+            <div class="pname">Clocksure.AI</div>
             <div class="pdesc">Face recognition attendance for distributed workforces.</div>
             <div class="stat-row"><span class="pulse"></span> deployed</div>
           </article>
@@ -1115,6 +1106,7 @@
           </div>
           <q>We deployed AI Drive-Thru in our 14 busiest locations and watched order errors drop almost overnight. The team didn't just build it — they tuned it for our menu, our accents, and our peak windows.</q>
           <div class="testi-meta">
+            <img class="avatar" src="https://api.dicebear.com/9.x/notionists/svg?seed=MayaR&backgroundColor=0a1330" alt="Maya R." width="46" height="46" />
             <div class="who"><b>Maya R.</b><span>COO · Regional QSR chain</span></div>
             <span class="mchip">order accuracy &lt; 2s</span>
           </div>
@@ -1131,6 +1123,7 @@
           </div>
           <q>AI BPO took over our entire tier-1 queue inside six weeks. Our human agents are now doing higher-value escalations only, and average handle time across the floor is down 42%. The human fallback layer is the part that made our compliance team comfortable.</q>
           <div class="testi-meta">
+            <img class="avatar" src="https://api.dicebear.com/9.x/notionists/svg?seed=DanielC&backgroundColor=0a1330" alt="Daniel C." width="46" height="46" />
             <div class="who"><b>Daniel C.</b><span>Head of Operations · BPO firm</span></div>
             <span class="mchip">−42% AHT</span>
           </div>
@@ -1147,6 +1140,7 @@
           </div>
           <q>UGC Spark turned a single product brief into 80 platform-ready cuts in one afternoon. Our paid social team went from being the bottleneck to being able to test creative concepts the same day a campaign idea lands.</q>
           <div class="testi-meta">
+            <img class="avatar" src="https://api.dicebear.com/9.x/notionists/svg?seed=PriyaS&backgroundColor=0a1330" alt="Priya S." width="46" height="46" />
             <div class="who"><b>Priya S.</b><span>Marketing Director · DTC brand</span></div>
             <span class="mchip">+10× video output</span>
           </div>
@@ -1169,15 +1163,15 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-brand">
-          <div class="brand">
-            <span class="pip"></span> RESOLUTE <span class="pill">A.I. INC</span>
-          </div>
-          <p>Production-grade AI engineers, backed by a human global fallback layer. Built to deploy today. Designed to dominate tomorrow.</p>
+          <a href="#hero" class="brand">
+            <img class="brand-logo" src="Assets/Photos/8.jpg" alt="Resolute A.I. Inc" />
+          </a>
+          <p style="margin-top:14px;">Production-grade AI engineers, backed by a human global fallback layer. Built to deploy today. Designed to dominate tomorrow.</p>
         </div>
         <div class="foot-col">
           <h4>Products</h4>
           <ul>
-            <li><a href="#projects">Closure.AI</a></li>
+            <li><a href="#projects">Clocksure.AI</a></li>
             <li><a href="#projects">AI BPO</a></li>
             <li><a href="#projects">AI Drive-Thru</a></li>
             <li><a href="#projects">UGC Spark</a></li>
