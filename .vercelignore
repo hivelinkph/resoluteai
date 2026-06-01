@@ -1,0 +1,11 @@
+# Only the static marketing page + its photos should ship.
+# Everything below is workspace/authoring material, not part of the deploy.
+Skills/
+Assets/Icons/
+Assets/Videos/
+.claude/
+CLAUDE.md
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
