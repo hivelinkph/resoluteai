@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resolute A.I. Inc — Enterprise AI Engineering, Philippines</title>
+<meta name="description" content="Resolute A.I. Inc engineers custom AI systems for enterprises: multilingual AI CX agents, agentic AI, knowledge intelligence, and AI vision — built in the Philippines, deployed at enterprise scale.">
+<link rel="icon" type="image/png" href="assets/logo-head.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#05070A; --navy:#081525; --blue:#168DFF; --ice:#8ED8FF;
+  --silver:#C4CCD6; --white:#F7FAFC;
+  --seam:#1f374f;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{background:var(--ink);color:var(--white);font-family:var(--body);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.06;letter-spacing:-.015em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:rgba(22,141,255,.35)}
+
+/* ---------- loader ---------- */
+#loader{position:fixed;inset:0;z-index:200;background:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  transition:opacity .7s ease, visibility .7s}
+#loader.done{opacity:0;visibility:hidden}
+#loader img{width:84px;filter:drop-shadow(0 0 24px rgba(22,141,255,.45))}
+#loader .bar{width:min(300px,60vw);height:2px;background:rgba(196,204,214,.15);border-radius:2px;overflow:hidden}
+#loader .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--ice));transition:width .25s ease}
+#loader .lp{font-family:var(--display);font-size:11px;letter-spacing:.42em;color:var(--silver);text-transform:uppercase}
+
+/* ---------- header ---------- */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(20px,4vw,56px);color:#fff;
+  transition:background .4s ease, backdrop-filter .4s ease}
+.site-header::before{content:"";position:absolute;inset:0 0 auto 0;height:180%;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(3,5,9,.66),rgba(3,5,9,0))}
+.site-header.scrolled{background:rgba(5,7,10,.82);backdrop-filter:blur(14px)}
+.site-header.scrolled::before{opacity:0}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand img{height:40px;width:auto;filter:drop-shadow(0 1px 10px rgba(0,0,0,.5))}
+.brand .bw{display:flex;flex-direction:column;line-height:1}
+.brand .bw b{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:.10em;
+  background:linear-gradient(180deg,#fff 15%,var(--silver) 55%,#8fa2b8 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:none}
+.brand .bw span{font-family:var(--display);font-size:9px;letter-spacing:.5em;color:var(--ice);margin-top:4px}
+.main-nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,34px)}
+.main-nav a{font-family:var(--display);font-size:11.5px;letter-spacing:.24em;color:rgba(247,250,252,.82);
+  text-shadow:0 1px 18px rgba(0,0,0,.55);transition:color .25s}
+.main-nav a:hover{color:var(--ice)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
+  font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  padding:13px 26px;border-radius:3px;border:1px solid transparent;transition:all .3s var(--ease-out);white-space:nowrap}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 0 26px rgba(22,141,255,.35)}
+.btn-primary:hover{background:#2f9bff;box-shadow:0 0 42px rgba(22,141,255,.6);transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(1px)}
+.btn-ghost{border-color:rgba(196,204,214,.35);color:var(--white)}
+.btn-ghost:hover{border-color:var(--ice);color:var(--ice)}
+.nav-links{display:contents}
+.menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;
+  background:none;border:1px solid rgba(196,204,214,.3);border-radius:6px;cursor:pointer;padding:0 10px}
+.menu-btn span{display:block;height:1.5px;background:var(--white);border-radius:2px;transition:transform .3s var(--ease-out), opacity .3s}
+.menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menu-btn.open span:nth-child(2){opacity:0}
+.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(5,7,10,.97);backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:34px;
+  opacity:0;visibility:hidden;transition:opacity .35s ease, visibility .35s}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.6vh,24px)}
+.mobile-menu nav a{font-family:var(--display);font-size:20px;letter-spacing:.28em;color:var(--white)}
+.mobile-menu nav a:active{color:var(--ice)}
+.mm-contact{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px;
+  font-size:13.5px;color:var(--silver)}
+.mm-contact a:hover{color:var(--ice)}
+.mm-contact span{font-family:var(--display);font-size:10.5px;letter-spacing:.3em;color:rgba(196,204,214,.55)}
+@media(max-width:1180px){
+  .main-nav .nav-links{display:none}
+  .main-nav .cta-desktop{display:none}
+  .menu-btn{display:flex}
+}
+
+/* ---------- film ---------- */
+#film-scroll{position:relative;height:560vh}
+#film-stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--ink)}
+#film-canvas{position:absolute;inset:0;width:100%;height:100%;will-change:transform;transform:translateZ(0)}
+#film-stage .beat{will-change:opacity,transform}
+#film-grain{position:absolute;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:overlay}
+#film-vignette{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(2,3,6,.55) 100%)}
+#film-fade{position:absolute;inset:auto 0 0 0;height:38vh;pointer-events:none;opacity:0;
+  background:linear-gradient(to bottom,transparent,var(--seam))}
+.chapter-hud{position:absolute;left:clamp(20px,4vw,56px);bottom:34px;z-index:5;pointer-events:none;
+  display:flex;flex-direction:column;gap:9px;color:var(--silver)}
+.chapter-hud .ch-label{font-family:var(--display);font-size:10.5px;letter-spacing:.46em;text-transform:uppercase;
+  color:var(--ice);text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.chapter-hud .ch-track{width:150px;height:1px;background:rgba(196,204,214,.25)}
+.chapter-hud .ch-track i{display:block;height:100%;width:0;background:var(--blue)}
+.scroll-cue{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:5;pointer-events:none;
+  width:22px;height:36px;border:1.5px solid rgba(196,204,214,.55);border-radius:12px;transition:opacity .5s}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;
+  border-radius:2px;background:var(--ice);animation:cue 1.8s infinite}
+@keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+
+/* beats */
+.beat{position:absolute;z-index:4;opacity:0;pointer-events:none;max-width:min(620px,86vw)}
+.beat::before{content:"";position:absolute;z-index:-1;inset:-60% -22% -60% -14%;
+  background:radial-gradient(62% 60% at 30% 50%,rgba(2,4,8,.66),rgba(2,4,8,.34) 48%,transparent 78%)}
+.beat h2{font-size:clamp(30px,4.6vw,58px);color:var(--white);text-shadow:0 2px 30px rgba(0,0,0,.6)}
+.beat p{margin-top:16px;font-size:clamp(14.5px,1.25vw,17.5px);color:var(--silver);max-width:46ch;
+  text-shadow:0 1px 16px rgba(0,0,0,.7)}
+.beat-left{left:clamp(20px,7vw,110px);top:50%;transform:translateY(-50%)}
+.beat-right{right:clamp(20px,7vw,110px);top:50%;transform:translateY(-50%);text-align:right}
+.beat-right::before{inset:-60% -14% -60% -22%;
+  background:radial-gradient(62% 60% at 70% 50%,rgba(2,4,8,.66),rgba(2,4,8,.34) 48%,transparent 78%)}
+.beat-right p{margin-left:auto}
+.beat-hero{left:50%;top:44%;transform:translate(-50%,-50%);text-align:center;max-width:min(880px,92vw)}
+.beat-hero::before{inset:-46% -18%;background:radial-gradient(56% 56% at 50% 50%,rgba(2,4,8,.5),transparent 76%)}
+.hero-mark{display:flex;flex-direction:column;align-items:center;gap:18px}
+.hero-mark .hm-word{font-family:var(--display);font-weight:700;font-size:clamp(44px,8.4vw,110px);letter-spacing:.12em;
+  background:linear-gradient(180deg,#ffffff 12%,#dbe4ee 40%,var(--silver) 62%,#7e93ac 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 3px 26px rgba(0,0,0,.55))}
+.hero-mark .hm-sub{font-family:var(--display);font-size:clamp(10px,1.3vw,14px);letter-spacing:.62em;color:var(--ice);
+  text-shadow:0 0 22px rgba(22,141,255,.5)}
+.hero-mark p{color:var(--silver);font-size:clamp(14.5px,1.35vw,18px);max-width:52ch;text-shadow:0 1px 16px rgba(0,0,0,.75)}
+.beat-final{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;max-width:min(860px,92vw)}
+.beat-final::before{inset:-40% -16%;background:radial-gradient(58% 58% at 50% 50%,rgba(2,4,8,.62),transparent 78%)}
+.beat-final img{width:clamp(88px,11vw,140px);margin:0 auto 8px;filter:drop-shadow(0 0 34px rgba(22,141,255,.5))}
+.beat-final .hm-word{font-size:clamp(36px,6vw,78px)}
+.beat-final .cta-row{display:flex;gap:16px;justify-content:center;margin-top:30px;pointer-events:auto}
+@media(max-width:640px){ .beat-final .cta-row{flex-direction:column;align-items:center} }
+
+/* ---------- shared section chrome ---------- */
+.section{position:relative;padding:clamp(90px,12vh,150px) clamp(22px,6vw,80px)}
+.wrap{max-width:1280px;margin:0 auto;position:relative;z-index:2}
+.kicker{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.5em;text-transform:uppercase;color:var(--blue)}
+.section .wrap>*{opacity:0;transform:translateY(26px);
+  transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.section.in .wrap>*{opacity:1;transform:none}
+.section.in .wrap>*:nth-child(2){transition-delay:.09s}
+.section.in .wrap>*:nth-child(3){transition-delay:.18s}
+.section.in .wrap>*:nth-child(4){transition-delay:.27s}
+@media (prefers-reduced-motion: reduce){
+  .section .wrap>*{opacity:1;transform:none;transition:none}
+}
+
+/* ---------- mission ---------- */
+#mission{min-height:min(96vh,940px);display:flex;align-items:center;
+  background:linear-gradient(to bottom,var(--seam) 0%,var(--ink) 34%,var(--navy) 130%)}
+#mission h2{font-size:clamp(34px,5.6vw,74px);max-width:19ch;margin-top:26px}
+#mission h2 em{font-style:normal;color:var(--ice)}
+#mission .mission-sub{margin-top:34px;font-size:clamp(16px,1.5vw,20px);color:var(--silver);max-width:62ch}
+#mission .mission-row{margin-top:56px;display:flex;gap:clamp(24px,5vw,70px);flex-wrap:wrap;
+  font-family:var(--display);font-size:12px;letter-spacing:.3em;color:rgba(196,204,214,.75)}
+#mission .mission-row b{color:var(--white);font-weight:600}
+
+/* ---------- systems panels ---------- */
+#systems .sys-head{margin-bottom:70px}
+#systems h2{font-size:clamp(32px,4.6vw,60px);margin-top:22px;max-width:22ch}
+.panel{position:relative;min-height:min(88vh,820px);display:flex;align-items:flex-end;
+  border-radius:10px;overflow:hidden;margin-bottom:clamp(28px,4vh,44px);
+  border:1px solid rgba(196,204,214,.12);isolation:isolate}
+.panel .bg{position:absolute;inset:0;background-size:cover;background-position:center;
+  transform:scale(1.06);transition:transform 1.4s var(--ease-out);z-index:-2}
+.panel:hover .bg{transform:scale(1.01)}
+.panel::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgba(5,7,10,.94) 6%,rgba(5,7,10,.55) 42%,rgba(5,7,10,.18) 75%,rgba(5,7,10,.35) 100%)}
+.panel .p-in{padding:clamp(28px,4.5vw,64px);display:grid;gap:14px;max-width:820px}
+.panel .p-num{font-family:var(--display);font-size:12px;letter-spacing:.4em;color:var(--ice)}
+.panel h3{font-size:clamp(28px,3.8vw,52px);color:var(--white)}
+.panel p{color:var(--silver);font-size:clamp(15px,1.25vw,17.5px);max-width:58ch}
+.panel .p-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.panel .p-tags span{font-family:var(--display);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  padding:7px 14px;border:1px solid rgba(142,216,255,.3);border-radius:20px;color:var(--ice)}
+.panel .p-link{margin-top:18px;font-family:var(--display);font-size:11.5px;letter-spacing:.26em;color:var(--blue)}
+.panel .p-link:hover{color:var(--ice)}
+.panel.dim .bg{filter:saturate(.85) brightness(.9)}
+
+/* ---------- CX demo ---------- */
+#cx{background:linear-gradient(to bottom,var(--ink),var(--navy) 55%,var(--ink))}
+#cx h2{font-size:clamp(30px,4.4vw,58px);margin-top:22px;max-width:20ch}
+#cx .cx-sub{color:var(--silver);margin-top:20px;max-width:64ch}
+.console{margin-top:56px;display:grid;grid-template-columns:1.25fr .85fr;gap:22px}
+@media(max-width:960px){ .console{grid-template-columns:1fr} }
+.pane{background:rgba(8,21,37,.55);border:1px solid rgba(196,204,214,.14);border-radius:10px;
+  padding:clamp(22px,3vw,36px);backdrop-filter:blur(8px)}
+.pane .pane-k{font-family:var(--display);font-size:10.5px;letter-spacing:.4em;color:rgba(196,204,214,.65);
+  text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.pane .pane-k .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue);
+  animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.lang-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.lang{font-family:var(--display);font-size:11px;letter-spacing:.16em;padding:9px 16px;border-radius:22px;
+  border:1px solid rgba(196,204,214,.25);color:var(--silver);cursor:pointer;background:none;
+  transition:all .35s var(--ease-out)}
+.lang:hover{border-color:var(--ice);color:var(--ice)}
+.lang.on{background:rgba(22,141,255,.16);border-color:var(--blue);color:#fff;box-shadow:0 0 18px rgba(22,141,255,.25)}
+#wave{width:100%;height:110px;margin-top:26px;display:block}
+.transcript{margin-top:20px;min-height:84px;border-left:2px solid var(--blue);padding:4px 0 4px 18px}
+.transcript .t-who{font-family:var(--display);font-size:10px;letter-spacing:.34em;color:var(--ice);text-transform:uppercase}
+.transcript .t-line{margin-top:7px;color:var(--white);font-size:15.5px;min-height:48px}
+.cx-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.stat{background:rgba(5,7,10,.5);border:1px solid rgba(196,204,214,.1);border-radius:8px;padding:18px}
+.stat .s-v{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,30px);color:var(--white)}
+.stat .s-v em{font-style:normal;color:var(--ice);font-size:.62em}
+.stat .s-k{margin-top:5px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,204,214,.6)}
+.meter{margin-top:22px}
+.meter .m-k{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(196,204,214,.6)}
+.meter .m-t{height:4px;background:rgba(196,204,214,.12);border-radius:3px;margin-top:8px;overflow:hidden}
+.meter .m-t i{display:block;height:100%;width:0;border-radius:3px;
+  background:linear-gradient(90deg,var(--blue),var(--ice));transition:width 1.2s var(--ease-out)}
+.cx-note{margin-top:18px;font-size:12.5px;color:rgba(196,204,214,.55)}
+
+/* ---------- process (horizontal) ---------- */
+#technology{padding:0}
+.proc-driver{position:relative;height:340vh}
+.proc-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(to bottom,var(--ink),#060d18 60%,var(--ink))}
+.proc-head{padding:0 clamp(22px,6vw,80px);margin-bottom:44px}
+.proc-head h2{font-size:clamp(30px,4.2vw,54px);margin-top:20px}
+.proc-track{display:flex;gap:clamp(18px,2.4vw,30px);padding:0 clamp(22px,6vw,80px);width:max-content;will-change:transform}
+.step{width:min(430px,78vw);flex:none;background:rgba(8,21,37,.5);border:1px solid rgba(196,204,214,.13);
+  border-radius:10px;padding:clamp(26px,3vw,40px);min-height:320px;display:flex;flex-direction:column;gap:16px}
+.step .st-num{font-family:var(--display);font-weight:700;font-size:52px;line-height:1;
+  background:linear-gradient(180deg,var(--ice),var(--blue));-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent}
+.step h3{font-size:26px;letter-spacing:.06em}
+.step p{color:var(--silver);font-size:15px}
+.step .st-bar{margin-top:auto;height:2px;background:rgba(196,204,214,.12)}
+.step .st-bar i{display:block;height:100%;background:var(--blue);width:0;transition:width .5s ease}
+@media(max-width:768px){
+  .proc-driver{height:auto}
+  .proc-stage{position:static;height:auto;padding:90px 0}
+  .proc-track{width:auto;flex-direction:column;transform:none!important}
+  .step{width:auto}
+}
+
+/* ---------- case study ---------- */
+#case-studies{padding:0}
+.case{position:relative;min-height:100vh;display:flex;align-items:center;isolation:isolate}
+.case .bg{position:absolute;inset:0;background:url("assets/art-kf3.jpg") center/cover;z-index:-2}
+.case::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,rgba(5,7,10,.96) 30%,rgba(5,7,10,.72) 55%,rgba(5,7,10,.3))}
+.case .wrap{width:100%}
+.case h2{font-size:clamp(32px,4.8vw,64px);margin-top:24px;max-width:18ch}
+.case .case-sub{margin-top:24px;color:var(--silver);font-size:clamp(15.5px,1.4vw,18.5px);max-width:58ch}
+.case .metrics{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(196,204,214,.14);border:1px solid rgba(196,204,214,.14);border-radius:8px;overflow:hidden}
+@media(max-width:900px){ .case .metrics{grid-template-columns:1fr 1fr} }
+.case .metric{background:rgba(5,7,10,.82);padding:26px 22px}
+.case .metric .m-v{font-family:var(--display);font-weight:700;font-size:clamp(26px,3vw,40px);color:var(--white)}
+.case .metric .m-v em{font-style:normal;color:var(--ice)}
+.case .metric .m-k{margin-top:6px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(196,204,214,.62)}
+.case .case-note{margin-top:22px;font-size:12.5px;color:rgba(196,204,214,.5);max-width:60ch}
+
+/* ---------- industries ---------- */
+#industries h2{font-size:clamp(30px,4.2vw,54px);margin-top:22px}
+.ind-grid{margin-top:54px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){ .ind-grid{grid-template-columns:1fr 1fr} }
+@media(max-width:600px){ .ind-grid{grid-template-columns:1fr} }
+.ind{border:1px solid rgba(196,204,214,.13);border-radius:8px;padding:28px;background:rgba(8,21,37,.35);
+  transition:border-color .3s, transform .3s}
+.ind:hover{border-color:rgba(22,141,255,.5);transform:translateY(-3px)}
+.ind h3{font-size:19px;letter-spacing:.04em}
+.ind p{margin-top:10px;color:var(--silver);font-size:14px}
+
+/* ---------- company / contact ---------- */
+#company{background:linear-gradient(to bottom,var(--ink),var(--navy))}
+.company-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,80px);align-items:center}
+@media(max-width:900px){ .company-grid{grid-template-columns:1fr} }
+#company h2{font-size:clamp(30px,4.4vw,56px);margin-top:22px;max-width:16ch}
+#company .co-copy{margin-top:24px;color:var(--silver);max-width:56ch}
+.loc-row{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.loc-row span{font-family:var(--display);font-size:11px;letter-spacing:.26em;padding:9px 16px;
+  border:1px solid rgba(142,216,255,.3);border-radius:20px;color:var(--ice)}
+.contact-card{background:rgba(5,7,10,.6);border:1px solid rgba(196,204,214,.15);border-radius:12px;
+  padding:clamp(28px,3.6vw,46px);display:grid;gap:22px}
+.contact-card img{width:150px;margin:0 auto}
+.c-row{display:grid;gap:4px;text-align:center}
+.c-row .c-k{font-family:var(--display);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:rgba(196,204,214,.6)}
+.c-row .c-v{color:var(--white);font-size:15.5px}
+.c-row a.c-v:hover{color:var(--ice)}
+.contact-card .btn{justify-self:center}
+
+/* ---------- by the numbers + mission/vision ---------- */
+.numbers{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(196,204,214,.14);border:1px solid rgba(196,204,214,.14);border-radius:10px;overflow:hidden}
+.numbers .n{background:linear-gradient(160deg,rgba(8,21,37,.92),rgba(5,7,10,.92));padding:30px 24px}
+.numbers .n:last-child{background:linear-gradient(160deg,rgba(22,141,255,.28),rgba(8,21,37,.92))}
+.numbers .n-v{font-family:var(--display);font-weight:600;font-size:clamp(34px,4vw,54px);line-height:1;color:var(--white)}
+.numbers .n-v em{font-style:normal;color:var(--blue)}
+.numbers .n-k{margin-top:12px;font-family:var(--display);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(196,204,214,.68)}
+@media(max-width:820px){ .numbers{grid-template-columns:1fr 1fr} }
+.mv{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,40px)}
+@media(max-width:820px){ .mv{grid-template-columns:1fr} }
+.mv div{border-left:2px solid var(--blue);padding:4px 0 4px 22px}
+.mv h3{font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--ice)}
+.mv p{margin-top:12px;color:var(--silver);font-size:clamp(15px,1.3vw,17px);max-width:52ch}
+.mv p b{color:var(--white);font-weight:600}
+
+/* ---------- trusted by ---------- */
+#trusted{background:linear-gradient(to bottom,var(--navy),var(--ink));padding-top:clamp(70px,9vh,110px);padding-bottom:clamp(70px,9vh,110px)}
+#trusted h2{font-size:clamp(28px,3.8vw,48px);margin-top:22px;max-width:24ch}
+.logo-wall{margin-top:48px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+@media(max-width:1000px){ .logo-wall{grid-template-columns:repeat(4,minmax(0,1fr))} }
+@media(max-width:700px){ .logo-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px} }
+@media(max-width:440px){ .logo-wall{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.logo-wall .cl{aspect-ratio:16/9;background:#F7FAFC;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  padding:14% 12%;border:1px solid rgba(196,204,214,.4);transition:transform .35s var(--ease-out),box-shadow .35s}
+.logo-wall .cl:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(22,141,255,.22)}
+.logo-wall .cl img{width:100%;height:100%;min-width:0;object-fit:contain}
+.logo-wall .cl.tall{padding:8% 12%}
+.logo-wall .cl.you{background:transparent;border:1.5px dashed var(--blue);flex-direction:column;gap:4px;color:var(--white)}
+.logo-wall .cl.you span{font-family:var(--display);font-size:10px;letter-spacing:.34em;color:var(--ice)}
+.logo-wall .cl.you b{font-family:var(--display);font-size:clamp(20px,2vw,26px);font-weight:700}
+.logo-wall .cl.you:hover{background:rgba(22,141,255,.1)}
+
+/* ---------- flagship platforms ---------- */
+#platforms{background:linear-gradient(to bottom,var(--ink),#060d18 50%,var(--ink))}
+#platforms h2{font-size:clamp(30px,4.4vw,58px);margin-top:22px}
+#platforms .pl-sub{margin-top:20px;color:var(--silver);max-width:64ch}
+.pl-grid{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:1000px){ .pl-grid{grid-template-columns:1fr} }
+.pl{display:flex;flex-direction:column;gap:14px;background:rgba(8,21,37,.55);border:1px solid rgba(196,204,214,.14);
+  border-radius:12px;padding:clamp(24px,2.6vw,34px);transition:border-color .3s,transform .3s}
+.pl:hover{border-color:rgba(22,141,255,.55);transform:translateY(-3px)}
+.pl .pl-logo{width:96px;height:96px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px}
+.pl .pl-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.pl .pl-badge{align-self:flex-start;font-family:var(--display);font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  padding:6px 12px;border-radius:3px;background:rgba(22,141,255,.18);color:var(--ice)}
+.pl h3{font-size:clamp(24px,2.4vw,30px)}
+.pl .pl-cat{font-family:var(--display);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--blue);margin-top:-6px}
+.pl p{color:var(--silver);font-size:15px}
+.pl ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;font-size:13.5px;color:var(--white)}
+.pl li{padding-left:16px;position:relative}
+.pl li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border:1.5px solid var(--blue);border-radius:50%}
+.pl .p-link{margin-top:auto;padding-top:8px;font-family:var(--display);font-size:11.5px;letter-spacing:.26em;color:var(--blue)}
+.pl .p-link:hover{color:var(--ice)}
+
+/* ---------- proven results ---------- */
+#results{background:linear-gradient(to bottom,var(--ink),var(--navy))}
+#results h2{font-size:clamp(30px,4.4vw,58px);margin-top:22px;max-width:20ch}
+#results h2 em{font-style:normal;color:var(--ice)}
+.res-grid{margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){ .res-grid{grid-template-columns:1fr} }
+.res{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center;
+  background:rgba(5,7,10,.55);border:1px solid rgba(196,204,214,.14);border-radius:10px;padding:30px 28px;overflow:hidden}
+.res::before{content:"";position:absolute;top:0;left:22px;right:22px;height:3px;border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,var(--blue),var(--ice))}
+@media(max-width:520px){ .res{grid-template-columns:1fr} }
+.res .r-ind{grid-column:1/-1;font-family:var(--display);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(196,204,214,.65)}
+.res .r-v{font-family:var(--display);font-weight:600;font-size:clamp(34px,3.6vw,48px);line-height:1;color:var(--white)}
+.res .r-v small{font-size:.55em;color:rgba(196,204,214,.7)}
+.res .r-v em{font-style:normal;color:var(--ice)}
+.res .r-k{margin-top:10px;font-family:var(--display);font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--blue)}
+.res p{color:var(--silver);font-size:15px}
+.ops{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){ .ops{grid-template-columns:1fr} }
+.ops div{border-left:3px solid var(--blue);background:rgba(8,21,37,.45);border-radius:0 10px 10px 0;padding:22px 26px}
+.ops b{font-family:var(--display);font-size:20px;font-weight:600}
+.ops p{color:var(--silver);font-size:14.5px;margin-top:4px}
+
+/* ---------- testimonials ---------- */
+#testimonials{background:linear-gradient(to bottom,var(--navy),var(--ink))}
+#testimonials h2{font-size:clamp(30px,4.4vw,58px);margin-top:22px;max-width:18ch}
+.tst-grid{margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+@media(max-width:960px){ .tst-grid{grid-template-columns:1fr} }
+.tst{position:relative;background:rgba(8,21,37,.6);border:1px solid rgba(196,204,214,.14);border-radius:12px;
+  padding:clamp(28px,3.4vw,46px);display:flex;flex-direction:column;gap:22px}
+.tst::before{content:"\201C";position:absolute;top:-6px;right:28px;font-family:Georgia,serif;font-size:120px;line-height:1;
+  color:rgba(22,141,255,.35)}
+.tst .q-pull{font-family:var(--display);font-size:clamp(19px,1.8vw,24px);font-weight:500;line-height:1.35;color:var(--white);max-width:30ch}
+.tst .q-sec h3{font-family:var(--display);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--ice);font-weight:600}
+.tst .q-sec p{margin-top:8px;color:var(--silver);font-size:15px}
+.tst blockquote{display:flex;flex-direction:column;gap:22px}
+.tst .q-pull{margin-bottom:4px}
+.tst .who{margin-top:6px;padding-top:20px;border-top:1px solid rgba(196,204,214,.14);display:flex;align-items:center;gap:16px}
+.tst .who .av{flex:none;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-weight:700;font-size:16px;color:#fff;background:linear-gradient(135deg,var(--blue),#0b4f94)}
+.tst .who b{display:block;font-family:var(--display);font-size:16px;font-weight:600;color:var(--white)}
+.tst .who span{display:block;font-size:13px;color:rgba(196,204,214,.72);margin-top:2px}
+.tst .who img{margin-left:auto;height:22px;width:auto;background:#F7FAFC;padding:7px 10px;border-radius:6px;box-sizing:content-box}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid rgba(196,204,214,.12);padding:54px clamp(22px,6vw,80px);background:var(--ink)}
+.foot{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;align-items:center}
+.foot .brand img{height:34px}
+.foot-nav{display:flex;gap:26px;flex-wrap:wrap}
+.foot-nav a{font-family:var(--display);font-size:10.5px;letter-spacing:.24em;color:rgba(196,204,214,.7)}
+.foot-nav a:hover{color:var(--ice)}
+.foot-meta{font-size:12.5px;color:rgba(196,204,214,.5);text-align:right;line-height:1.9}
+@media(max-width:700px){ .foot{flex-direction:column;align-items:flex-start} .foot-meta{text-align:left} }
+
+/* ---------- mobile overrides (kept last so they win the cascade) ---------- */
+@media(max-width:768px){
+  .panel{min-height:76vh}
+  .panel .p-in{padding:24px 22px 30px}
+  .chapter-hud .ch-track{width:110px}
+  .stat-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .case .metrics{grid-template-columns:1fr 1fr}
+  .beat{max-width:88vw}
+  .beat-left{left:6vw}
+  .beat-right{right:6vw}
+}
+@media(max-width:640px){
+  .hero-mark .hm-sub{letter-spacing:.28em;font-size:9.5px;white-space:normal;max-width:88vw}
+  .brand img{height:34px}
+  .btn{padding:11px 18px;font-size:10.5px}
+  .beat h2{font-size:clamp(26px,7.4vw,34px)}
+  .beat-right{text-align:left}
+  .beat-right p{margin-left:0}
+  .beat-final img{width:76px}
+  .beat-final .hm-word{font-size:clamp(30px,9vw,44px)}
+  .cx-actions .btn{width:100%;justify-content:center}
+  .console{gap:14px}
+  .pane{padding:20px 18px}
+  .contact-card{padding:26px 20px}
+  .foot-nav{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" role="status" aria-label="Loading">
+  <img src="assets/logo-head.png" alt="Resolute A.I. robotic head emblem">
+  <div class="bar"><i id="load-bar"></i></div>
+  <div class="lp">Resolute&nbsp;A.I.</div>
+</div>
+
+<header class="site-header" id="hdr">
+  <a class="brand" href="#top" aria-label="Resolute A.I. Inc — home">
+    <img src="assets/logo-head.png" alt="Resolute A.I. head emblem">
+    <span class="bw"><b>RESOLUTE</b><span>A.I.&nbsp;INC</span></span>
+  </a>
+  <nav class="main-nav" aria-label="Primary">
+    <span class="nav-links">
+      <a href="#systems">SYSTEMS</a>
+      <a href="#platforms">PLATFORMS</a>
+      <a href="#trusted">CLIENTS</a>
+      <a href="#industries">INDUSTRIES</a>
+      <a href="#technology">TECHNOLOGY</a>
+      <a href="#case-studies">CASE STUDIES</a>
+      <a href="#company">COMPANY</a>
+    </span>
+    <a class="btn btn-primary cta-desktop" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20—%20Resolute%20A.I.">Start a Project</a>
+    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#systems">SYSTEMS</a>
+    <a href="#platforms">PLATFORMS</a>
+    <a href="#trusted">CLIENTS</a>
+    <a href="#industries">INDUSTRIES</a>
+    <a href="#technology">TECHNOLOGY</a>
+    <a href="#case-studies">CASE STUDIES</a>
+    <a href="#company">COMPANY</a>
+  </nav>
+  <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20—%20Resolute%20A.I.">Start a Project</a>
+  <div class="mm-contact">
+    <a href="tel:+639171567003">+63 917 156 7003 · Sales</a>
+    <a href="tel:+639190567243">+63 919 056 7243 · A.I. Hotline</a>
+    <a href="mailto:sales@resoluteaiph.com">sales@resoluteaiph.com</a>
+    <span>BGC · Cebu · New Clark City</span>
+  </div>
+</div>
+
+<!-- ============ THE FILM ============ -->
+<div id="film-scroll" aria-hidden="false">
+  <div id="film-stage">
+    <canvas id="film-canvas" aria-label="Cinematic film: a blue signal grows into a network that spans a city"></canvas>
+    <canvas id="film-grain"></canvas>
+    <div id="film-vignette"></div>
+    <div id="film-fade"></div>
+
+    <div class="beat beat-hero" data-in="-0.1" data-peak="0.005" data-out="0.105">
+      <div class="hero-mark">
+        <div class="hm-word">RESOLUTE&nbsp;A.I.</div>
+        <div class="hm-sub">INTELLIGENT&nbsp;SOLUTIONS&nbsp;·&nbsp;LIMITLESS&nbsp;FUTURE</div>
+        <p>We engineer the intelligence that enterprises run on — custom AI systems for customer experience, operations and knowledge, built from the ground up.</p>
+      </div>
+    </div>
+
+    <div class="beat beat-left" data-in="0.17" data-peak="0.25" data-out="0.33">
+      <h2>Intelligence is engineered, not installed.</h2>
+      <p>No generic platforms. No repackaged software. Every Resolute system is designed around one enterprise — its data, its security, its objectives.</p>
+    </div>
+
+    <div class="beat beat-right" data-in="0.38" data-peak="0.46" data-out="0.54">
+      <h2>Built around your people.</h2>
+      <p>AI agents that answer in your customers' language and copilots that keep human teams ahead of every queue, every shift, around the clock.</p>
+    </div>
+
+    <div class="beat beat-left" data-in="0.59" data-peak="0.67" data-out="0.75">
+      <h2>From one floor to an entire enterprise.</h2>
+      <p>Contact centers, telecom networks, banks and logistics operations — Resolute systems are engineered to carry enterprise scale from day one.</p>
+    </div>
+
+    <div class="beat beat-final" data-in="0.85" data-peak="0.94" data-out="2">
+      <img src="assets/logo-head.png" alt="Resolute A.I. emblem">
+      <div class="hero-mark" style="gap:12px">
+        <div class="hm-word">RESOLUTE&nbsp;A.I.</div>
+        <div class="hm-sub">AI&nbsp;ENGINEERING&nbsp;·&nbsp;PHILIPPINES</div>
+        <p>The intelligent infrastructure enterprises will depend on.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20—%20Resolute%20A.I.">Start a Project</a>
+        <a class="btn btn-ghost" href="#systems">Explore the Systems</a>
+      </div>
+    </div>
+
+    <div class="chapter-hud">
+      <div class="ch-label" id="ch-label">SIGNAL</div>
+      <div class="ch-track"><i id="ch-bar"></i></div>
+    </div>
+    <div class="scroll-cue" id="scroll-cue" aria-hidden="true"></div>
+  </div>
+</div>
+
+<!-- ============ MISSION ============ -->
+<section class="section" id="mission">
+  <div class="wrap">
+    <div class="kicker">The Mission</div>
+    <h2>The enterprise of tomorrow cannot run on <em>yesterday's intelligence.</em></h2>
+    <p class="mission-sub">Resolute AI does not force organizations into generic, one-size-fits-all platforms. We study each enterprise's operations, data, challenges, security requirements and objectives — then engineer the right AI system from the ground up.</p>
+    <div class="mission-row">
+      <span><b>BGC</b>&nbsp;·&nbsp;HQ</span>
+      <span><b>CEBU</b>&nbsp;·&nbsp;OPERATIONS</span>
+      <span><b>NEW CLARK CITY</b>&nbsp;·&nbsp;EXPANSION</span>
+    </div>
+    <div class="numbers">
+      <div class="n"><div class="n-v">18<em>+</em></div><div class="n-k">Deployed Systems</div></div>
+      <div class="n"><div class="n-v">08</div><div class="n-k">Industries Served</div></div>
+      <div class="n"><div class="n-v">10<em>+</em></div><div class="n-k">Enterprise Clients</div></div>
+      <div class="n"><div class="n-v">24<em>×</em>7</div><div class="n-k">Autonomous Operation</div></div>
+    </div>
+    <div class="mv">
+      <div><h3>Our Mission</h3><p>To give Philippine enterprises, and the world, <b>intelligent systems that work around the clock</b>. We ship them in weeks, not quarters, and stay on to scale them.</p></div>
+      <div><h3>Our Vision</h3><p>A Philippines recognised as a <b>global source of AI engineering</b>, where every enterprise runs on software that thinks, speaks and acts on its behalf.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUSTED BY ============ -->
+<section class="section" id="trusted">
+  <div class="wrap">
+    <div class="kicker">Trusted By</div>
+    <h2>Enterprises across the Philippines and beyond run on Resolute systems.</h2>
+    <div class="logo-wall">
+      <div class="cl"><img src="assets/clients/maxicare_pantone.png" alt="Maxicare Group" loading="lazy"></div>
+      <div class="cl"><img src="assets/clients/inspiro.svg" alt="Inspiro" loading="lazy"></div>
+      <div class="cl"><img src="assets/clients/top1movers.png" alt="Top1 Movers Worldwide" loading="lazy"></div>
+      <div class="cl"><img src="assets/clients/officium.png" alt="Officium" loading="lazy"></div>
+      <div class="cl"><img src="assets/clients/solviva.png" alt="Solviva Energy" loading="lazy"></div>
+      <div class="cl tall"><img src="assets/clients/cebucable.png" alt="Cebu Cable Internet" loading="lazy"></div>
+      <div class="cl"><img src="assets/clients/actionlabs.png" alt="ActionLabs" loading="lazy"></div>
+      <div class="cl"><img src="assets/clients/hgc_intl.png" alt="HGC Global Communications" loading="lazy"></div>
+      <div class="cl tall"><img src="assets/clients/steadfast.png" alt="Steadfast Fiber Internet" loading="lazy"></div>
+      <div class="cl"><img src="assets/clients/infocom.png" alt="Infocom" loading="lazy"></div>
+      <div class="cl tall"><img src="assets/clients/cna_official.png" alt="Climate Neutral Awards" loading="lazy"></div>
+      <a class="cl you" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20—%20Resolute%20A.I."><span>NEXT UP</span><b>You.</b></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SYSTEMS ============ -->
+<section class="section" id="systems">
+  <div class="wrap">
+    <div class="sys-head">
+      <div class="kicker">The Systems</div>
+      <h2>Five disciplines. One standard: engineered for your enterprise.</h2>
+    </div>
+  </div>
+  <div class="wrap" style="max-width:1400px">
+    <article class="panel">
+      <div class="bg" style="background-image:url('assets/art-kf3.jpg')"></div>
+      <div class="p-in">
+        <div class="p-num">SYSTEM&nbsp;01</div>
+        <h3>AI CX Agent</h3>
+        <p>Always-on inbound and outbound AI agents capable of serving customers across languages, channels and campaigns — with human escalation built in, not bolted on.</p>
+        <div class="p-tags"><span>Voice</span><span>Chat</span><span>Email</span><span>5+ Languages</span><span>24/7</span></div>
+        <a class="p-link" href="#cx">HEAR IT LIVE&nbsp;↓</a>
+      </div>
+    </article>
+    <article class="panel dim">
+      <div class="bg" style="background-image:url('assets/art-kf2.jpg')"></div>
+      <div class="p-in">
+        <div class="p-num">SYSTEM&nbsp;02</div>
+        <h3>Enterprise Agentic AI</h3>
+        <p>Intelligent agents that complete workflows, coordinate tasks and take action across enterprise systems — under governance your security team signs off on.</p>
+        <div class="p-tags"><span>Workflow Automation</span><span>Orchestration</span><span>Governed Actions</span></div>
+      </div>
+    </article>
+    <article class="panel">
+      <div class="bg" style="background-image:url('assets/art-kf1.jpg')"></div>
+      <div class="p-in">
+        <div class="p-num">SYSTEM&nbsp;03</div>
+        <h3>Knowledge Intelligence</h3>
+        <p>Secure AI systems that transform company knowledge, databases and documentation into reliable operational intelligence — answers your teams can act on and audit.</p>
+        <div class="p-tags"><span>Private Data</span><span>Retrieval</span><span>Auditability</span></div>
+      </div>
+    </article>
+    <article class="panel dim">
+      <div class="bg" style="background-image:url('assets/art-kf4.jpg')"></div>
+      <div class="p-in">
+        <div class="p-num">SYSTEM&nbsp;04</div>
+        <h3>AI Vision &amp; Analytics</h3>
+        <p>Computer vision, workforce intelligence, quality monitoring and real-time operational analytics — measurable insight from the floor to the boardroom.</p>
+        <div class="p-tags"><span>Computer Vision</span><span>Quality Monitoring</span><span>Real-Time Analytics</span></div>
+      </div>
+    </article>
+    <article class="panel">
+      <div class="bg" style="background-image:url('assets/art-kf2.jpg');filter:hue-rotate(-10deg) brightness(.85)"></div>
+      <div class="p-in">
+        <div class="p-num">SYSTEM&nbsp;05</div>
+        <h3>Custom AI Engineering</h3>
+        <p>AI systems scoped, designed and deployed specifically for each enterprise — not repackaged generic software. If it doesn't exist yet, we build it.</p>
+        <div class="p-tags"><span>Scoped to You</span><span>Secure by Design</span><span>Deployed to Production</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ FEATURED AI CX ============ -->
+<section class="section" id="cx">
+  <div class="wrap">
+    <div class="kicker">Featured · AI CX Agent</div>
+    <h2>One agent. Five languages. Zero hold music.</h2>
+    <p class="cx-sub">This is the same voice, generated by our AI stack, moving between English, Tagalog, Cebuano, Korean and Mandarin. Choose a language and hear the agent take a live order-status call.</p>
+
+    <div class="console">
+      <div class="pane">
+        <div class="pane-k"><span class="dot"></span>LIVE CALL&nbsp;·&nbsp;DEMONSTRATION</div>
+        <div class="lang-row" role="tablist" aria-label="Agent language">
+          <button class="lang on" data-lang="en" role="tab" aria-selected="true">ENGLISH</button>
+          <button class="lang" data-lang="tl" role="tab" aria-selected="false">TAGALOG</button>
+          <button class="lang" data-lang="ceb" role="tab" aria-selected="false">CEBUANO</button>
+          <button class="lang" data-lang="ko" role="tab" aria-selected="false">한국어</button>
+          <button class="lang" data-lang="zh" role="tab" aria-selected="false">中文</button>
+        </div>
+        <canvas id="wave"></canvas>
+        <div class="transcript">
+          <div class="t-who">Resolute CX Agent</div>
+          <div class="t-line" id="t-line">"Good afternoon, thank you for calling! I can see your order right here — it ships tomorrow, and you'll receive your tracking number within the hour."</div>
+        </div>
+        <div class="cx-actions">
+          <button class="btn btn-primary" id="play-btn">▶&nbsp;&nbsp;Hear the AI in Action</button>
+          <a class="btn btn-ghost" href="mailto:sales@resoluteaiph.com?subject=AI%20CX%20Agent%20Demo">Book a Full Demo</a>
+        </div>
+        <p class="cx-note">Voice samples generated by the Resolute AI voice stack. Live deployments are trained on your scripts, products and brand voice.</p>
+      </div>
+
+      <div class="pane">
+        <div class="pane-k"><span class="dot"></span>OPERATIONAL VIEW</div>
+        <div class="stat-grid">
+          <div class="stat"><div class="s-v" id="st-lang">5</div><div class="s-k">Languages</div></div>
+          <div class="stat"><div class="s-v">24<em>/7</em></div><div class="s-k">Availability</div></div>
+          <div class="stat"><div class="s-v" id="st-lat">0.0<em>s</em></div><div class="s-k">Response Time</div></div>
+          <div class="stat"><div class="s-v">In&nbsp;+&nbsp;Out</div><div class="s-k">Call Direction</div></div>
+        </div>
+        <div class="meter">
+          <div class="m-k"><span>Language Confidence</span><span id="m1v">—</span></div>
+          <div class="m-t"><i id="m1"></i></div>
+        </div>
+        <div class="meter">
+          <div class="m-k"><span>Customer Sentiment</span><span id="m2v">—</span></div>
+          <div class="m-t"><i id="m2"></i></div>
+        </div>
+        <div class="meter">
+          <div class="m-k"><span>Knowledge Match</span><span id="m3v">—</span></div>
+          <div class="m-t"><i id="m3"></i></div>
+        </div>
+        <p class="cx-note">Analytics shown are simulated for this demonstration. Production dashboards report your live traffic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLAGSHIP PLATFORMS ============ -->
+<section class="section" id="platforms">
+  <div class="wrap">
+    <div class="kicker">Flagship Platforms</div>
+    <h2>Three platforms. Always on.</h2>
+    <p class="pl-sub">Our flagships are in production today. One handles the conversations, one runs the workforce and one streams live TV, around the clock.</p>
+    <div class="pl-grid">
+      <article class="pl">
+        <div class="pl-logo"><img src="assets/platforms/aicxagent.png" alt="AI CX Agent logo" loading="lazy"></div>
+        <span class="pl-badge">Flagship · Voice AI</span>
+        <h3>AI CX Agent</h3>
+        <div class="pl-cat">Support that never sleeps · For BPOs</div>
+        <p>Autonomous voice AI that handles inbound and outbound calls for BPOs in natural conversation, 24×7 and at any scale. It qualifies leads and books outcomes on its own, and hands off to a human agent when the moment calls for one.</p>
+        <ul><li>Inbound &amp; outbound calls</li><li>Qualifies leads, books</li><li>Human-grade conversation</li><li>Always on, 24×7</li></ul>
+        <a class="p-link" href="https://aicxagent.live" target="_blank" rel="noopener">AICXAGENT.LIVE&nbsp;↗</a>
+      </article>
+      <article class="pl">
+        <div class="pl-logo"><img src="assets/platforms/humahr.png" alt="HumaHR logo" loading="lazy"></div>
+        <span class="pl-badge">Flagship · HRIS</span>
+        <h3>HumaHR</h3>
+        <div class="pl-cat">Full-suite HRIS &amp; payroll platform</div>
+        <p>Time-and-attendance with automatic payroll. Biometric timekeeping and smart scheduling feed one-click payroll runs that compute earnings, deductions and compliance in seconds.</p>
+        <ul><li>Biometric timekeeping</li><li>Smart shift scheduling</li><li>One-click payroll runs</li><li>Statutory compliance</li></ul>
+        <a class="p-link" href="https://huma.ph" target="_blank" rel="noopener">HUMA.PH&nbsp;↗</a>
+      </article>
+      <article class="pl">
+        <div class="pl-logo"><img src="assets/platforms/resolutetv.jpg" alt="ResoluteTV logo" loading="lazy"></div>
+        <span class="pl-badge">Flagship · Streaming</span>
+        <h3>ResoluteTV</h3>
+        <div class="pl-cat">Live TV with cloud DVR</div>
+        <p>Live broadcast television with a cloud DVR. Watch channels as they air, record programmes to the cloud and play them back on demand, wherever you are.</p>
+        <ul><li>Live broadcast TV</li><li>Cloud DVR recording</li><li>On-demand playback</li><li>Watch from anywhere</li></ul>
+        <a class="p-link" href="https://resolutetv.resoluteaiph.com" target="_blank" rel="noopener">RESOLUTETV.RESOLUTEAIPH.COM&nbsp;↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TECHNOLOGY / PROCESS ============ -->
+<section id="technology">
+  <div class="proc-driver" id="proc-driver">
+    <div class="proc-stage">
+      <div class="proc-head">
+        <div class="kicker">Technology · The Engineering Process</div>
+        <h2>How a Resolute system gets built.</h2>
+      </div>
+      <div class="proc-track" id="proc-track">
+        <div class="step"><div class="st-num">01</div><h3>SCOPE</h3><p>Understand the operation, challenges and objectives. We sit with your teams, map the workflows and define what success measurably means.</p><div class="st-bar"><i></i></div></div>
+        <div class="step"><div class="st-num">02</div><h3>ARCHITECT</h3><p>Design the right AI infrastructure and safeguards — models, data boundaries, security posture and escalation paths, approved before a line of code ships.</p><div class="st-bar"><i></i></div></div>
+        <div class="step"><div class="st-num">03</div><h3>ENGINEER</h3><p>Build and train the custom system on your knowledge, your scripts and your edge cases — evaluated against the metrics defined in scope.</p><div class="st-bar"><i></i></div></div>
+        <div class="step"><div class="st-num">04</div><h3>INTEGRATE</h3><p>Connect with existing tools, databases and workflows — CRM, telephony, ticketing and data warehouses — without disrupting live operations.</p><div class="st-bar"><i></i></div></div>
+        <div class="step"><div class="st-num">05</div><h3>SCALE</h3><p>Monitor performance and expand successful applications — more languages, more campaigns, more lines of business, on evidence rather than hope.</p><div class="st-bar"><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDY ============ -->
+<section id="case-studies">
+  <div class="case">
+    <div class="bg"></div>
+    <div class="wrap section" style="padding-left:0;padding-right:0">
+      <div class="kicker">Case Study · Enterprise CX</div>
+      <h2>Reimagining enterprise customer experience.</h2>
+      <p class="case-sub">A multilingual AI operation capable of handling inbound and outbound conversations continuously, while supporting human agents with real-time knowledge and analytics.</p>
+      <div class="metrics">
+        <div class="metric"><div class="m-v">5</div><div class="m-k">Languages Deployed</div></div>
+        <div class="metric"><div class="m-v">24<em>/7</em></div><div class="m-k">Continuous Operation</div></div>
+        <div class="metric"><div class="m-v">In&nbsp;·&nbsp;Out</div><div class="m-k">Inbound + Outbound</div></div>
+        <div class="metric"><div class="m-v">3</div><div class="m-k">Channels: Voice · Chat · Email</div></div>
+      </div>
+      <p class="case-note">We publish verified figures only. Cost reduction, response times and satisfaction scores are measured per deployment and shared with clients against the baselines defined at scoping.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROVEN RESULTS ============ -->
+<section class="section" id="results">
+  <div class="wrap">
+    <div class="kicker">Proven Results</div>
+    <h2>Custom-built systems. <em>Measurable results.</em></h2>
+    <div class="res-grid">
+      <div class="res"><div class="r-ind">Healthcare Provider</div>
+        <div><div class="r-v"><small>50%&nbsp;→&nbsp;</small><em>66%</em></div><div class="r-k">Plan Renewal Rate</div></div>
+        <p>Every member gets a reminder call before their plan lapses. Renewals rose by a third.</p></div>
+      <div class="res"><div class="r-ind">Accounting Firm</div>
+        <div><div class="r-v"><em>100%</em></div><div class="r-k">Calls Answered</div></div>
+        <p>Every caller gets an answer. No busy lines, no dropped calls, no lost business.</p></div>
+      <div class="res"><div class="r-ind">HMO · Healthcare</div>
+        <div><div class="r-v"><em>Instant</em></div><div class="r-k">Letters of Approval</div></div>
+        <p>Delivered straight to the Viber group chat, already checked against the member's plan and coverage.</p></div>
+      <div class="res"><div class="r-ind">Freight &amp; Customs Brokerage</div>
+        <div><div class="r-v"><em>94</em></div><div class="r-k">Automation Rules</div></div>
+        <p>Six departments, one control tower. Automation handles the routine; people approve what matters.</p></div>
+    </div>
+    <div class="ops">
+      <div><b>Nationwide</b><p>Local enterprises across the Philippines</p></div>
+      <div><b>Global</b><p>Multinational (MNC) clients worldwide</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" id="testimonials">
+  <div class="wrap">
+    <div class="kicker">Testimonials</div>
+    <h2>In our clients' own words.</h2>
+    <div class="tst-grid">
+      <figure class="tst">
+        <blockquote>
+          <p class="q-pull">“They work with us as true partners.”</p>
+          <div class="q-sec"><h3>Implementation &amp; timeline</h3>
+            <p>Working with Resolute AI has been seamless from the start. They stayed responsive throughout implementation, even as we came back with multiple requests and changes. What stands out most is that they work with us as true partners. They take the time to understand our problem statements before building anything, and that care shows in the solutions they deliver. I've seen the same level of attention given not only to the teams under our Center of Excellence, but also to Operations and Digital Solutions.</p></div>
+          <div class="q-sec"><h3>User adoption &amp; ease of use</h3>
+            <p>Resolute AI follows the blueprint of our solutions closely, which matters a great deal to us. What makes them even better is that they improve on our ideas. More than once, they've added features we hadn't asked for that made the final product stronger and easier for our people to use.</p></div>
+          <div class="q-sec"><h3>Support &amp; maintenance after go-live</h3>
+            <p>Their post-launch support is close to real time. Honestly, I sometimes wonder if they ever sleep. It's world-class service quality, delivered by a Filipino team, and it has made a real difference in how confidently we roll out new tools.</p></div>
+        </blockquote>
+        <figcaption class="who"><div class="av" aria-hidden="true">PM</div>
+          <div><b>Phoebe Lorelei Magsino-Erni</b><span>Senior Vice President, Center of Excellence · Inspiro</span></div>
+          <img src="assets/clients/inspiro.svg" alt="Inspiro"></figcaption>
+      </figure>
+      <figure class="tst">
+        <blockquote>
+          <p class="q-pull">“They are what we need in this high-velocity and competitive environment.”</p>
+          <div class="q-sec"><h3>Implementation</h3>
+            <p>Resolute AI has a thorough and collaborative implementation process. They are diligent drivers and handle each project with utmost care; most of the time even more invested that the projects succeed. Yet, what really separates them is their flexibility and speed. They understand what we and our clients need, quickly develop, make adjustments if needed, then execute fast. They are what we need in this high velocity and competitive environment.</p></div>
+          <div class="q-sec"><h3>Product &amp; support</h3>
+            <p>Their products are intuitive and human centered. Again, our collaborative approach make the solutions effective. This is supported by their round the clock, competent post sales support — which includes constant monitoring and improving of the bots. They are a valuable partner.</p></div>
+        </blockquote>
+        <figcaption class="who"><div class="av" aria-hidden="true">SD</div>
+          <div><b>Stanley Ching Uy Dy</b><span>SVP, International Operations</span></div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIES ============ -->
+<section class="section" id="industries">
+  <div class="wrap">
+    <div class="kicker">Industries</div>
+    <h2>Built where the pressure is highest.</h2>
+    <div class="ind-grid">
+      <div class="ind"><h3>BPO &amp; Contact Centers</h3><p>Multilingual AI agents and human-agent copilots for the industry the Philippines leads.</p></div>
+      <div class="ind"><h3>Telecommunications</h3><p>Customer operations, network intelligence and churn programs at carrier scale.</p></div>
+      <div class="ind"><h3>Banking &amp; Finance</h3><p>Secure knowledge systems and compliant customer AI for regulated institutions.</p></div>
+      <div class="ind"><h3>Healthcare</h3><p>Patient engagement and operational intelligence with privacy engineered first.</p></div>
+      <div class="ind"><h3>Retail &amp; E-Commerce</h3><p>Order support, outbound campaigns and vision-based inventory analytics.</p></div>
+      <div class="ind"><h3>Logistics</h3><p>Shipment visibility, dispatch coordination and real-time exception handling.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section class="section" id="company">
+  <div class="wrap company-grid">
+    <div>
+      <div class="kicker">Company</div>
+      <h2>An AI engineering company — not another software vendor.</h2>
+      <p class="co-copy">Resolute A.I. Inc builds the intelligent infrastructure major enterprises will depend on. From our headquarters in Bonifacio Global City, with teams in Cebu and New Clark City, we take enterprises from first scoping session to production AI systems — and stay to scale them.</p>
+      <div class="loc-row"><span>BGC · TAGUIG</span><span>CEBU</span><span>NEW CLARK CITY</span></div>
+      <a class="btn btn-ghost" href="/company-profile/" style="margin-top:26px">View the Company Profile&nbsp;→</a>
+    </div>
+    <div class="contact-card">
+      <img src="assets/logo-head.png" alt="Resolute A.I. Inc emblem">
+      <div class="c-row"><div class="c-k">Sales</div><a class="c-v" href="tel:+639171567003">+63 917 156 7003</a></div>
+      <div class="c-row"><div class="c-k">A.I. Hotline</div><a class="c-v" href="tel:+639190567243">+63 919 056 7243</a></div>
+      <div class="c-row"><div class="c-k">Email</div><a class="c-v" href="mailto:sales@resoluteaiph.com">sales@resoluteaiph.com</a></div>
+      <div class="c-row"><div class="c-k">Headquarters</div><div class="c-v">Penthouse, Marajo Tower, 312 26th St. cor. 4th Ave.,<br>BGC, Taguig City, Philippines 1634</div></div>
+      <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20—%20Resolute%20A.I.">Start a Project</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <a class="brand" href="#top"><img src="assets/logo-head.png" alt="Resolute A.I. emblem">
+      <span class="bw"><b>RESOLUTE</b><span>A.I.&nbsp;INC</span></span></a>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="#systems">SYSTEMS</a><a href="#platforms">PLATFORMS</a><a href="#trusted">CLIENTS</a><a href="#testimonials">TESTIMONIALS</a><a href="#industries">INDUSTRIES</a><a href="#technology">TECHNOLOGY</a>
+      <a href="#case-studies">CASE STUDIES</a><a href="#company">COMPANY</a><a href="/company-profile/">COMPANY PROFILE</a>
+    </nav>
+    <div class="foot-meta">
+      © 2026 Resolute A.I. Inc · Intelligent Solutions. Limitless Future.<br>
+      <a href="tel:+639171567003">+63 917 156 7003</a> · <a href="mailto:sales@resoluteaiph.com">sales@resoluteaiph.com</a> · BGC · Cebu · New Clark City
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================= CONFIG (kept in sync with BRIEF.md) ================= */
+/* phones AND portrait tablets take the 9:16 film — a portrait viewport of any
+   size up to 1100px is closer to the vertical crop than to the 16:9 master */
+var MOBILE_MQ = window.matchMedia('(max-width: 768px), (orientation: portrait) and (max-width: 1100px)');
+var FILM = {
+  dir: MOBILE_MQ.matches ? 'frames-m' : 'frames',   // frames-m: true 9:16 crop of the same master
+  prefix: 'f_', pad: 4, ext: '.jpg',
+  count: window.__FRAME_COUNT || 601,   // master: 601 frames @24fps (1280w landscape / 480w portrait)
+  fps: 24,
+  seam: '#1f374f'
+};
+var CHAPTERS = [
+  {at:0.00, label:'SIGNAL'},
+  {at:0.20, label:'NETWORK'},
+  {at:0.40, label:'OPERATIONS'},
+  {at:0.60, label:'THE CITY'},
+  {at:0.80, label:'RESOLUTE'}
+];
+var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var JUMP = new URLSearchParams(location.search).get('jump');
+if (JUMP !== null) history.scrollRestoration = 'manual';
+var DEBUG = new URLSearchParams(location.search).has('debug');
+
+/* ================= scrub engine ================= */
+(function(){
+  var stage = document.getElementById('film-stage');
+  var driver = document.getElementById('film-scroll');
+  var canvas = document.getElementById('film-canvas');
+  var ctx = canvas.getContext('2d');
+  var fade = document.getElementById('film-fade');
+  var vignette = document.getElementById('film-vignette');
+  var grain = document.getElementById('film-grain');
+  var cue = document.getElementById('scroll-cue');
+  var hdr = document.getElementById('hdr');
+  var chLabel = document.getElementById('ch-label');
+  var chBar = document.getElementById('ch-bar');
+  var loadBar = document.getElementById('load-bar');
+  var loader = document.getElementById('loader');
+
+  var N = FILM.count;
+  var images = new Array(N);       // HTMLImageElement fallback store
+  var loadedCount = 0;
+  var bitmaps = new Map(), decoding = new Set(), bmpCenter = -999;
+  var B_AHEAD = Math.round(FILM.fps * 2);      // ~2s ahead
+  var B_KEEP  = Math.round(FILM.fps * 2.6);
+  var current = 0, target = 0, displayed = -1;
+  var progress = 0;
+  var ready = false;
+
+  function src(i){ return FILM.dir + '/' + FILM.prefix + String(i+1).padStart(FILM.pad,'0') + FILM.ext; }
+
+  /* canvas sizing — DPR capped at 1 (source is ~1280w; 1:1 beats upscaled) */
+  function resize(){
+    var dpr = Math.min(window.devicePixelRatio||1, 1);
+    canvas.width  = Math.round(stage.clientWidth * dpr);
+    canvas.height = Math.round(stage.clientHeight * dpr);
+    grain.width = 220; grain.height = 140;
+    makeGrain();
+    displayed = -1; draw(Math.round(current), true);
+  }
+
+  var MAX_CROP = 0.30;  /* full-bleed on tablet portrait (9:16 film on 3:4 glass ≈ 25% crop);
+                           the subject is center-anchored in every chapter so the crop is safe */
+  function drawImageFit(im){
+    var cw=canvas.width, ch=canvas.height, w=im.width, h=im.height;
+    var sCover = Math.max(cw/w, ch/h);
+    var crop = 1 - Math.min(cw/(w*sCover), ch/(h*sCover));
+    var s = crop > MAX_CROP ? Math.min(cw/w, ch/h) : sCover;
+    var dw = w*s, dh = h*s;
+    if (crop > MAX_CROP){ ctx.fillStyle = '#05070A'; ctx.fillRect(0,0,cw,ch); }
+    ctx.drawImage(im,(cw-dw)/2,(ch-dh)/2,dw,dh);
+  }
+
+  function nearestLoaded(i){
+    if (bitmaps.has(i)) return bitmaps.get(i);
+    /* a nearby decoded bitmap is a pure GPU blit; an exact HTMLImageElement
+       costs a synchronous JPEG decode on the main thread — prefer the blit */
+    for (var d=1; d<=64; d++){
+      var a=i-d, b=i+d;
+      if (a>=0 && bitmaps.has(a)) return bitmaps.get(a);
+      if (b<N && bitmaps.has(b)) return bitmaps.get(b);
+    }
+    if (images[i] && images[i].complete && images[i].naturalWidth) return images[i];
+    for (var d2=1; d2<N; d2++){
+      var a2=i-d2, b2=i+d2;
+      if (a2>=0 && images[a2] && images[a2].complete && images[a2].naturalWidth) return images[a2];
+      if (b2<N && images[b2] && images[b2].complete && images[b2].naturalWidth) return images[b2];
+    }
+    return null;
+  }
+
+  function draw(i, force){
+    if (i===displayed && !force) return;
+    var im = nearestLoaded(i);
+    if (!im) return;
+    drawImageFit(im);
+    displayed = i;
+  }
+
+  var DEC_MAX = 8;   /* dispatching ~50 createImageBitmap calls in one tick stalls the main
+                        thread; cap in-flight decodes and refill as each one completes */
+  function decodeOne(i){
+    if (bitmaps.has(i) || decoding.has(i)) return false;
+    var im = images[i];
+    if (!im || !im.complete || !im.naturalWidth) return false;
+    decoding.add(i);
+    createImageBitmap(im).then(function(b){
+      decoding.delete(i);
+      if (Math.abs(i-bmpCenter) > B_KEEP){ b.close(); }
+      else {
+        bitmaps.set(i,b);
+        if (i===displayed) draw(i,true);
+      }
+      fillDecodes();
+    }).catch(function(){ decoding.delete(i); fillDecodes(); });
+    return true;
+  }
+  function fillDecodes(){
+    if (decoding.size >= DEC_MAX) return;
+    var lo = Math.max(0, bmpCenter-B_AHEAD), hi = Math.min(N-1, bmpCenter+B_AHEAD);
+    /* nearest-to-playhead first */
+    for (var d=0; d<=B_AHEAD && decoding.size<DEC_MAX; d++){
+      var a=bmpCenter+d, b=bmpCenter-d;
+      if (a<=hi) decodeOne(a);
+      if (decoding.size>=DEC_MAX) break;
+      if (d>0 && b>=lo) decodeOne(b);
+    }
+  }
+  function ensureBitmaps(center){
+    if (Math.abs(center-bmpCenter) < 3) return;
+    bmpCenter = center;
+    fillDecodes();
+    bitmaps.forEach(function(bm,k){
+      if (k < center-B_KEEP || k > center+B_KEEP){ bm.close(); bitmaps.delete(k); }
+    });
+  }
+
+  /* loader pump — concurrency-capped */
+  var nextIdx = 0, inflight = 0, CONC = 12;
+  var PREFETCH_READY = Math.min(N, Math.round(FILM.fps*1.6)); // first ~1.6s before reveal
+  function pump(){
+    while (inflight < CONC && nextIdx < N){
+      (function(i){
+        var im = new Image();
+        im.decoding = 'async';
+        im.onload = im.onerror = function(){
+          inflight--; loadedCount++;
+          if (loadBar) loadBar.style.width = Math.round(loadedCount/N*100)+'%';
+          if (!ready && loadedCount >= PREFETCH_READY) reveal();
+          if (loadedCount === N && DEBUG) console.log('[film] all frames loaded');
+          pump();
+        };
+        im.src = src(i);
+        images[i] = im;
+      })(nextIdx);
+      nextIdx++; inflight++;
+    }
+  }
+
+  /* film grain sprite */
+  function makeGrain(){
+    var g = grain.getContext('2d');
+    var d = g.createImageData(grain.width, grain.height);
+    for (var i=0;i<d.data.length;i+=4){
+      var v = 118 + Math.random()*36|0;
+      d.data[i]=v; d.data[i+1]=v; d.data[i+2]=v; d.data[i+3]=26;
+    }
+    g.putImageData(d,0,0);
+  }
+
+  /* progress */
+  function readProgress(){
+    var r = driver.getBoundingClientRect();
+    var denom = r.height - window.innerHeight;
+    return Math.max(0, Math.min(1, -r.top / (denom||1)));
+  }
+
+  /* beats */
+  var beats = [].map.call(document.querySelectorAll('.beat'), function(el){
+    return { el:el,
+      a: parseFloat(el.dataset.in), pk: parseFloat(el.dataset.peak), b: parseFloat(el.dataset.out) };
+  });
+  function beatAlpha(bt,p){
+    if (p < bt.a || p > bt.b) return 0;
+    if (p < bt.pk) return (p-bt.a)/Math.max(1e-4, bt.pk-bt.a);
+    if (bt.b > 1.5) return 1;
+    return 1 - (p-bt.pk)/Math.max(1e-4, bt.b-bt.pk);
+  }
+  function updateBeats(p){
+    beats.forEach(function(bt){
+      var a = beatAlpha(bt,p);
+      bt.el.style.opacity = a.toFixed(3);
+      var base = bt.el.classList.contains('beat-hero')||bt.el.classList.contains('beat-final')
+        ? 'translate(-50%,-50%)' : 'translateY(-50%)';
+      bt.el.style.transform = base + ' translateY(' + ((1-a)*18).toFixed(1) + 'px)';
+      bt.el.style.pointerEvents = (a>0.6 && bt.b>1.5) ? 'auto' : 'none';
+    });
+  }
+
+  /* adaptive header — sample top strip luminance */
+  var lumaCanvas = document.createElement('canvas');
+  lumaCanvas.width=16; lumaCanvas.height=4;
+  var lumaCtx = lumaCanvas.getContext('2d',{willReadFrequently:true});
+  var lastLuma = 0;
+  function sampleHeader(){
+    try{
+      lumaCtx.drawImage(canvas, 0,0,canvas.width,Math.max(1,canvas.height*0.12), 0,0,16,4);
+      var d = lumaCtx.getImageData(0,0,16,4).data, sum=0;
+      for (var i=0;i<d.length;i+=4) sum += 0.2126*d[i]+0.7152*d[i+1]+0.0722*d[i+2];
+      lastLuma = sum/(d.length/4);
+      hdr.classList.toggle('on-light', lastLuma>138);
+    }catch(e){}
+  }
+  if (!new URLSearchParams(location.search).has("nosample")) setInterval(function(){ if (progress<1.02) sampleHeader(); }, 180);
+
+  /* chapters */
+  function updateChapter(p){
+    var c = CHAPTERS[0];
+    for (var i=0;i<CHAPTERS.length;i++) if (p>=CHAPTERS[i].at) c=CHAPTERS[i];
+    if (chLabel.textContent !== c.label) chLabel.textContent = c.label;
+    chBar.style.width = (p*100).toFixed(1)+'%';
+  }
+
+  /* jank meter */
+  var lastT = performance.now(), maxD = 0;
+  if (DEBUG) setInterval(function(){ console.log('[jank] max rAF delta', maxD.toFixed(1)+'ms'); maxD=0; }, 2000);
+
+  function tick(t){
+    var d = t-lastT; lastT=t; if (d>maxD) maxD=d;
+    progress = readProgress();
+    target = progress*(N-1);
+    current += (target-current)*0.14;
+    if (Math.abs(target-current)<0.02) current=target;
+    var idx = Math.round(current);
+    ensureBitmaps(idx);
+    draw(idx,false);
+    updateBeats(progress);
+    updateChapter(progress);
+    var f = Math.max(0,(progress-0.92)/0.08);
+    fade.style.opacity = f.toFixed(3);
+    vignette.style.opacity = (1-f).toFixed(3);
+    grain.style.opacity = (0.07*(1-f)).toFixed(3);
+    cue.style.opacity = progress>0.03?0:1;
+    hdr.classList.toggle('scrolled', driver.getBoundingClientRect().bottom < window.innerHeight*1.05);
+    requestAnimationFrame(tick);
+  }
+
+  function reveal(){
+    if (ready) return;
+    ready = true;
+    resize();
+    draw(0,true);
+    loader.classList.add('done');
+    if (JUMP !== null){
+      window.scrollTo(0, +JUMP||0);
+      progress = readProgress();
+      current = target = progress*(N-1);
+      ensureBitmaps(Math.round(current));
+      draw(Math.round(current), true);
+      updateBeats(progress); updateChapter(progress);
+      setTimeout(function(){ window.__ready = true; }, 900);
+    } else {
+      /* absorb the browser's one-time first-scroll style/layout recalc during
+         load rather than on the visitor's first wheel tick — must span real
+         frames or the two scrolls coalesce into nothing */
+      window.scrollTo(0,120);
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          window.scrollTo(0,0);
+          requestAnimationFrame(function(){ window.__ready = true; });
+        });
+      });
+    }
+  }
+
+  if (REDUCED){
+    /* reduced motion: static film — first frame held, beats replaced by hero only */
+    driver.style.height = '100vh';
+    document.querySelectorAll('.beat').forEach(function(b,i){
+      if (!b.classList.contains('beat-hero')) b.style.display='none';
+      else { b.style.opacity=1; }
+    });
+    var im = new Image();
+    im.onload = function(){ images[0]=im; loadedCount=1; resize(); draw(0,true); loader.classList.add('done'); window.__ready=true; };
+    im.onerror = function(){ loader.classList.add('done'); window.__ready=true; };
+    im.src = src(0);
+    window.addEventListener('resize', resize);
+    return;
+  }
+
+  /* breakpoint swap (rotation / window resize across 768px): the decoded
+     bitmaps belong to the old frame set — close them or they leak GPU memory */
+  MOBILE_MQ.addEventListener('change', function(e){
+    FILM.dir = e.matches ? 'frames-m' : 'frames';
+    bitmaps.forEach(function(b){ b.close(); });
+    bitmaps.clear(); decoding.clear(); bmpCenter = -999;
+    images = new Array(N); loadedCount = 0; nextIdx = 0; inflight = 0;
+    displayed = -1;
+    pump();
+  });
+
+  window.addEventListener('resize', resize);
+  resize();
+  pump();
+  requestAnimationFrame(tick);
+  /* safety: if frames stall, reveal anyway after 12s so the page is never bricked */
+  setTimeout(function(){ if (!ready) reveal(); }, 12000);
+})();
+
+/* ================= mobile menu ================= */
+(function(){
+  var btn = document.getElementById('menu-btn');
+  var menu = document.getElementById('mobile-menu');
+  function setOpen(open){
+    btn.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open?'true':'false');
+    menu.setAttribute('aria-hidden', open?'false':'true');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  btn.addEventListener('click', function(){ setOpen(!menu.classList.contains('open')); });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setOpen(false); });
+  });
+  window.addEventListener('keydown', function(e){ if (e.key==='Escape') setOpen(false); });
+})();
+
+/* ================= section arrival ================= */
+(function(){
+  /* threshold 0, not a ratio: a ratio of the TARGET delays tall multi-panel
+     sections (a 5-panel section never shows 12% of itself in a portrait viewport
+     until the visitor is deep inside it) */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -12% 0px', threshold:0});
+  document.querySelectorAll('.section').forEach(function(s){ io.observe(s); });
+})();
+
+/* ================= CX demo ================= */
+(function(){
+  var LANGS = {
+    en:{label:'ENGLISH', text:'"Good afternoon, thank you for calling! I can see your order right here — it ships tomorrow, and you’ll receive your tracking number within the hour."'},
+    tl:{label:'TAGALOG', text:'"Magandang hapon po! Nakikita ko na po ang inyong order — ipapadala po ito bukas, at makakatanggap kayo ng tracking number sa loob ng isang oras."'},
+    ceb:{label:'CEBUANO', text:'"Maayong hapon! Nakita nako ang imong order — ipadala ni ugma, ug makadawat ka og tracking number sulod sa usa ka oras."'},
+    ko:{label:'한국어', text:'"안녕하세요, 전화 주셔서 감사합니다! 주문 확인해 드렸습니다. 내일 발송되며, 한 시간 안에 운송장 번호를 보내드리겠습니다."'},
+    zh:{label:'中文', text:'"您好，感谢您的来电！我已经查到您的订单，明天发货，一小时内您会收到物流单号。"'}
+  };
+  var order = ['en','tl','ceb','ko','zh'];
+  var currentLang = 'en';
+  var tLine = document.getElementById('t-line');
+  var playBtn = document.getElementById('play-btn');
+  var wave = document.getElementById('wave');
+  var wctx = wave.getContext('2d');
+  var audio = null, actx = null, analyser = null, dataArr = null, playing = false;
+  var idleT = 0;
+
+  function sizeWave(){
+    var r = wave.getBoundingClientRect();
+    wave.width = Math.max(200, Math.round(r.width));
+    wave.height = 110;
+  }
+  sizeWave(); window.addEventListener('resize', sizeWave);
+
+  function setLang(l, fromUser){
+    currentLang = l;
+    document.querySelectorAll('.lang').forEach(function(b){
+      var on = b.dataset.lang===l;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-selected', on?'true':'false');
+    });
+    tLine.textContent = LANGS[l].text;
+    if (fromUser && playing) startPlayback(l);
+    bumpMeters();
+  }
+  document.querySelectorAll('.lang').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.dataset.lang, true); });
+  });
+
+  /* auto-rotate language highlight when idle */
+  var rotI = 0;
+  setInterval(function(){
+    if (playing) return;
+    rotI = (rotI+1)%order.length;
+    setLang(order[rotI], false);
+  }, 4200);
+
+  function startPlayback(l){
+    stopPlayback();
+    audio = new Audio('audio/'+l+'.mp3');
+    audio.crossOrigin = 'anonymous';
+    try{
+      actx = actx || new (window.AudioContext||window.webkitAudioContext)();
+      var srcN = actx.createMediaElementSource(audio);
+      analyser = actx.createAnalyser();
+      analyser.fftSize = 128;
+      dataArr = new Uint8Array(analyser.frequencyBinCount);
+      srcN.connect(analyser); analyser.connect(actx.destination);
+    }catch(e){ analyser=null; }
+    audio.onended = function(){ playing=false; playBtn.innerHTML='▶&nbsp;&nbsp;Hear the AI in Action'; };
+    audio.play().then(function(){
+      playing = true;
+      playBtn.innerHTML = '■&nbsp;&nbsp;Stop Playback';
+    }).catch(function(){});
+    /* live response-time readout */
+    var lat = (0.4 + Math.random()*0.4);
+    document.getElementById('st-lat').innerHTML = lat.toFixed(1)+'<em>s</em>';
+  }
+  function stopPlayback(){
+    if (audio){ audio.pause(); audio = null; }
+    playing = false;
+    playBtn.innerHTML = '▶&nbsp;&nbsp;Hear the AI in Action';
+  }
+  playBtn.addEventListener('click', function(){
+    if (playing) stopPlayback(); else startPlayback(currentLang);
+  });
+
+  function bumpMeters(){
+    function set(id, vid, v){
+      document.getElementById(id).style.width = v+'%';
+      document.getElementById(vid).textContent = v+'%';
+    }
+    set('m1','m1v', 94+Math.floor(Math.random()*5));
+    set('m2','m2v', 88+Math.floor(Math.random()*9));
+    set('m3','m3v', 90+Math.floor(Math.random()*8));
+  }
+
+  /* waveform: real analyser while playing, gentle idle line otherwise */
+  function drawWave(t){
+    var w = wave.width, h = wave.height;
+    wctx.clearRect(0,0,w,h);
+    var bars = 56, gap = 3, bw = (w-(bars-1)*gap)/bars;
+    for (var i=0;i<bars;i++){
+      var v;
+      if (playing && analyser){
+        analyser.getByteFrequencyData(dataArr);
+        v = dataArr[Math.floor(i/bars*dataArr.length*0.72)]/255;
+        v = Math.pow(v,1.25);
+      } else {
+        v = 0.06 + 0.05*Math.sin(t/900 + i*0.55) * Math.sin(t/1400 + i*0.21);
+        v = Math.abs(v);
+      }
+      var bh = Math.max(2, v*h*0.92);
+      var x = i*(bw+gap), y=(h-bh)/2;
+      var g = wctx.createLinearGradient(0,y,0,y+bh);
+      g.addColorStop(0,'#8ED8FF'); g.addColorStop(1,'#168DFF');
+      wctx.fillStyle = g;
+      wctx.globalAlpha = playing?0.95:0.5;
+      wctx.fillRect(x,y,bw,bh);
+    }
+    wctx.globalAlpha = 1;
+    requestAnimationFrame(drawWave);
+  }
+  requestAnimationFrame(drawWave);
+  bumpMeters();
+
+  /* meters idle drift */
+  setInterval(bumpMeters, 5200);
+})();
+
+/* ================= horizontal process ================= */
+(function(){
+  var driver = document.getElementById('proc-driver');
+  var track = document.getElementById('proc-track');
+  if (!driver || !track) return;
+  var mq = window.matchMedia('(max-width:768px)');
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function onScroll(){
+    if (mq.matches || REDUCED) { track.style.transform=''; fillBars(1); return; }
+    var r = driver.getBoundingClientRect();
+    var denom = r.height - window.innerHeight;
+    var p = Math.max(0, Math.min(1, -r.top/(denom||1)));
+    var dist = track.scrollWidth - window.innerWidth + parseInt(getComputedStyle(track).paddingLeft)*0;
+    var max = Math.max(0, track.scrollWidth + 2*parseFloat(getComputedStyle(track).paddingLeft||0) - window.innerWidth);
+    track.style.transform = 'translateX(' + (-p*max).toFixed(1) + 'px)';
+    fillBars(p);
+  }
+  function fillBars(p){
+    var bars = track.querySelectorAll('.st-bar i');
+    bars.forEach(function(b,i){
+      var lo=i/bars.length, hi=(i+1)/bars.length;
+      var v = Math.max(0, Math.min(1, (p-lo)/(hi-lo)));
+      b.style.width = (v*100).toFixed(0)+'%';
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+</script>
+</body>
+</html>

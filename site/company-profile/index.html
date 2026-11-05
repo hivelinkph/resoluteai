@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Profile — Resolute A.I. Inc</title>
+<meta name="description" content="Resolute A.I. Inc company profile: one of the first fully AI-native engineering companies in the Philippines. Eighteen intelligent systems in production across BPO, healthcare, telecom, media, education and the enterprise.">
+<link rel="canonical" href="https://www.resoluteaiph.com/company-profile/">
+<meta property="og:title" content="Company Profile — Resolute A.I. Inc">
+<meta property="og:description" content="Enterprise AI, engineered in the Philippines. Intelligent systems that think, speak and act — built for the enterprise of tomorrow.">
+<meta property="og:image" content="https://www.resoluteaiph.com/company-profile/img/logo-full.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="../assets/logo-head.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F8FA; --white:#fff;
+  --ink:#071A33; --ink2:#1E2F47; --muted:#5B6B80; --faint:#8A97A8;
+  --hair:#D9E0E8; --hair2:#EAEFF4;
+  --blue:#168DFF; --blue-deep:#0B5FB8; --ice:#8ED8FF;
+  --navy:#071A33;
+  --sans:'Manrope',system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink2);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:rgba(22,141,255,.25)}
+.wrap{width:min(1180px,100% - clamp(40px,8vw,120px));margin:0 auto}
+.mono{font-family:var(--mono)}
+
+/* ---------- header ---------- */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:16px clamp(20px,4vw,56px);transition:background .35s,box-shadow .35s,backdrop-filter .35s;color:#fff}
+.hdr.scrolled{background:rgba(247,248,250,.86);backdrop-filter:blur(14px);color:var(--ink);box-shadow:0 1px 0 var(--hair)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:38px;width:auto}
+.brand .bw{display:flex;flex-direction:column;line-height:1}
+.brand .bw b{font-weight:800;font-size:15px;letter-spacing:.22em}
+.brand .bw b span{color:var(--blue)}
+.brand .bw small{font-family:var(--mono);font-size:9px;letter-spacing:.42em;margin-top:5px;opacity:.7}
+.nav{display:flex;align-items:center;gap:clamp(14px,2.2vw,30px)}
+.nav a.lnk{font-family:var(--mono);font-size:11px;letter-spacing:.22em;opacity:.8;transition:opacity .2s}
+.nav a.lnk:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;letter-spacing:.02em;padding:12px 20px;border-radius:6px;transition:transform .25s var(--ease),background .25s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 8px 24px -10px rgba(22,141,255,.7)}
+.btn-primary:hover{background:#2f9bff}
+.btn-ghost{border:1px solid currentColor;color:inherit}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.hdr.scrolled .btn-ghost:hover{background:rgba(7,26,51,.05)}
+@media (max-width:760px){.nav a.lnk{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;background:
+  radial-gradient(60vw 40vh at 72% 20%, rgba(22,141,255,.24), transparent 70%),
+  radial-gradient(70vw 50vh at 8% 100%, rgba(11,95,184,.26), transparent 70%), var(--navy);color:#fff;
+  display:flex;flex-direction:column;justify-content:center;padding:120px 0 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(to right, rgba(142,216,255,.06) 0 1px, transparent 1px 64px),
+             repeating-linear-gradient(to bottom, rgba(142,216,255,.06) 0 1px, transparent 1px 64px);
+  -webkit-mask:radial-gradient(70% 70% at 50% 40%, #000 20%, transparent 100%);mask:radial-gradient(70% 70% at 50% 40%, #000 20%, transparent 100%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,6vw,90px);align-items:center}
+.hero .logo{width:min(520px,100%);margin:0 auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:var(--blue);display:flex;align-items:center;gap:12px;text-transform:uppercase}
+.kicker::before{content:"";width:22px;height:1.5px;background:currentColor;flex:none}
+.hero .kicker{color:var(--ice)}
+.hero h1{font-weight:800;font-size:clamp(34px,4.4vw,58px);line-height:1.06;letter-spacing:-.03em;margin:22px 0 22px;color:#fff}
+.hero h1 span{color:var(--ice)}
+.hero p{font-size:clamp(16px,1.25vw,19px);line-height:1.65;color:rgba(247,250,252,.78);max-width:560px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero .meta{margin-top:44px;padding-top:22px;border-top:1px solid rgba(142,216,255,.22);font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:rgba(247,250,252,.55);line-height:1.9}
+.hero .meta b{color:#fff;font-weight:500}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;text-align:left}.hero .logo{width:min(380px,80%);margin:0 auto 10px;order:-1}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.hero .rv{transition-delay:var(--d,0s)}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- sections ---------- */
+.sec{padding:clamp(72px,9vw,120px) 0}
+.sec + .sec{padding-top:0}
+.sec h2{font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1.1;letter-spacing:-.03em;color:var(--ink);margin:18px 0 0;max-width:820px}
+.sec h2 span{color:var(--blue)}
+.lede{font-size:clamp(17px,1.35vw,20px);line-height:1.7;color:var(--ink2);max-width:860px;margin-top:22px}
+.lede b{color:var(--ink);font-weight:700}
+.sub{font-size:17px;line-height:1.65;color:var(--muted);max-width:760px;margin-top:16px}
+.sub b{color:var(--ink2);font-weight:700}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);margin-top:56px}
+.pillar{border-top:1.5px solid var(--ink);padding-top:22px}
+.pillar .n{font-weight:400;font-size:40px;letter-spacing:-.04em;color:var(--blue);line-height:1}
+.pillar h3{font-weight:800;font-size:19px;letter-spacing:-.015em;color:var(--ink);margin:16px 0 10px;line-height:1.3}
+.pillar p{color:var(--muted);font-size:15.5px;line-height:1.65}
+@media (max-width:820px){.pillars{grid-template-columns:1fr}}
+
+.caps{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--hair);background:var(--white);margin-top:28px;border-radius:10px;overflow:hidden}
+.cap{padding:24px 22px;border-left:1px solid var(--hair)}
+.cap:first-child{border-left:0}
+.cap .i{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--blue)}
+.cap .t{font-weight:800;font-size:16px;color:var(--ink);line-height:1.3;margin-top:10px;letter-spacing:-.01em}
+@media (max-width:900px){.caps{grid-template-columns:repeat(2,1fr)}.cap{border-top:1px solid var(--hair)}.cap:nth-child(-n+2){border-top:0}.cap:nth-child(odd){border-left:0}.cap:last-child{grid-column:1/-1}}
+
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:36px}
+.proc::before{content:"";position:absolute;left:8px;right:8px;top:9px;height:1px;background:var(--hair)}
+.step{padding-right:26px;position:relative}
+.step .b{width:19px;height:19px;border-radius:50%;background:var(--paper);border:2px solid var(--blue);position:relative;z-index:1}
+.step:first-child .b{background:var(--blue)}
+.step .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--blue);margin-top:18px}
+.step .t{font-weight:800;font-size:19px;color:var(--ink);margin-top:8px;letter-spacing:-.015em}
+.step .d{font-size:14.5px;line-height:1.6;color:var(--muted);margin-top:8px}
+@media (max-width:900px){.proc{grid-template-columns:1fr;gap:26px}.proc::before{left:9px;right:auto;top:8px;bottom:8px;width:1px;height:auto}.step{display:grid;grid-template-columns:19px 1fr;column-gap:18px;padding-right:0}.step .b{grid-row:1/4}.step .n{margin-top:0}}
+
+.nums{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.num{padding:34px 28px;border-left:1px solid var(--hair)}
+.num:first-child{border-left:0;padding-left:0}
+.num .v{font-weight:800;font-size:clamp(44px,5vw,64px);letter-spacing:-.05em;color:var(--ink);line-height:1}
+.num .v small{font-size:.44em;font-weight:700;color:var(--blue);letter-spacing:0}
+.num .k{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--muted);margin-top:14px;line-height:1.7}
+@media (max-width:820px){.nums{grid-template-columns:1fr 1fr}.num{padding:24px 18px}.num:nth-child(odd){border-left:0;padding-left:0}.num:nth-child(n+3){border-top:1px solid var(--hair)}}
+
+/* systems */
+.flags{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+.grid3{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+@media (max-width:1180px){.grid3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--white);border:1px solid var(--hair);border-radius:12px;padding:26px 24px 22px;display:flex;flex-direction:column;position:relative;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(7,26,51,.35);border-color:#c5d3e0}
+.card.flag{border-top:4px solid var(--blue);padding:34px 34px 28px}
+.card .tag{position:absolute;top:22px;right:22px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--blue);border:1px solid rgba(22,141,255,.45);padding:5px 10px;border-radius:20px}
+.idx{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--blue)}
+.name{font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--ink);line-height:1.2;margin-top:10px}
+.flag .name{font-size:30px}
+.cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--muted);margin-top:8px;text-transform:uppercase}
+.desc{font-size:14.5px;line-height:1.6;color:var(--muted);margin:16px 0 18px}
+.flag .desc{font-size:17px;color:var(--ink2)}
+.desc b{color:var(--ink);font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.tg{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink2);background:var(--paper);border:1px solid var(--hair);padding:4px 9px;border-radius:4px}
+.url{margin-top:auto;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--blue-deep);display:flex;align-items:flex-start;gap:9px;word-break:break-all;border-top:1px solid var(--hair2);padding-top:14px}
+.url:hover{color:var(--blue)}
+.dot{width:8px;height:8px;margin-top:5px;border-radius:50%;background:#19c37d;flex:none;box-shadow:0 0 0 3px rgba(25,195,125,.15)}
+.dot.dev{background:#f5a623;box-shadow:0 0 0 3px rgba(245,166,35,.15)}
+@media (max-width:1000px){.grid3{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.flags,.grid3{grid-template-columns:1fr}.card.flag{padding:28px 26px 24px}.flag .name{font-size:26px}}
+
+/* clients */
+.clients{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.tile{height:112px;background:var(--white);border:1px solid var(--hair);border-radius:10px;display:flex;align-items:center;justify-content:center;padding:22px 30px;transition:border-color .3s}
+.tile:hover{border-color:#c5d3e0}
+.tile img{max-width:100%;max-height:100%;object-fit:contain}
+.tile.navy{background:var(--navy)}
+@media (max-width:900px){.clients{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:600px){.clients{grid-template-columns:repeat(2,1fr)}.tile{height:92px;padding:18px 22px}}
+
+.inds{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.ind{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--ink);border:1px solid var(--hair);background:var(--white);padding:10px 18px;border-radius:30px}
+
+.locs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:36px}
+.loc{border-top:1.5px solid var(--ink);padding-top:18px}
+.loc .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--blue)}
+.loc .t{font-weight:800;font-size:22px;color:var(--ink);margin-top:10px;letter-spacing:-.02em}
+.loc .d{font-size:15px;color:var(--muted);line-height:1.65;margin-top:8px}
+@media (max-width:820px){.locs{grid-template-columns:1fr}}
+
+/* contact */
+.contact{margin-top:64px;background:var(--navy);color:#fff;border-radius:16px;padding:clamp(34px,4vw,60px);display:grid;grid-template-columns:1.2fr .9fr auto;gap:clamp(24px,4vw,60px);align-items:center;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 80% at 90% 10%, rgba(22,141,255,.28), transparent 70%);pointer-events:none}
+.contact>*{position:relative}
+.contact .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--ice)}
+.contact .big{font-weight:800;font-size:clamp(26px,2.6vw,36px);letter-spacing:-.03em;line-height:1.15;margin-top:12px}
+.contact .v{font-size:17px;line-height:1.7;margin-top:12px}
+.contact .v a:hover{color:var(--ice)}
+.contact .v b{font-weight:800}
+.contact .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.qrbox{background:#fff;padding:10px;border-radius:10px;width:150px;height:150px}
+.qrbox img{width:100%;height:100%;image-rendering:pixelated}
+.qrk{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ice);text-align:center;margin-top:10px}
+@media (max-width:900px){.contact{grid-template-columns:1fr}.qrwrap{display:none}}
+
+footer{border-top:1px solid var(--hair);padding:40px 0 48px;color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.18em}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;justify-content:space-between;align-items:center}
+footer a:hover{color:var(--ink)}
+footer .fnav{display:flex;flex-wrap:wrap;gap:22px}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <a class="brand" href="/" aria-label="Resolute A.I. Inc — home">
+    <img src="img/logo-head.png" alt="Resolute A.I. emblem">
+    <span class="bw"><b>RESOLUTE <span>A.I.</span> INC</b><small>COMPANY PROFILE</small></span>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a class="lnk" href="/">HOME</a>
+    <a class="lnk" href="#systems">SYSTEMS</a>
+    <a class="lnk" href="#clients">CLIENTS</a>
+    <a class="lnk" href="#contact">CONTACT</a>
+    <a class="btn btn-ghost" href="ResoluteAI_CompanyProfile.pdf" download>Download PDF ↓</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="kicker rv" style="--d:.1s">Enterprise AI, engineered in the Philippines</div>
+      <h1 class="rv" style="--d:.2s">Intelligent systems that think, speak and act — <span>built for the enterprise of tomorrow.</span></h1>
+      <p class="rv" style="--d:.3s">Resolute A.I. Inc is one of the first fully AI-native engineering companies in the Philippines. We design, build and operate autonomous voice agents, agentic platforms and enterprise software that work around the clock — so people can work on what matters.</p>
+      <div class="cta rv" style="--d:.4s">
+        <a class="btn btn-primary" href="ResoluteAI_CompanyProfile.pdf" download>Download the Profile (PDF) ↓</a>
+        <a class="btn btn-ghost" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20—%20Resolute%20A.I.">Start a Project</a>
+      </div>
+      <div class="meta rv" style="--d:.5s"><b>www.resoluteaiph.com</b><br>SEC-REGISTERED STOCK CORPORATION · REG. NO. 2026060254311-10<br>PENTHOUSE, MARAJO TOWER · BONIFACIO GLOBAL CITY, TAGUIG</div>
+    </div>
+    <img class="logo rv" style="--d:.05s" src="img/logo-full.png" alt="Resolute A.I. Inc — Intelligent Solutions. Limitless Future." width="1000" height="1000">
+  </div>
+</section>
+
+<!-- ===== COMPANY ===== -->
+<section class="sec" id="company">
+  <div class="wrap">
+    <div class="kicker rv">01 — Who we are</div>
+    <h2 class="rv">An AI engineering company — <span>not another software vendor.</span></h2>
+    <p class="lede rv"><b>Resolute A.I. Inc</b> is one of the first fully AI development companies in the Philippines — an engineering house where artificial intelligence is not a feature, but the foundation. From our headquarters above Bonifacio Global City, with teams in Cebu and New Clark City, we take enterprises from the first scoping session to production AI systems — and stay to scale them. Every system we ship is conceived, architected and accelerated by AI, delivering in weeks what traditionally takes quarters.</p>
+
+    <div class="pillars">
+      <div class="pillar rv"><div class="n">01</div><h3>AI-First Engineering</h3><p>Every system we ship is conceived, architected and accelerated by AI — delivering in weeks what traditionally takes quarters.</p></div>
+      <div class="pillar rv"><div class="n">02</div><h3>Enterprise-Grade Delivery</h3><p>Voice AI, HRIS, fintech and platform builds trusted by BPOs, healthcare networks and telecom operators nationwide.</p></div>
+      <div class="pillar rv"><div class="n">03</div><h3>Filipino Innovation, Global Standard</h3><p>Proudly built in the Philippines, engineered to world-class standards — intelligent solutions with a limitless future.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="kicker rv">What we build</div>
+    <div class="caps rv">
+      <div class="cap"><div class="i">/ 01</div><div class="t">AI CX Agents</div></div>
+      <div class="cap"><div class="i">/ 02</div><div class="t">Enterprise Agentic AI</div></div>
+      <div class="cap"><div class="i">/ 03</div><div class="t">Knowledge Intelligence</div></div>
+      <div class="cap"><div class="i">/ 04</div><div class="t">AI Vision &amp; Analytics</div></div>
+      <div class="cap"><div class="i">/ 05</div><div class="t">Custom AI Engineering</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="kicker rv">How we work</div>
+    <div class="proc rv">
+      <div class="step"><div class="b"></div><div class="n">STEP 01</div><div class="t">Scope</div><div class="d">We map the workflow, the data and the outcome that matters before a line is written.</div></div>
+      <div class="step"><div class="b"></div><div class="n">STEP 02</div><div class="t">Architect</div><div class="d">Model, integration and guardrail design — engineered for your compliance envelope.</div></div>
+      <div class="step"><div class="b"></div><div class="n">STEP 03</div><div class="t">Engineer</div><div class="d">AI-accelerated build in weeks, with working software in your hands from the first sprint.</div></div>
+      <div class="step"><div class="b"></div><div class="n">STEP 04</div><div class="t">Integrate</div><div class="d">Wired into your telephony, CRM, HRIS and records — where the work already happens.</div></div>
+      <div class="step"><div class="b"></div><div class="n">STEP 05</div><div class="t">Scale</div><div class="d">Monitored in production and expanded across sites, languages and teams.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="kicker rv">By the numbers</div>
+    <div class="nums rv">
+      <div class="num"><div class="v">18</div><div class="k">SYSTEMS<br>IN PRODUCTION</div></div>
+      <div class="num"><div class="v">2</div><div class="k">FLAGSHIP<br>PLATFORMS</div></div>
+      <div class="num"><div class="v">8<small>+</small></div><div class="k">INDUSTRIES<br>SERVED</div></div>
+      <div class="num"><div class="v">24<small>/7</small></div><div class="k">AUTONOMOUS<br>OPERATION</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SYSTEMS ===== -->
+<section class="sec" id="systems" style="padding-top:clamp(72px,9vw,120px)">
+  <div class="wrap">
+    <div class="kicker rv">02 — Systems in production</div>
+    <h2 class="rv">Eighteen intelligent systems <span>in production today.</span></h2>
+    <p class="sub rv">Led by <b>two flagship platforms</b> and sixteen more AI products across healthcare, telecom, BPO, media, education, analytics, commerce and the enterprise.</p>
+
+    <div class="flags">
+      <a class="card flag rv" href="https://aicxagent.live" target="_blank" rel="noopener"><span class="tag">FLAGSHIP</span>
+        <div class="idx">SYS.01</div><div class="name">AICX Agent</div><div class="cat">Voice AI for BPOs</div>
+        <p class="desc">Autonomous voice AI handling <b>inbound and outbound calls</b> for BPOs — natural conversations, 24×7, at infinite scale. Qualifies leads and books outcomes on its own.</p>
+        <div class="tags"><span class="tg">INBOUND</span><span class="tg">OUTBOUND</span><span class="tg">24×7</span><span class="tg">MULTILINGUAL</span></div>
+        <div class="url"><span class="dot"></span>aicxagent.live ↗</div></a>
+      <a class="card flag rv" href="https://huma.ph" target="_blank" rel="noopener"><span class="tag">FLAGSHIP</span>
+        <div class="idx">SYS.02</div><div class="name">HumaHR</div><div class="cat">Full-suite HRIS platform</div>
+        <p class="desc">Time-and-attendance with <b>automatic payroll</b> — biometric timekeeping, smart scheduling and one-click payroll runs computing earnings and compliance in seconds.</p>
+        <div class="tags"><span class="tg">TIME &amp; ATTENDANCE</span><span class="tg">AUTO PAYROLL</span><span class="tg">COMPLIANCE</span></div>
+        <div class="url"><span class="dot"></span>huma.ph ↗</div></a>
+    </div>
+
+    <div class="grid3">
+      <a class="card rv" href="https://drew-ai.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.03</div><div class="name">Drew AI</div><div class="cat">Voice AI · Drive-thru</div><p class="desc">Voice-activated ordering for quick-service restaurants — customers order by speaking at the lane, contactless and real-time.</p><div class="tags"><span class="tg">VOICE ORDERING</span><span class="tg">DRIVE-THRU</span></div><div class="url"><span class="dot"></span>drew-ai.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://lingualine.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.04</div><div class="name">LinguaLine</div><div class="cat">Voice AI · Translation</div><p class="desc">Sits on your calls, auto-detects every language and translates both directions live — hospitality, healthcare and support, on calls and web.</p><div class="tags"><span class="tg">REAL-TIME</span><span class="tg">AUTO-DETECT</span></div><div class="url"><span class="dot"></span>lingualine.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://tmc.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.05</div><div class="name">One-Patient</div><div class="cat">Healthcare · Records</div><p class="desc">One secure, longitudinal record that follows the patient through every visit across a hospital and medical-center network.</p><div class="tags"><span class="tg">UNIFIED RECORDS</span><span class="tg">INTEROPERABLE</span></div><div class="url"><span class="dot"></span>tmc.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://mediscript-ai.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.06</div><div class="name">MediScript.AI</div><div class="cat">Healthcare · Documentation</div><p class="desc">Turns clinical conversations into structured SOAP notes for physician review — recorded across any care setting.</p><div class="tags"><span class="tg">VOICE-TO-NOTE</span><span class="tg">SOAP NOTES</span></div><div class="url"><span class="dot"></span>mediscript-ai.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://mmlas.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.07</div><div class="name">MM-LAS</div><div class="cat">Telecom &amp; BPO · Omnichannel</div><p class="desc">Messenger, WhatsApp and Instagram DMs in one inbox with AI-scored leads, agent orchestration and quality assurance.</p><div class="tags"><span class="tg">OMNICHANNEL</span><span class="tg">AI SCORING</span></div><div class="url"><span class="dot"></span>mmlas.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://inspirosim.vercel.app" target="_blank" rel="noopener"><div class="idx">SYS.08</div><div class="name">Inspiro Sim</div><div class="cat">Telecom &amp; BPO · Simulation</div><p class="desc">A BPO training-simulation environment built for Inspiro — a realistic practice ground for agents, currently in active development.</p><div class="tags"><span class="tg">SIMULATION</span><span class="tg">TRAINING</span></div><div class="url"><span class="dot dev"></span>inspirosim.vercel.app ↗</div></a>
+      <a class="card rv" href="https://transcribe-ai.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.09</div><div class="name">Transcriber AI</div><div class="cat">Media · Speech to text</div><p class="desc">Converts audio and video into editable, timestamped transcripts — meetings, interviews and content, local or cloud.</p><div class="tags"><span class="tg">TRANSCRIPTION</span><span class="tg">TIMESTAMPS</span></div><div class="url"><span class="dot"></span>transcribe-ai.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://resolutetv.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.10</div><div class="name">ResoluteTV</div><div class="cat">Media · Streaming</div><p class="desc">Live television with cloud DVR — watch broadcast TV and record programs to the cloud for on-demand, remote playback.</p><div class="tags"><span class="tg">LIVE TV</span><span class="tg">CLOUD DVR</span></div><div class="url"><span class="dot"></span>resolutetv.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://aral-xi.vercel.app" target="_blank" rel="noopener"><div class="idx">SYS.11</div><div class="name">Aral</div><div class="cat">Education · AI teaching</div><p class="desc">DepEd K-12–aligned AI education — from one-on-one tutorials to AI-facilitated live classes, kindergarten through grade 12.</p><div class="tags"><span class="tg">AI TUTORING</span><span class="tg">K-12 ALIGNED</span></div><div class="url"><span class="dot"></span>aral-xi.vercel.app ↗</div></a>
+      <a class="card rv" href="https://ledgerpro.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.12</div><div class="name">Ledger Pro</div><div class="cat">Platforms · SME accounting</div><p class="desc">Cloud accounting for Philippine SMEs — invoicing, expenses, payroll and reporting on a double-entry ledger, built for BIR/VAT.</p><div class="tags"><span class="tg">BIR / VAT</span><span class="tg">PAYROLL</span></div><div class="url"><span class="dot"></span>ledgerpro.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://resolute-one.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.13</div><div class="name">Resolute One</div><div class="cat">Platforms · Delivery</div><p class="desc">Tracks the full client engagement lifecycle — lead to maintenance — with automated GitHub/Vercel sync and role-based access.</p><div class="tags"><span class="tg">LIFECYCLE</span><span class="tg">RBAC</span></div><div class="url"><span class="dot"></span>resolute-one.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://delphi-intelligence-platform.vercel.app" target="_blank" rel="noopener"><div class="idx">SYS.14</div><div class="name">Delphi</div><div class="cat">Analytics · Strategic intel</div><p class="desc">Continuously monitors competitor activity and uses AI to simulate the business impact of market moves before they land.</p><div class="tags"><span class="tg">COMPETITIVE INTEL</span><span class="tg">IMPACT SIM</span></div><div class="url"><span class="dot"></span>delphi-intelligence-platform.vercel.app ↗</div></a>
+      <a class="card rv" href="https://picklehub.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.15</div><div class="name">PickleHub</div><div class="cat">Commerce · Court booking</div><p class="desc">Booking software for pickleball venues — an AI agent takes requests, staff confirm, and players see live court availability.</p><div class="tags"><span class="tg">AI BOOKING</span><span class="tg">LIVE AVAILABILITY</span></div><div class="url"><span class="dot"></span>picklehub.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://tagaytay-highlands-spa-lodge.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.16</div><div class="name">Tagaytay Highlands Spa &amp; Lodge</div><div class="cat">Commerce · Hospitality</div><p class="desc">An exclusive membership resort site for Tagaytay Highlands — Western Red Cedar suites with premium spa and wellness.</p><div class="tags"><span class="tg">MEMBERSHIP</span><span class="tg">SPA &amp; WELLNESS</span></div><div class="url"><span class="dot"></span>tagaytay-highlands-spa-lodge.resoluteaiph.com ↗</div></a>
+      <a class="card rv" href="https://hgc-resolute.vercel.app" target="_blank" rel="noopener"><div class="idx">SYS.17</div><div class="name">HGC</div><div class="cat">Commerce · Club</div><p class="desc">A club and hospitality web build for HGC (Highlands) — events, amenities and bookings. Access-gated deployment; details on request.</p><div class="tags"><span class="tg">HOSPITALITY</span><span class="tg">CLUB</span></div><div class="url"><span class="dot dev"></span>hgc-resolute.vercel.app ↗</div></a>
+      <a class="card rv" href="https://ad.resoluteaiph.com" target="_blank" rel="noopener"><div class="idx">SYS.18</div><div class="name">GTA Service Desk</div><div class="cat">Enterprise · IT self-service</div><p class="desc">An Active Directory self-service portal — reset passwords, request access and fix account issues, every change identity-verified and audit-logged.</p><div class="tags"><span class="tg">AD SELF-SERVICE</span><span class="tg">AUDIT LOG</span></div><div class="url"><span class="dot"></span>ad.resoluteaiph.com ↗</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLIENTS ===== -->
+<section class="sec" id="clients" style="padding-top:clamp(72px,9vw,120px)">
+  <div class="wrap">
+    <div class="kicker rv">03 — Valued clients</div>
+    <h2 class="rv">Trusted by enterprises <span>across the Philippines.</span></h2>
+    <div class="clients rv">
+      <div class="tile"><img src="img/clients/inspiro.svg" alt="Inspiro"></div>
+      <div class="tile navy"><img src="img/clients/teleserve.png" alt="Pilipinas Teleserv"></div>
+      <div class="tile"><img src="img/clients/maxicare.png" alt="Maxicare"></div>
+      <div class="tile"><img src="img/clients/medicalcity.png" alt="The Medical City"></div>
+      <div class="tile"><img src="img/clients/officium.png" alt="Officium"></div>
+      <div class="tile"><img src="img/clients/planetcable.png" alt="Planet Cable"></div>
+      <div class="tile"><img src="img/clients/asianvision.png" alt="AsianVision"></div>
+      <div class="tile"><img src="img/clients/royalcable.png" alt="Royal Cable"></div>
+      <div class="tile"><img src="img/clients/cebucable.png" alt="Cebu Cable Internet"></div>
+      <div class="tile"><img src="img/clients/romblon.png" alt="Romblon Cable"></div>
+      <div class="tile"><img src="img/clients/kalibo.png" alt="Kalibo Cable"></div>
+      <div class="tile"><img src="img/clients/hgc.png" alt="HGC"></div>
+    </div>
+
+    <div style="margin-top:56px" class="kicker rv">Industries we serve</div>
+    <div class="inds rv"><span class="ind">HEALTHCARE</span><span class="ind">TELECOM</span><span class="ind">BPO</span><span class="ind">BANKING &amp; FINANCE</span><span class="ind">MEDIA</span><span class="ind">EDUCATION</span><span class="ind">HOSPITALITY &amp; COMMERCE</span><span class="ind">ENTERPRISE IT</span></div>
+  </div>
+</section>
+
+<!-- ===== WHERE / CONTACT ===== -->
+<section class="sec" id="contact" style="padding-top:clamp(72px,9vw,120px)">
+  <div class="wrap">
+    <div class="kicker rv">04 — Where we are</div>
+    <div class="locs">
+      <div class="loc rv"><div class="k">HEADQUARTERS</div><div class="t">Bonifacio Global City</div><div class="d">Penthouse, Marajo Tower<br>312 26th St. cor. 4th Ave.<br>Taguig City, Philippines 1634</div></div>
+      <div class="loc rv"><div class="k">OPERATIONS</div><div class="t">Cebu</div><div class="d">Engineering and delivery team supporting Visayas and nationwide deployments.</div></div>
+      <div class="loc rv"><div class="k">EXPANSION</div><div class="t">New Clark City</div><div class="d">Next-generation operations hub in the Philippines' emerging smart city.</div></div>
+    </div>
+
+    <div class="contact rv">
+      <div>
+        <div class="k">START A PROJECT</div>
+        <div class="big">Let's build what your enterprise will depend on.</div>
+        <div class="v" style="color:rgba(247,250,252,.72)">From first scoping session to production AI — and we stay to scale it.</div>
+        <div class="cta">
+          <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20—%20Resolute%20A.I.">Start a Project</a>
+          <a class="btn btn-ghost" href="ResoluteAI_CompanyProfile.pdf" download>Download PDF ↓</a>
+        </div>
+      </div>
+      <div>
+        <div class="k">REACH US</div>
+        <div class="v"><a href="tel:+639171567003"><b>+63 917 156 7003</b></a><br><a href="mailto:sales@resoluteaiph.com">sales@resoluteaiph.com</a><br><a href="/">www.resoluteaiph.com</a></div>
+      </div>
+      <div class="qrwrap"><div class="qrbox"><img src="img/qr.png" alt="QR code — www.resoluteaiph.com"></div><div class="qrk">SCAN TO VISIT</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 RESOLUTE A.I. INC · INTELLIGENT SOLUTIONS. LIMITLESS FUTURE.</span>
+    <nav class="fnav" aria-label="Footer"><a href="/">HOME</a><a href="/#systems">SYSTEMS</a><a href="/#company">COMPANY</a><a href="ResoluteAI_CompanyProfile.pdf" download>PDF</a></nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const hdr=document.getElementById('hdr');
+  const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>40);
+  onScroll(); addEventListener('scroll',onScroll,{passive:true});
+
+  const els=[...document.querySelectorAll('.rv')];
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(e=>e.classList.add('in'));return;}
+  // hero reveals on load; everything else on scroll
+  document.querySelectorAll('.hero .rv').forEach(e=>requestAnimationFrame(()=>e.classList.add('in')));
+  const io=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.filter(e=>!e.closest('.hero')).forEach(e=>io.observe(e));
+})();
+</script>
+</body>
+</html>

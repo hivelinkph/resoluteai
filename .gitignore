@@ -17,3 +17,12 @@ CLAUDE.md
 Thumbs.db
 node_modules/
 *.log
+
+# stray screenshot, not part of the site
+access.png
+
+.vercel
+.env*
+
+# scroll-film build intermediates (hundreds of MB), never deployed
+film/
