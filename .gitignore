@@ -26,3 +26,6 @@ access.png
 
 # scroll-film build intermediates (hundreds of MB), never deployed
 film/
+
+# graphify knowledge-graph output (local analysis, never deployed)
+graphify-out/
