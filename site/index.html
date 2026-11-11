@@ -30,6 +30,7 @@
   "logo": "https://www.resoluteaiph.com/assets/logo-head-hd.png",
   "image": "https://www.resoluteaiph.com/og-image.jpg",
   "slogan": "Intelligent Solutions. Limitless Future.",
+  "sameAs": ["https://www.facebook.com/ResoluteAII"],
   "email": "sales@resoluteaiph.com",
   "telephone": "+639171567003",
   "address": {
@@ -43,7 +44,21 @@
   "contactPoint": [
     {"@type": "ContactPoint", "contactType": "sales", "telephone": "+639171567003", "email": "sales@resoluteaiph.com", "areaServed": "PH"},
     {"@type": "ContactPoint", "contactType": "technical support", "telephone": "+639190567243", "areaServed": "PH"}
-  ]
+  ],
+  "description": "Resolute A.I. Inc is one of the first fully AI-native engineering companies in the Philippines. It designs, builds and operates custom enterprise AI, with 18 systems in production led by two flagship platforms: AI CX Agent and HumaHR.",
+  "areaServed": "PH",
+  "knowsAbout": ["AI customer experience agents", "Voice AI", "Agentic AI", "Knowledge intelligence", "Computer vision", "Enterprise AI engineering"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Enterprise AI services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI CX Agents", "description": "Multilingual voice and chat agents that handle inbound and outbound customer conversations 24/7."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Enterprise Agentic AI", "description": "AI agents that automate multi-step business workflows across enterprise systems."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Knowledge Intelligence", "description": "AI search and answers over a company's own documents and data."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Vision & Analytics", "description": "Computer vision and analytics systems for operations and security."}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom AI Engineering", "description": "End-to-end design, build and operation of custom AI systems."}}
+    ]
+  }
 }
 </script>
 <link rel="icon" type="image/png" href="assets/logo-head.png">
@@ -68,6 +83,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.06;letter-s
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 ::selection{background:rgba(22,141,255,.35)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ---------- loader ---------- */
 #loader{position:fixed;inset:0;z-index:200;background:var(--ink);
@@ -374,7 +390,7 @@ img{max-width:100%;display:block}
 #platforms{background:linear-gradient(to bottom,var(--ink),#060d18 50%,var(--ink))}
 #platforms h2{font-size:clamp(30px,4.4vw,58px);margin-top:22px}
 #platforms .pl-sub{margin-top:20px;color:var(--silver);max-width:64ch}
-.pl-grid{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pl-grid{margin-top:52px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 @media(max-width:1000px){ .pl-grid{grid-template-columns:1fr} }
 .pl{display:flex;flex-direction:column;gap:14px;background:rgba(8,21,37,.55);border:1px solid rgba(196,204,214,.14);
   border-radius:12px;padding:clamp(24px,2.6vw,34px);transition:border-color .3s,transform .3s}
@@ -533,7 +549,7 @@ footer{border-top:1px solid rgba(196,204,214,.12);padding:54px clamp(22px,6vw,80
 
     <div class="beat beat-hero" data-in="-0.1" data-peak="0.005" data-out="0.105">
       <div class="hero-mark">
-        <h1 class="hm-word">RESOLUTE&nbsp;A.I.</h1>
+        <h1 class="hm-word">RESOLUTE&nbsp;A.I.<span class="sr-only"> Inc — custom enterprise AI engineering in the Philippines</span></h1>
         <div class="hm-sub">INTELLIGENT&nbsp;SOLUTIONS&nbsp;·&nbsp;LIMITLESS&nbsp;FUTURE</div>
         <p>We engineer the intelligence that enterprises run on — custom AI systems for customer experience, operations and knowledge, built from the ground up.</p>
       </div>
@@ -587,7 +603,7 @@ footer{border-top:1px solid rgba(196,204,214,.12);padding:54px clamp(22px,6vw,80
       <span><b>NEW CLARK CITY</b>&nbsp;·&nbsp;EXPANSION</span>
     </div>
     <div class="numbers">
-      <div class="n"><div class="n-v">18<em>+</em></div><div class="n-k">Deployed Systems</div></div>
+      <div class="n"><div class="n-v">18</div><div class="n-k">Deployed Systems</div></div>
       <div class="n"><div class="n-v">08</div><div class="n-k">Industries Served</div></div>
       <div class="n"><div class="n-v">10<em>+</em></div><div class="n-k">Enterprise Clients</div></div>
       <div class="n"><div class="n-v">24<em>×</em>7</div><div class="n-k">Autonomous Operation</div></div>
@@ -738,8 +754,8 @@ footer{border-top:1px solid rgba(196,204,214,.12);padding:54px clamp(22px,6vw,80
 <section class="section" id="platforms">
   <div class="wrap">
     <div class="kicker">Flagship Platforms</div>
-    <h2>Three platforms. Always on.</h2>
-    <p class="pl-sub">Our flagships are in production today. One handles the conversations, one runs the workforce and one streams live TV, around the clock.</p>
+    <h2>Two platforms. Always on.</h2>
+    <p class="pl-sub">Our flagships are in production today. One handles the conversations and the other runs the workforce, around the clock.</p>
     <div class="pl-grid">
       <article class="pl">
         <div class="pl-logo"><img src="assets/platforms/aicxagent.png" alt="AI CX Agent logo" loading="lazy"></div>
@@ -758,15 +774,6 @@ footer{border-top:1px solid rgba(196,204,214,.12);padding:54px clamp(22px,6vw,80
         <p>Time-and-attendance with automatic payroll. Biometric timekeeping and smart scheduling feed one-click payroll runs that compute earnings, deductions and compliance in seconds.</p>
         <ul><li>Biometric timekeeping</li><li>Smart shift scheduling</li><li>One-click payroll runs</li><li>Statutory compliance</li></ul>
         <a class="p-link" href="https://huma.ph" target="_blank" rel="noopener">HUMA.PH&nbsp;↗</a>
-      </article>
-      <article class="pl">
-        <div class="pl-logo"><img src="assets/platforms/resolutetv.jpg" alt="ResoluteTV logo" loading="lazy"></div>
-        <span class="pl-badge">Flagship · Streaming</span>
-        <h3>ResoluteTV</h3>
-        <div class="pl-cat">Live TV with cloud DVR</div>
-        <p>Live broadcast television with a cloud DVR. Watch channels as they air, record programmes to the cloud and play them back on demand, wherever you are.</p>
-        <ul><li>Live broadcast TV</li><li>Cloud DVR recording</li><li>On-demand playback</li><li>Watch from anywhere</li></ul>
-        <a class="p-link" href="https://resolutetv.resoluteaiph.com" target="_blank" rel="noopener">RESOLUTETV.RESOLUTEAIPH.COM&nbsp;↗</a>
       </article>
     </div>
   </div>

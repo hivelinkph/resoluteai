@@ -1,0 +1,29 @@
+# Resolute A.I. Inc
+
+> Resolute A.I. Inc is one of the first fully AI-native engineering companies in the Philippines. It designs, builds and operates custom enterprise AI. It has 18 systems in production, led by two flagship platforms: AI CX Agent and HumaHR.
+
+- Headquarters: Penthouse, Marajo Tower, 312 26th St. cor. 4th Ave., Bonifacio Global City, Taguig City, Metro Manila 1634, Philippines
+- Teams: Bonifacio Global City (headquarters), Cebu (operations), New Clark City (expansion)
+- SEC-registered stock corporation, Reg. No. 2026060254311-10
+- Contact: sales@resoluteaiph.com, +63 917 156 7003
+- Facebook: https://www.facebook.com/ResoluteAII
+- Industries served: healthcare, telecom, BPO, banking and finance, media, education, hospitality and commerce, enterprise IT
+
+## Services
+
+- AI CX Agents: multilingual voice and chat agents that handle inbound and outbound customer conversations 24/7.
+- Enterprise Agentic AI: AI agents that automate multi-step business workflows across enterprise systems.
+- Knowledge Intelligence: AI search and answers over a company's own documents and data.
+- AI Vision & Analytics: computer vision and analytics systems for operations and security.
+- Custom AI Engineering: end-to-end design, build and operation of custom AI systems.
+
+## Flagship platforms
+
+- [AI CX Agent](https://aicxagent.live): autonomous voice AI for BPOs. It handles inbound and outbound calls, qualifies leads and books outcomes, 24/7.
+- [HumaHR](https://huma.ph): full-suite HRIS with biometric timekeeping, smart scheduling and one-click automatic payroll.
+
+## Pages
+
+- [Home](https://www.resoluteaiph.com/): what Resolute builds, how it builds it, and client results.
+- [Company profile](https://www.resoluteaiph.com/company-profile/): company overview, all 18 systems in production, clients and locations.
+- [Company profile PDF](https://www.resoluteaiph.com/company-profile/ResoluteAI_CompanyProfile.pdf)

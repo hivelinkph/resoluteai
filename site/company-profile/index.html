@@ -382,7 +382,9 @@ footer .fnav{display:flex;flex-wrap:wrap;gap:22px}
 <script>
 (function(){
   const hdr=document.getElementById('hdr');
-  const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>40);
+  const hero=document.getElementById('top');
+  // stay transparent over the dark hero; switch to the light bar only once the light sections reach the header
+  const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>hero.offsetHeight-hdr.offsetHeight);
   onScroll(); addEventListener('scroll',onScroll,{passive:true});
 
   const els=[...document.querySelectorAll('.rv')];
