@@ -64,6 +64,94 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Resolute A.I. Solutions Inc. do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Resolute A.I. Solutions Inc. is a Philippine AI engineering company. We design, build and operate custom enterprise AI: AI customer experience (CX) agents, enterprise agentic AI, knowledge intelligence, AI vision and analytics, and custom AI engineering. We have 18 systems in production, led by our flagship platforms AI CX Agent and HumaHR."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Resolute A.I. based?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our headquarters is at Penthouse, 22nd Floor, Marajo Tower, 312 26th St. cor. 4th Ave., Bonifacio Global City, Taguig 1635. We also have teams in Cebu and New Clark City, and we serve clients across the Philippines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What languages does the AI CX Agent speak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI CX Agent supports more than 150 languages. The demo on this page uses English, Tagalog, Cebuano, Korean and Mandarin, and the agent can follow a caller who switches language mid-call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the AI agent hand a call over to a human?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. When a call needs a person, the agent makes a warm transfer and briefs the human agent first, so the caller does not repeat themselves. In our deployments the human picks up in about one to two seconds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many calls can the AI handle without a human?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Across nine deployments from April to September 2026, the AI CX Agent handled 13,556 calls and resolved 93.7% of inbound calls without escalating to a human."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with our phone system and CRM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The AI CX Agent connects to your phone lines over SIP, works alongside contact-centre platforms such as Genesys, and looks up your CRM and billing records live during the call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does an AI project take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every project runs through five steps: scope, architect, engineer, integrate and scale. You get working software from the first sprint, and most systems go live in weeks, not quarters."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you protect our data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We follow the Data Privacy Act of 2012: you remain the personal information controller and we act as processor. Data is encrypted in transit and at rest, access is role-based, and each client's data is kept separate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which industries do you work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build for healthcare, telecom, BPO and contact centres, banking and finance, media, education, hospitality and commerce, and enterprise IT."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we start a project with Resolute A.I.?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Email sales@resoluteaiph.com or call +63 917 156 7003. We begin with a scoping session that maps your workflow, your data and the outcome that matters."
+      }
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/png" href="assets/logo-head.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -337,6 +425,19 @@ img{max-width:100%;display:block}
 .ind:hover{border-color:rgba(22,141,255,.5);transform:translateY(-3px)}
 .ind h3{font-size:19px;letter-spacing:.04em}
 .ind p{margin-top:10px;color:var(--silver);font-size:14px}
+
+/* ---------- faq ---------- */
+#faq{background:linear-gradient(to bottom,var(--ink),var(--navy))}
+#faq h2{font-size:clamp(30px,4.2vw,54px);margin-top:22px;max-width:18ch}
+.faq-list{margin-top:48px;max-width:900px;border-top:1px solid rgba(196,204,214,.14)}
+.faq-list details{border-bottom:1px solid rgba(196,204,214,.14)}
+.faq-list summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:24px;align-items:center;
+  padding:22px 0;font-family:var(--display);font-size:clamp(17px,1.6vw,20px);font-weight:500;color:var(--white)}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";flex:none;font-size:24px;line-height:1;color:var(--blue);transition:transform .3s}
+.faq-list details[open] summary::after{transform:rotate(45deg)}
+.faq-list summary:hover{color:var(--ice)}
+.faq-list details p{padding:0 0 24px;color:var(--silver);max-width:72ch}
 
 /* ---------- company / contact ---------- */
 #company{background:linear-gradient(to bottom,var(--ink),var(--navy))}
@@ -897,6 +998,26 @@ footer{border-top:1px solid rgba(196,204,214,.12);padding:54px clamp(22px,6vw,80
   </div>
 </section>
 
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="kicker">FAQ</div>
+    <h2>Questions enterprises ask us.</h2>
+    <div class="faq-list">
+      <details><summary>What does Resolute A.I. Solutions Inc. do?</summary><p>Resolute A.I. Solutions Inc. is a Philippine AI engineering company. We design, build and operate custom enterprise AI: AI customer experience (CX) agents, enterprise agentic AI, knowledge intelligence, AI vision and analytics, and custom AI engineering. We have 18 systems in production, led by our flagship platforms AI CX Agent and HumaHR.</p></details>
+      <details><summary>Where is Resolute A.I. based?</summary><p>Our headquarters is at Penthouse, 22nd Floor, Marajo Tower, 312 26th St. cor. 4th Ave., Bonifacio Global City, Taguig 1635. We also have teams in Cebu and New Clark City, and we serve clients across the Philippines.</p></details>
+      <details><summary>What languages does the AI CX Agent speak?</summary><p>The AI CX Agent supports more than 150 languages. The demo on this page uses English, Tagalog, Cebuano, Korean and Mandarin, and the agent can follow a caller who switches language mid-call.</p></details>
+      <details><summary>Can the AI agent hand a call over to a human?</summary><p>Yes. When a call needs a person, the agent makes a warm transfer and briefs the human agent first, so the caller does not repeat themselves. In our deployments the human picks up in about one to two seconds.</p></details>
+      <details><summary>How many calls can the AI handle without a human?</summary><p>Across nine deployments from April to September 2026, the AI CX Agent handled 13,556 calls and resolved 93.7% of inbound calls without escalating to a human.</p></details>
+      <details><summary>Does it work with our phone system and CRM?</summary><p>Yes. The AI CX Agent connects to your phone lines over SIP, works alongside contact-centre platforms such as Genesys, and looks up your CRM and billing records live during the call.</p></details>
+      <details><summary>How long does an AI project take?</summary><p>Every project runs through five steps: scope, architect, engineer, integrate and scale. You get working software from the first sprint, and most systems go live in weeks, not quarters.</p></details>
+      <details><summary>How do you protect our data?</summary><p>We follow the Data Privacy Act of 2012: you remain the personal information controller and we act as processor. Data is encrypted in transit and at rest, access is role-based, and each client's data is kept separate.</p></details>
+      <details><summary>Which industries do you work with?</summary><p>We build for healthcare, telecom, BPO and contact centres, banking and finance, media, education, hospitality and commerce, and enterprise IT.</p></details>
+      <details><summary>How do we start a project with Resolute A.I.?</summary><p>Email sales@resoluteaiph.com or call +63 917 156 7003. We begin with a scoping session that maps your workflow, your data and the outcome that matters.</p></details>
+    </div>
+  </div>
+</section>
+
 <!-- ============ COMPANY ============ -->
 <section class="section" id="company">
   <div class="wrap company-grid">
@@ -924,7 +1045,7 @@ footer{border-top:1px solid rgba(196,204,214,.12);padding:54px clamp(22px,6vw,80
       <span class="bw"><b>RESOLUTE</b><span>A.I.&nbsp;SOLUTIONS&nbsp;INC</span></span></a>
     <nav class="foot-nav" aria-label="Footer">
       <a href="#systems">SYSTEMS</a><a href="#platforms">PLATFORMS</a><a href="#trusted">CLIENTS</a><a href="#testimonials">TESTIMONIALS</a><a href="#industries">INDUSTRIES</a><a href="#technology">TECHNOLOGY</a>
-      <a href="#case-studies">CASE STUDIES</a><a href="#company">COMPANY</a><a href="/company-profile/">COMPANY PROFILE</a>
+      <a href="#case-studies">CASE STUDIES</a><a href="#company">COMPANY</a><a href="#faq">FAQ</a><a href="/company-profile/">COMPANY PROFILE</a>
     </nav>
     <div class="foot-meta">
       © 2026 Resolute A.I. Solutions Inc. · Intelligent Solutions. Limitless Future.<br>

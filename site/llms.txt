@@ -29,3 +29,45 @@
 - [Home](https://www.resoluteaiph.com/): what Resolute builds, how it builds it, and client results.
 - [Company profile](https://www.resoluteaiph.com/company-profile/): company overview, all 18 systems in production, clients and locations.
 - [Company profile PDF](https://www.resoluteaiph.com/company-profile/ResoluteAI_CompanyProfile.pdf)
+
+## FAQ
+
+### What does Resolute A.I. Solutions Inc. do?
+
+Resolute A.I. Solutions Inc. is a Philippine AI engineering company. We design, build and operate custom enterprise AI: AI customer experience (CX) agents, enterprise agentic AI, knowledge intelligence, AI vision and analytics, and custom AI engineering. We have 18 systems in production, led by our flagship platforms AI CX Agent and HumaHR.
+
+### Where is Resolute A.I. based?
+
+Our headquarters is at Penthouse, 22nd Floor, Marajo Tower, 312 26th St. cor. 4th Ave., Bonifacio Global City, Taguig 1635. We also have teams in Cebu and New Clark City, and we serve clients across the Philippines.
+
+### What languages does the AI CX Agent speak?
+
+The AI CX Agent supports more than 150 languages. The demo on this page uses English, Tagalog, Cebuano, Korean and Mandarin, and the agent can follow a caller who switches language mid-call.
+
+### Can the AI agent hand a call over to a human?
+
+Yes. When a call needs a person, the agent makes a warm transfer and briefs the human agent first, so the caller does not repeat themselves. In our deployments the human picks up in about one to two seconds.
+
+### How many calls can the AI handle without a human?
+
+Across nine deployments from April to September 2026, the AI CX Agent handled 13,556 calls and resolved 93.7% of inbound calls without escalating to a human.
+
+### Does it work with our phone system and CRM?
+
+Yes. The AI CX Agent connects to your phone lines over SIP, works alongside contact-centre platforms such as Genesys, and looks up your CRM and billing records live during the call.
+
+### How long does an AI project take?
+
+Every project runs through five steps: scope, architect, engineer, integrate and scale. You get working software from the first sprint, and most systems go live in weeks, not quarters.
+
+### How do you protect our data?
+
+We follow the Data Privacy Act of 2012: you remain the personal information controller and we act as processor. Data is encrypted in transit and at rest, access is role-based, and each client's data is kept separate.
+
+### Which industries do you work with?
+
+We build for healthcare, telecom, BPO and contact centres, banking and finance, media, education, hospitality and commerce, and enterprise IT.
+
+### How do we start a project with Resolute A.I.?
+
+Email sales@resoluteaiph.com or call +63 917 156 7003. We begin with a scoping session that maps your workflow, your data and the outcome that matters.
