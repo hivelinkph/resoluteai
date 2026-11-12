@@ -417,7 +417,8 @@ img{max-width:100%;display:block}
 
 /* ---------- industries ---------- */
 #industries h2{font-size:clamp(30px,4.2vw,54px);margin-top:22px}
-.ind-grid{margin-top:54px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ind-grid{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1180px){ .ind-grid{grid-template-columns:repeat(3,1fr)} }
 @media(max-width:900px){ .ind-grid{grid-template-columns:1fr 1fr} }
 @media(max-width:600px){ .ind-grid{grid-template-columns:1fr} }
 .ind{border:1px solid rgba(196,204,214,.13);border-radius:8px;padding:28px;background:rgba(8,21,37,.35);
@@ -988,12 +989,14 @@ footer{border-top:1px solid rgba(196,204,214,.12);padding:54px clamp(22px,6vw,80
     <div class="kicker">Industries</div>
     <h2>Built where the pressure is highest.</h2>
     <div class="ind-grid">
+      <div class="ind"><h3>Healthcare</h3><p>Unified patient records and voice-to-note clinical documentation, with privacy engineered first.</p></div>
+      <div class="ind"><h3>Telecommunications</h3><p>AI hotlines on telco SIP trunks and customer operations for cable and internet providers.</p></div>
       <div class="ind"><h3>BPO &amp; Contact Centers</h3><p>Multilingual AI agents and human-agent copilots for the industry the Philippines leads.</p></div>
-      <div class="ind"><h3>Telecommunications</h3><p>Customer operations, network intelligence and churn programs at carrier scale.</p></div>
       <div class="ind"><h3>Banking &amp; Finance</h3><p>Secure knowledge systems and compliant customer AI for regulated institutions.</p></div>
-      <div class="ind"><h3>Healthcare</h3><p>Patient engagement and operational intelligence with privacy engineered first.</p></div>
-      <div class="ind"><h3>Retail &amp; E-Commerce</h3><p>Order support, outbound campaigns and vision-based inventory analytics.</p></div>
-      <div class="ind"><h3>Logistics</h3><p>Shipment visibility, dispatch coordination and real-time exception handling.</p></div>
+      <div class="ind"><h3>Media</h3><p>Speech-to-text transcription and live TV streaming with cloud DVR.</p></div>
+      <div class="ind"><h3>Education</h3><p>DepEd K-12&ndash;aligned AI tutoring, from one-on-one lessons to AI-facilitated live classes.</p></div>
+      <div class="ind"><h3>Hospitality &amp; Commerce</h3><p>Voice ordering, AI booking agents and guest experiences for venues and resorts.</p></div>
+      <div class="ind"><h3>Enterprise IT</h3><p>Identity-verified IT self-service and engagement tracking across the enterprise.</p></div>
     </div>
   </div>
 </section>
