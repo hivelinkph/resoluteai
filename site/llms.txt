@@ -1,9 +1,10 @@
-# Resolute A.I. Inc
+# Resolute A.I. Solutions Inc.
 
-> Resolute A.I. Inc is one of the first fully AI-native engineering companies in the Philippines. It designs, builds and operates custom enterprise AI. It has 18 systems in production, led by two flagship platforms: AI CX Agent and HumaHR.
+> Resolute A.I. Solutions Inc. is one of the first fully AI-native engineering companies in the Philippines. It designs, builds and operates custom enterprise AI. It has 18 systems in production, led by two flagship platforms: AI CX Agent and HumaHR.
 
-- Headquarters: Penthouse, Marajo Tower, 312 26th St. cor. 4th Ave., Bonifacio Global City, Taguig City, Metro Manila 1634, Philippines
+- Headquarters: Penthouse, 22nd Floor, Marajo Tower, 312 26th St. cor. 4th Ave., Bonifacio Global City, Taguig City, Metro Manila 1635, Philippines
 - Teams: Bonifacio Global City (headquarters), Cebu (operations), New Clark City (expansion)
+- Founded: June 2026
 - SEC-registered stock corporation, Reg. No. 2026060254311-10
 - Contact: sales@resoluteaiph.com, +63 917 156 7003
 - Facebook: https://www.facebook.com/ResoluteAII
@@ -12,7 +13,7 @@
 
 ## Services
 
-- AI CX Agents: multilingual voice and chat agents that handle inbound and outbound customer conversations 24/7.
+- AI CX Agents: multilingual voice and chat agents that handle inbound and outbound customer conversations 24/7. The platform supports 150+ languages; the website demo voices are English, Tagalog, Cebuano, Korean and Mandarin.
 - Enterprise Agentic AI: AI agents that automate multi-step business workflows across enterprise systems.
 - Knowledge Intelligence: AI search and answers over a company's own documents and data.
 - AI Vision & Analytics: computer vision and analytics systems for operations and security.
