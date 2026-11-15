@@ -193,16 +193,14 @@ a{color:inherit}
 
 /* clients marquee across the bottom of the hero, travelling left to right */
 .hmarq{position:absolute;inset:auto 0 0;height:var(--mq);display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(255,255,255,.5);
-  background:rgba(250,251,253,.95);
-  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.hmarq::before,.hmarq::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:1;pointer-events:none}
-.hmarq::before{left:0;background:linear-gradient(90deg,#fafbfd,rgba(250,251,253,0))}
-.hmarq::after{right:0;background:linear-gradient(270deg,#fafbfd,rgba(250,251,253,0))}
+  background:rgba(250,251,253,.95)}
+.hmarq .lbl{flex:none;padding:0 clamp(18px,2.4vw,34px) 0 var(--gut);font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#4a5566;white-space:nowrap}
+.hmarq .mwin{position:relative;flex:1;min-width:0;height:100%;display:flex;align-items:center;overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .hmarq .mtrack{padding:0;animation:marqR 52s linear infinite}
 .hmarq:hover .mtrack{animation-play-state:paused}
 .hmarq .mtrack img{height:36px;max-width:160px;filter:none;opacity:1}
 .hmarq .mtrack .you{color:var(--blue);font-size:24px}
-.hmarq .lbl{display:none;position:absolute;left:var(--gut);top:-30px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(169,219,255,.7)}
 @keyframes marqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
 /* ---------- content: day ---------- */
@@ -237,14 +235,7 @@ a{color:inherit}
 .sites{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 .sites span{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;padding:8px 14px;border:1px solid var(--rule-2);border-radius:999px}
 
-/* trusted */
-#trusted{min-height:auto;padding-top:40px}
-.trow{display:flex;align-items:end;justify-content:space-between;gap:30px;flex-wrap:wrap}
-.trow h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.6vw,54px);line-height:1;margin:16px 0 0;max-width:18ch}
-.marq{margin-top:46px;overflow:hidden;border-block:1px solid var(--rule);
-  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .mtrack{display:flex;align-items:center;gap:clamp(48px,6vw,90px);padding:34px 0;width:max-content;animation:marqR 46s linear infinite}
-.marq:hover .mtrack{animation-play-state:paused}
 .mtrack img{height:44px;width:auto;max-width:170px;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.7;transition:filter .3s,opacity .3s}
 .mtrack img:hover{filter:none;opacity:1}
 .mtrack .you{font-family:var(--serif);font-size:30px;font-style:italic;white-space:nowrap;color:var(--warm)}
@@ -464,8 +455,6 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   --landing:linear-gradient(to bottom,var(--seam),#1f1714 45%,var(--paper));
   color-scheme:dark;
 }
-:root[data-theme="dark"] .mtrack img{filter:grayscale(1) invert(1) brightness(1.15);opacity:.75}
-:root[data-theme="dark"] .mtrack img:hover{filter:grayscale(1) invert(1) brightness(1.4);opacity:1}
 :root[data-theme="dark"] .who img{filter:grayscale(1) invert(1)}
 :root[data-theme="dark"] .rc{box-shadow:0 1px 0 rgba(255,255,255,.04),0 30px 60px -40px rgba(0,0,0,.8)}
 :root[data-theme="dark"] .btn-ink:hover{background:#fff}
@@ -519,7 +508,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   .signin form{max-width:460px}
   #hero{--mq:70px}
   .hmarq .mtrack img{height:28px}
-  .hmarq .lbl{display:none}
+  .hmarq .lbl{font-size:10px;letter-spacing:.14em;padding-right:12px}
   #technology{height:auto}
   .pstick{position:relative;height:auto;padding-top:100px;padding-bottom:100px}
   .ptrack{flex-direction:column;transform:none!important;padding-left:0}
@@ -594,9 +583,9 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
     </div>
   </div>
 
-  <div class="hmarq" aria-label="Clients">
-    <span class="lbl">Running on Resolute</span>
-    <div class="mtrack">
+  <div class="hmarq" id="trusted" aria-label="Trusted by">
+    <span class="lbl">Trusted by:</span>
+    <div class="mwin"><div class="mtrack">
         <img src="assets/clients/maxicare_pantone.png" alt="Maxicare Group" width="150" height="34">
         <img src="assets/clients/inspiro.svg" alt="Inspiro" width="150" height="34">
         <img src="assets/clients/top1movers.png" alt="Top1 Movers Worldwide" width="150" height="34">
@@ -621,7 +610,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
         <img src="assets/clients/infocom.png" alt="" aria-hidden="true" width="150" height="34">
         <img src="assets/clients/cna_official.png" alt="" aria-hidden="true" width="150" height="34">
         <span class="you" aria-hidden="true">Next up: you.</span>
-    </div>
+    </div></div>
   </div>
 </section>
 
@@ -659,43 +648,6 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
         <div class="stat"><b data-count="8" data-pad="2">08</b><span>Industries served</span></div>
         <div class="stat"><b>10+</b><span>Enterprise clients</span></div>
         <div class="stat"><b>24×7</b><span>Autonomous operation</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= TRUSTED ================= -->
-<section class="section" id="trusted">
-  <div class="wrap rise">
-    <div class="trow">
-      <div><div class="k">Trusted by</div><h2>Enterprises across the Philippines and beyond run on Resolute systems.</h2></div>
-    </div>
-    <div class="marq" aria-label="Clients">
-      <div class="mtrack">
-        <img src="assets/clients/maxicare_pantone.png" alt="Maxicare Group" loading="lazy">
-        <img src="assets/clients/inspiro.svg" alt="Inspiro" loading="lazy">
-        <img src="assets/clients/top1movers.png" alt="Top1 Movers Worldwide" loading="lazy">
-        <img src="assets/clients/officium.png" alt="Officium" loading="lazy">
-        <img src="assets/clients/solviva.png" alt="Solviva Energy" loading="lazy">
-        <img src="assets/clients/cebucable.png" alt="Cebu Cable Internet" loading="lazy">
-        <img src="assets/clients/actionlabs.png" alt="ActionLabs" loading="lazy">
-        <img src="assets/clients/hgc_intl.png" alt="HGC Global Communications" loading="lazy">
-        <img src="assets/clients/stedfast.png" alt="Stedfast Fiber Internet" loading="lazy">
-        <img src="assets/clients/infocom.png" alt="Infocom" loading="lazy">
-        <img src="assets/clients/cna_official.png" alt="Climate Neutral Awards" loading="lazy">
-        <span class="you">Next up: you.</span>
-        <img src="assets/clients/maxicare_pantone.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/inspiro.svg" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/top1movers.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/officium.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/solviva.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/cebucable.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/actionlabs.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/hgc_intl.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/stedfast.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/infocom.png" alt="" aria-hidden="true" loading="lazy">
-        <img src="assets/clients/cna_official.png" alt="" aria-hidden="true" loading="lazy">
-        <span class="you" aria-hidden="true">Next up: you.</span>
       </div>
     </div>
   </div>
