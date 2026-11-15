@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,8 @@
 <meta name="description" content="Resolute A.I. Solutions Inc. builds custom enterprise AI: multilingual AI CX agents, agentic AI, knowledge intelligence and AI vision. Built in the Philippines.">
 <link rel="canonical" href="https://www.resoluteaiph.com/">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<meta name="theme-color" content="#06090E">
+<meta name="theme-color" content="#F4F1EA">
+<script>try{var t=localStorage.getItem("rai-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light")}catch(e){}</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Resolute A.I. Solutions Inc.">
 <meta property="og:locale" content="en_PH">
@@ -96,6 +97,8 @@
   --blue:#2F8CFF; --ice:#A9DBFF; --alarm:#FF4A3D; --amber:#FFB547; --dawn:#F2B36B;
   --paper:#F4F1EA; --paper-2:#EAE5DA; --graphite:#161C27; --muted:#5B6474; --silver:#C9D2DC;
   --seam:#342321;
+  --rule:rgba(22,28,39,.16); --rule-2:rgba(22,28,39,.26); --warm:#8a6a4c; --card:#fff;
+  --landing:linear-gradient(to bottom,var(--seam),#7d5a45 30%,#c9a585 62%,var(--paper));
   --serif:"Instrument Serif", "Iowan Old Style", Georgia, serif;
   --sans:"Manrope", "Segoe UI", system-ui, sans-serif;
   --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
@@ -156,7 +159,7 @@ a{color:inherit}
 .btn-ghost:hover{border-color:#fff;background:rgba(6,9,14,.35)}
 .btn-ink{background:var(--graphite);color:var(--paper)}
 .btn-ink:hover{background:#000;transform:translateY(-1px)}
-.btn-line{border-color:rgba(22,28,39,.3);color:var(--graphite)}
+.btn-line{border-color:var(--rule-2);color:var(--graphite)}
 .btn-line:hover{border-color:var(--graphite)}
 .arr{font-family:var(--mono);font-weight:400}
 
@@ -210,13 +213,13 @@ a{color:inherit}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ---------- content: day ---------- */
-.day{background:var(--paper);color:var(--graphite)}
-.landing{height:38vh;background:linear-gradient(to bottom,var(--seam),#7d5a45 30%,#c9a585 62%,var(--paper))}
+.day{background:var(--paper);color:var(--graphite);transition:background .4s,color .4s}
+.landing{height:38vh;background:var(--landing)}
 .section{position:relative;padding:clamp(90px,13vh,150px) var(--gut);min-height:min(92vh,900px);display:flex;align-items:center}
 .section>.wrap{width:100%;max-width:1320px;margin:0 auto}
 .k{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px}
 .k::before{content:"";width:28px;height:1px;background:currentColor}
-.day .k{color:#8a6a4c}
+.day .k{color:var(--warm)}
 .display{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:.98;margin:22px 0 0}
 .display em{font-style:italic}
 .lede{font-size:clamp(17px,1.4vw,20px);max-width:620px;color:var(--muted)}
@@ -230,39 +233,39 @@ a{color:inherit}
 /* mission */
 #mission .display{font-size:clamp(46px,7vw,112px);max-width:14ch}
 .mgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,110px);margin-top:clamp(50px,8vh,90px);align-items:end}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid rgba(22,28,39,.16)}
-.stat{padding:26px 0 22px;border-bottom:1px solid rgba(22,28,39,.16)}
-.stat:nth-child(odd){padding-right:20px;border-right:1px solid rgba(22,28,39,.16)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--rule)}
+.stat{padding:26px 0 22px;border-bottom:1px solid var(--rule)}
+.stat:nth-child(odd){padding-right:20px;border-right:1px solid var(--rule)}
 .stat:nth-child(even){padding-left:24px}
 .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(54px,6vw,92px);line-height:.9;letter-spacing:-.02em}
 .stat span{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .mv p{margin:0 0 22px;font-size:clamp(17px,1.35vw,20px);line-height:1.55}
-.mv p b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#8a6a4c;font-weight:500;margin-bottom:6px}
+.mv p b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--warm);font-weight:500;margin-bottom:6px}
 .mv em{font-family:var(--serif);font-size:1.18em}
 .sites{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-.sites span{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;padding:8px 14px;border:1px solid rgba(22,28,39,.2);border-radius:999px}
+.sites span{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;padding:8px 14px;border:1px solid var(--rule-2);border-radius:999px}
 
 /* trusted */
 #trusted{min-height:auto;padding-top:40px}
 .trow{display:flex;align-items:end;justify-content:space-between;gap:30px;flex-wrap:wrap}
 .trow h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.6vw,54px);line-height:1;margin:16px 0 0;max-width:18ch}
-.marq{margin-top:46px;overflow:hidden;border-block:1px solid rgba(22,28,39,.14);
+.marq{margin-top:46px;overflow:hidden;border-block:1px solid var(--rule);
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .mtrack{display:flex;align-items:center;gap:clamp(48px,6vw,90px);padding:34px 0;width:max-content;animation:marq 46s linear infinite}
 .marq:hover .mtrack{animation-play-state:paused}
 .mtrack img{height:44px;width:auto;max-width:170px;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.7;transition:filter .3s,opacity .3s}
 .mtrack img:hover{filter:none;opacity:1}
-.mtrack .you{font-family:var(--serif);font-size:30px;font-style:italic;white-space:nowrap;color:#8a6a4c}
+.mtrack .you{font-family:var(--serif);font-size:30px;font-style:italic;white-space:nowrap;color:var(--warm)}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* systems: index rows */
 #systems .display{font-size:clamp(44px,6vw,96px);max-width:13ch}
-.sys{margin-top:clamp(40px,7vh,80px);border-top:1px solid rgba(22,28,39,.18)}
+.sys{margin-top:clamp(40px,7vh,80px);border-top:1px solid var(--rule)}
 .srow{display:grid;grid-template-columns:90px 1fr 1.15fr;gap:clamp(16px,3vw,48px);padding:clamp(24px,3.6vh,38px) 0;
-  border-bottom:1px solid rgba(22,28,39,.18);align-items:baseline;position:relative}
+  border-bottom:1px solid var(--rule);align-items:baseline;position:relative}
 .srow::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--graphite);transition:width .7s var(--ease)}
 .srow:hover::after{width:100%}
-.srow .n{font-family:var(--mono);font-size:13px;color:#8a6a4c;letter-spacing:.1em}
+.srow .n{font-family:var(--mono);font-size:13px;color:var(--warm);letter-spacing:.1em}
 .srow h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.3vw,52px);line-height:1;margin:0;transition:transform .5s var(--ease)}
 .srow:hover h3{transform:translateX(10px)}
 .srow p{margin:0;color:var(--muted)}
@@ -340,18 +343,18 @@ a{color:inherit}
 /* case + results (day) */
 #case-studies .display{font-size:clamp(42px,5.6vw,90px);max-width:16ch}
 .case{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);margin-top:40px;align-items:start}
-.metrics{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(22,28,39,.16)}
-.metrics div{padding:22px 0;border-bottom:1px solid rgba(22,28,39,.16)}
-.metrics div:nth-child(odd){border-right:1px solid rgba(22,28,39,.16);padding-right:16px}
+.metrics{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
+.metrics div{padding:22px 0;border-bottom:1px solid var(--rule)}
+.metrics div:nth-child(odd){border-right:1px solid var(--rule);padding-right:16px}
 .metrics div:nth-child(even){padding-left:22px}
 .metrics b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(46px,4.6vw,72px);line-height:.95}
 .metrics span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .fine{font-size:13.5px;color:var(--muted);margin-top:20px}
 .rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(50px,8vh,90px)}
-.rc{background:#fff;border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;min-height:330px;
+.rc{background:var(--card);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;min-height:330px;
   box-shadow:0 1px 0 rgba(22,28,39,.06),0 30px 60px -40px rgba(22,28,39,.35);transition:transform .5s var(--ease)}
 .rc:hover{transform:translateY(-4px)}
-.rc .rk{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8a6a4c}
+.rc .rk{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--warm)}
 .rc b{font-family:var(--serif);font-weight:400;font-size:clamp(44px,4vw,64px);line-height:.95;margin:auto 0 8px;letter-spacing:-.02em}
 .rc b small{font-size:.5em;color:var(--muted)}
 .rc .rl{font-weight:700;font-size:14px;margin-bottom:8px}
@@ -365,8 +368,8 @@ a{color:inherit}
 .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:clamp(40px,6vh,70px)}
 .tq{background:var(--paper);border-radius:22px;padding:clamp(28px,3vw,44px);display:flex;flex-direction:column}
 .tq blockquote{margin:0;font-family:var(--serif);font-size:clamp(28px,2.6vw,40px);line-height:1.08}
-.tq details{margin-top:22px;border-top:1px solid rgba(22,28,39,.12)}
-.tq summary{cursor:pointer;list-style:none;padding:14px 0;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a4c}
+.tq details{margin-top:22px;border-top:1px solid var(--rule)}
+.tq summary{cursor:pointer;list-style:none;padding:14px 0;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm)}
 .tq summary::-webkit-details-marker{display:none}
 .tq summary::after{content:" +"}
 .tq details[open] summary::after{content:" –"}
@@ -380,22 +383,22 @@ a{color:inherit}
 
 /* industries */
 #industries .display{font-size:clamp(42px,5.6vw,90px);max-width:14ch}
-.igrid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(40px,6vh,70px);border-top:1px solid rgba(22,28,39,.16);border-left:1px solid rgba(22,28,39,.16)}
-.ind{padding:28px 24px 30px;border-right:1px solid rgba(22,28,39,.16);border-bottom:1px solid rgba(22,28,39,.16);min-height:220px;
+.igrid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(40px,6vh,70px);border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.ind{padding:28px 24px 30px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-height:220px;
   display:flex;flex-direction:column;transition:background .35s}
-.ind:hover{background:#fff}
-.ind span{font-family:var(--mono);font-size:11px;color:#8a6a4c;letter-spacing:.12em}
+.ind:hover{background:var(--card)}
+.ind span{font-family:var(--mono);font-size:11px;color:var(--warm);letter-spacing:.12em}
 .ind h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.2vw,34px);line-height:1.02;margin:46px 0 10px}
 .ind p{margin:0;font-size:14.5px;color:var(--muted)}
 
 /* faq */
 #faq .display{font-size:clamp(42px,5vw,80px)}
 .fgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,100px);align-items:start}
-.faqs details{border-bottom:1px solid rgba(22,28,39,.16)}
-.faqs details:first-child{border-top:1px solid rgba(22,28,39,.16)}
+.faqs details{border-bottom:1px solid var(--rule)}
+.faqs details:first-child{border-top:1px solid var(--rule)}
 .faqs summary{cursor:pointer;list-style:none;padding:24px 40px 24px 0;position:relative;font-family:var(--serif);font-size:clamp(22px,1.9vw,28px);line-height:1.15}
 .faqs summary::-webkit-details-marker{display:none}
-.faqs summary::after{content:"+";position:absolute;right:4px;top:22px;font-family:var(--mono);font-size:22px;color:#8a6a4c;transition:transform .3s}
+.faqs summary::after{content:"+";position:absolute;right:4px;top:22px;font-family:var(--mono);font-size:22px;color:var(--warm);transition:transform .3s}
 .faqs details[open] summary::after{transform:rotate(45deg)}
 .faqs p{margin:0 0 26px;color:var(--muted);max-width:680px}
 
@@ -434,6 +437,49 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 .mm .mc a{text-decoration:none}
 .mm .x{position:absolute;top:18px;right:var(--gut);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:none;color:#fff;font-size:20px;cursor:pointer}
 
+/* ---------- theme toggle ---------- */
+.theme-btn{display:inline-grid;place-items:center;width:44px;height:44px;flex:none;border-radius:999px;border:1px solid rgba(255,255,255,.4);
+  background:rgba(6,9,14,.2);color:#fff;cursor:pointer;transition:border-color .2s,color .2s}
+.theme-btn:hover{border-color:var(--ice);color:var(--ice)}
+.theme-btn svg{width:18px;height:18px}
+.theme-btn .i-sun{display:none}
+:root[data-theme="dark"] .theme-btn .i-sun{display:block}
+:root[data-theme="dark"] .theme-btn .i-moon{display:none}
+.mm .theme-btn{position:absolute;top:18px;right:calc(var(--gut) + 56px)}
+
+/* ---------- click to call ---------- */
+.btn-call{background:#1FA866;color:#fff;box-shadow:0 10px 34px -10px rgba(31,168,102,.9)}
+.btn-call:hover{transform:translateY(-1px);box-shadow:0 16px 44px -10px rgba(31,168,102,1)}
+.btn-call svg{width:16px;height:16px}
+.callf{position:fixed;z-index:45;right:clamp(16px,2.4vw,32px);bottom:calc(env(safe-area-inset-bottom) + clamp(16px,2.4vw,28px));
+  display:flex;align-items:center;gap:12px;padding:8px 22px 8px 8px;border-radius:999px;text-decoration:none;color:#fff;
+  background:var(--blue);box-shadow:0 18px 50px -12px rgba(47,140,255,.75),0 0 0 3px rgba(255,255,255,.9);
+  opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease),visibility .5s,box-shadow .3s}
+.callf.on{opacity:1;visibility:visible;transform:none}
+.callf:hover{transform:translateY(-3px);box-shadow:0 24px 60px -12px rgba(47,140,255,.95),0 0 0 3px #fff}
+.callf .ring{position:relative;width:46px;height:46px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;flex:none}
+.callf .ring::before,.callf .ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.8);animation:cring 2s ease-out infinite}
+.callf .ring::after{animation-delay:1s}
+.callf .ring svg{width:22px;height:22px}
+@keyframes cring{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
+.callf b{display:block;font-weight:700;font-size:16px;line-height:1.1}
+.callf small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;opacity:.9;margin-top:3px}
+:root[data-theme="dark"] .callf{box-shadow:0 18px 50px -12px rgba(47,140,255,.75),0 0 0 3px rgba(6,9,14,.9)}
+
+/* ---------- dark theme: the day sections go to night (film, console bands, header stay as they are) ---------- */
+:root[data-theme="dark"]{
+  --paper:#0B111C; --paper-2:#111A29; --graphite:#E9EDF3; --muted:#93A0B3;
+  --rule:rgba(201,210,220,.14); --rule-2:rgba(201,210,220,.26); --warm:#D9A877; --card:#152033;
+  --landing:linear-gradient(to bottom,var(--seam),#1f1714 45%,var(--paper));
+  color-scheme:dark;
+}
+:root[data-theme="dark"] .mtrack img{filter:grayscale(1) invert(1) brightness(1.15);opacity:.75}
+:root[data-theme="dark"] .mtrack img:hover{filter:grayscale(1) invert(1) brightness(1.4);opacity:1}
+:root[data-theme="dark"] .who img{filter:grayscale(1) invert(1)}
+:root[data-theme="dark"] .rc{box-shadow:0 1px 0 rgba(255,255,255,.04),0 30px 60px -40px rgba(0,0,0,.8)}
+:root[data-theme="dark"] .btn-ink:hover{background:#fff}
+:root[data-theme="dark"] #company{background:linear-gradient(180deg,var(--paper) 0%,#1c2333 34%,#2a1d18 66%,var(--ink) 100%)}
+
 @media (max-width:1180px){
   .nav-links{display:none}
   .menu-btn{display:grid}
@@ -443,6 +489,9 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 @media (max-width:860px){
   body{font-size:16px}
   .hdr .nav>.btn{display:none}
+  .callf{left:16px;right:16px;justify-content:center;padding:7px 18px 7px 7px}
+  .callf .ring{width:40px;height:40px}
+  footer{padding-bottom:calc(env(safe-area-inset-bottom) + 110px)}
   .brand .bw{width:112px}
   .mgrid,.cxg,.pgrid,.case,.tgrid,.fgrid,.cgrid{grid-template-columns:1fr}
   .srow{grid-template-columns:1fr;gap:10px}
@@ -505,17 +554,20 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
       <a href="#faq">FAQ</a>
     </span>
     <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20%E2%80%94%20Resolute%20A.I.">Start a project <span class="arr">→</span></a>
+    <button class="theme-btn" id="tbtn" type="button" aria-label="Switch to dark theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></button>
     <button class="menu-btn" id="mbtn" aria-label="Open menu" aria-expanded="false" aria-controls="mm"><span></span><span></span></button>
   </nav>
 </header>
 
 <div class="mm" id="mm" aria-hidden="true">
   <button class="x" id="mx" aria-label="Close menu">×</button>
+  <button class="theme-btn" id="tbtn2" type="button" aria-label="Switch to dark theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></button>
   <nav aria-label="Mobile">
     <a href="#systems">Systems</a><a href="#platforms">Platforms</a><a href="#trusted">Clients</a><a href="#industries">Industries</a>
     <a href="#technology">Technology</a><a href="#case-studies">Case Studies</a><a href="#company">Company</a><a href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20%E2%80%94%20Resolute%20A.I.">Start a project <span class="arr">→</span></a>
+  <a class="btn btn-call" href="/call/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call our A.I. now</a>
   <div class="mc">
     <a href="tel:+639171567003">+63 917 156 7003 · Sales</a>
     <a href="tel:+639190567243">+63 919 056 7243 · A.I. Hotline</a>
@@ -539,6 +591,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
       <p>We design, build and operate custom enterprise AI: voice agents that clear the queue in 150+ languages, agentic workflows, knowledge and vision systems. Eighteen of them are in production today.</p>
       <div class="ctas">
         <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20%E2%80%94%20Resolute%20A.I.">Start a project <span class="arr">→</span></a>
+        <a class="btn btn-call" href="/call/" target="_blank" rel="noopener" aria-label="Call our A.I. agent now (opens a web call)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call our A.I. now</a>
         <a class="btn btn-ghost" href="#cx">Hear the agent</a>
       </div>
     </div>
@@ -695,6 +748,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
         <canvas id="wave" aria-hidden="true"></canvas>
         <div class="cxa">
           <button class="btn btn-primary" id="play"><span id="playt">▶&nbsp; Hear the AI in action</span></button>
+          <a class="btn btn-call" href="/call/" target="_blank" rel="noopener" aria-label="Call the agent live (opens a web call)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call it live</a>
           <a class="btn btn-ghost" href="mailto:sales@resoluteaiph.com?subject=AI%20CX%20Agent%20Demo%20Request">Book a full demo</a>
         </div>
         <p class="cxn">Voice samples generated by the Resolute AI voice stack. Live deployments are trained on your scripts, products and brand voice.</p>
@@ -896,6 +950,8 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 </div>
 </main>
 
+<a class="callf" id="callf" href="/call/" target="_blank" rel="noopener" aria-label="Call Resolute A.I. (opens a web call)"><span class="ring"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg></span><span><b>Call Resolute A.I.</b><small>WEB CALL · NO PHONE NEEDED</small></span></a>
+
 <footer>
   <div class="fw">
     <a class="brand" href="#top" aria-label="Back to top"><img class="bh" src="assets/brand/head-sm.webp" alt="" width="180" height="173"><img class="bw" src="assets/brand/wordmark.webp" alt="Resolute A.I. Inc" width="1100" height="181"></a>
@@ -1066,11 +1122,28 @@ function paintBeats(p){
   }
 }
 
+/* ================= theme (light by default) ================= */
+var callf = document.getElementById("callf");
+(function(){
+  var root = document.documentElement, meta = document.querySelector('meta[name="theme-color"]'), btns = [document.getElementById("tbtn"), document.getElementById("tbtn2")];
+  function apply(t){
+    root.setAttribute("data-theme", t);
+    meta.setAttribute("content", t === "dark" ? "#06090E" : "#F4F1EA");
+    btns.forEach(function(b){ b.setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme"); });
+  }
+  apply(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+  btns.forEach(function(b){ b.addEventListener("click", function(){
+    var t = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; apply(t);
+    try { localStorage.setItem("rai-theme", t); } catch (e) {}
+  }); });
+})();
+
 /* ================= header ================= */
 var sampler = document.createElement("canvas"); sampler.width = 16; sampler.height = 4; var sctx = sampler.getContext("2d", {willReadFrequently:true});
 function headerState(){
   var y = scrollY, filmEnd = film.offsetTop + film.offsetHeight - innerHeight;
   var inFilm = y < filmEnd - 10;
+  callf.classList.toggle("on", !inFilm);
   if (inFilm){ hdr.classList.remove("solid"); return; }
   hdr.classList.add("solid");
 }

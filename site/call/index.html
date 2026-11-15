@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Call Resolute A.I.</title>
+<meta name="description" content="Web call to Resolute A.I.: talk to our AI voice agent from your browser, no phone needed.">
+<meta name="theme-color" content="#F4F1EA">
+<meta name="robots" content="noindex">
+<script>try{var t=localStorage.getItem("rai-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light")}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/icon-32.png">
+<link rel="apple-touch-icon" href="/assets/brand/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://pbx.theconnex.cloud/cti/ancti/ancti.min.js"></script>
+<style>
+  :root {
+    --bg:#F4F1EA; --ink:#161C27; --muted:#5B6474; --line:rgba(22,28,39,.16); --card:#ffffff;
+    --blue:#2F8CFF; --alarm:#E5483D; --green:#1FA866; --ring:#ffffff;
+    --shade-a:rgba(244,241,234,.55); --shade-b:rgba(244,241,234,.96); --bg-op:.5;
+    --serif:"Instrument Serif", Georgia, serif; --sans:"Manrope", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace;
+  }
+  :root[data-theme="dark"] {
+    --bg:#06090E; --ink:#F5F7FA; --muted:#93A0B3; --line:rgba(169,219,255,.18); --card:#101827;
+    --ring:#06090E; --shade-a:rgba(6,9,14,.45); --shade-b:rgba(6,9,14,.94); --bg-op:.6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; transition: background .3s, color .3s; }
+  body { position: fixed; inset: 0; }
+  .bg { position: absolute; inset: 0; background: url(/frames/f_0616.jpg) center 40% / cover no-repeat;
+    filter: blur(18px) saturate(1.05); transform: scale(1.12); opacity: var(--bg-op); }
+  .shade { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 42%, var(--shade-a), var(--shade-b) 70%); }
+
+  .wrap { position: relative; z-index: 1; height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    padding: calc(env(safe-area-inset-top) + 24px) 16px calc(env(safe-area-inset-bottom) + 28px); text-align: center; }
+  .mark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .mark .bh { width: 40px; height: auto; }
+  .mark .bw { width: 150px; height: auto; }
+
+  .center { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .orb { position: relative; width: 168px; height: 168px; display: grid; place-items: center; }
+  .orb .core { position: relative; z-index: 2; width: 116px; height: 116px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--blue); box-shadow: 0 20px 60px rgba(47,140,255,.42), 0 0 0 6px var(--ring); transition: background .4s, box-shadow .4s; }
+  .orb .core svg { width: 48px; height: 48px; color: #fff; }
+  .orb .wave { position: absolute; inset: 26px; border-radius: 50%; border: 2px solid rgba(47,140,255,.6); opacity: 0; }
+  .ringing .orb .wave { animation: wave 2.2s ease-out infinite; }
+  .ringing .orb .wave:nth-child(2) { animation-delay: .73s; }
+  .ringing .orb .wave:nth-child(3) { animation-delay: 1.46s; }
+  @keyframes wave { from { transform: scale(1); opacity: .9; } to { transform: scale(1.9); opacity: 0; } }
+  .connected .orb .core { background: var(--green); box-shadow: 0 20px 60px rgba(31,168,102,.4), 0 0 0 6px var(--ring); }
+  .connected .orb .wave { border-color: rgba(31,168,102,.55); animation: wave 3s ease-out infinite; }
+  .connected .orb .wave:nth-child(2) { animation-delay: 1.5s; }
+
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--blue); }
+  h1 { font-family: var(--serif); font-weight: 400; letter-spacing: -.015em; font-size: clamp(44px, 9vw, 72px); line-height: .96; }
+  h1 em { color: var(--blue); }
+  .status { font-size: 16px; color: var(--muted); min-height: 1.5em; max-width: 34ch; line-height: 1.5; }
+  .timer { font-family: var(--mono); font-size: 22px; letter-spacing: .08em; visibility: hidden; font-variant-numeric: tabular-nums; }
+  .connected .timer { visibility: visible; }
+
+  .controls { display: flex; gap: 22px; align-items: flex-start; justify-content: center; }
+  .btn { display: flex; flex-direction: column; align-items: center; gap: 8px; background: none; border: 0; color: var(--ink); font: 600 12px var(--sans); letter-spacing: .04em; cursor: pointer; }
+  .btn i { width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; background: var(--card); color: var(--ink); border: 1px solid var(--line); box-shadow: 0 8px 22px rgba(22,28,39,.14); transition: transform .15s, background .2s; }
+  .btn:hover i { transform: scale(1.06); }
+  .btn:focus-visible i { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .btn svg { width: 28px; height: 28px; }
+  .btn[hidden] { display: none; }
+  .btn.call i { background: var(--green); color: #fff; border-color: transparent; box-shadow: 0 12px 34px rgba(31,168,102,.4); }
+  .btn.end i { background: var(--alarm); color: #fff; border-color: transparent; box-shadow: 0 12px 34px rgba(229,72,61,.45); }
+  .btn.end svg { transform: rotate(135deg); }
+  .btn.on i { background: var(--ink); color: var(--bg); }
+
+  .chip { position: absolute; z-index: 3; top: calc(env(safe-area-inset-top) + 18px); display: inline-flex; align-items: center; gap: 10px;
+    height: 48px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--ink); text-decoration: none;
+    font: 600 15px var(--sans); box-shadow: 0 10px 30px rgba(22,28,39,.15); cursor: pointer; transition: transform .15s; }
+  .chip:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .chip svg { width: 20px; height: 20px; }
+  .back { left: 16px; padding: 0 20px 0 14px; }
+  .back:hover { transform: translateX(-2px); }
+  .theme { right: 16px; width: 48px; justify-content: center; }
+  .theme .i-sun { display: none; }
+  :root[data-theme="dark"] .theme .i-sun { display: block; }
+  :root[data-theme="dark"] .theme .i-moon { display: none; }
+  @media (min-width: 900px) { .back { left: 28px; top: 24px; } .theme { right: 28px; top: 24px; } }
+  @media (max-width: 420px) { .wrap { padding-top: calc(env(safe-area-inset-top) + 84px); } }
+  .foot { font-size: 12px; color: var(--muted); max-width: 42ch; line-height: 1.5; margin-top: 22px; }
+  .foot a { color: var(--blue); }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="shade"></div>
+<a class="chip back" href="/" aria-label="Back to the Resolute A.I. home page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a>
+<button class="chip theme" id="theme" type="button" aria-label="Switch to dark theme">
+  <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+</button>
+
+<main class="wrap" id="app">
+  <a class="mark" href="/" aria-label="Resolute A.I. Solutions Inc."><img class="bh" src="/assets/brand/head-sm.webp" alt="" width="180" height="173"><img class="bw" src="/assets/brand/wordmark.webp" alt="Resolute A.I. Inc" width="1100" height="181"></a>
+
+  <div class="center">
+    <div class="orb" aria-hidden="true">
+      <span class="wave"></span><span class="wave"></span><span class="wave"></span>
+      <span class="core"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg></span>
+    </div>
+    <p class="eyebrow">Web call · No phone needed</p>
+    <h1>Talk to our <em>A.I.</em></h1>
+    <p class="status" id="status" role="status" aria-live="polite">Tap the green button to call the Resolute A.I. voice agent.</p>
+    <p class="timer" id="timer">00:00</p>
+  </div>
+
+  <div>
+    <div class="controls">
+      <button class="btn" id="mute" hidden aria-pressed="false"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></svg></i><span>Mute</span></button>
+      <button class="btn call" id="call"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg></i><span>Call</span></button>
+      <button class="btn end" id="end" hidden><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg></i><span>End call</span></button>
+    </div>
+    <p class="foot">Demo line. Your browser will ask for microphone access. <a href="/">Back to resoluteaiph.com</a></p>
+  </div>
+</main>
+
+<audio id="remote" autoplay playsinline></audio>
+
+<script>
+  /* theme: light by default, shared with the home page */
+  (function(){
+    var root = document.documentElement, btn = document.getElementById("theme"), meta = document.querySelector('meta[name="theme-color"]');
+    function apply(t){ root.setAttribute("data-theme", t); meta.setAttribute("content", t === "dark" ? "#06090E" : "#F4F1EA");
+      btn.setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme"); }
+    apply(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+    btn.addEventListener("click", function(){ var t = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; apply(t); try { localStorage.setItem("rai-theme", t); } catch (e) {} });
+  })();
+
+  // Click-to-call into the AS7 PBX (same line as the Medley demo): the server places the call to this device.
+  const DEVICE = "sip:30041@term.13508";
+  const WS_URL = "wss://pbx.theconnex.cloud/cti/ws";
+
+  const $ = (id) => document.getElementById(id);
+  const app = $("app"), statusEl = $("status"), timerEl = $("timer");
+  const remoteAudio = $("remote");
+  const callBtn = $("call"), endBtn = $("end"), muteBtn = $("mute");
+
+  let agent, call, startedAt, tick, busy = false;
+
+  function setStatus(text) { statusEl.textContent = text; }
+  function setMode(mode) {
+    app.classList.toggle("ringing", mode === "ringing");
+    app.classList.toggle("connected", mode === "connected");
+    const inCall = mode === "ringing" || mode === "connected";
+    callBtn.hidden = inCall; endBtn.hidden = !inCall; muteBtn.hidden = mode !== "connected";
+    if (mode === "connected" && !startedAt) {
+      startedAt = Date.now();
+      tick = setInterval(() => {
+        const s = Math.floor((Date.now() - startedAt) / 1000);
+        timerEl.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+      }, 500);
+    }
+    if (!inCall) { clearInterval(tick); startedAt = null; timerEl.textContent = "00:00"; setMuted(false); }
+  }
+  function setMuted(m) {
+    muteBtn.classList.toggle("on", m);
+    muteBtn.setAttribute("aria-pressed", String(m));
+    muteBtn.querySelector("span").textContent = m ? "Unmute" : "Mute";
+    if (call && call.muted !== m) try { call.setMuted(m); } catch (e) {}
+  }
+
+  function ended(text) {
+    call = null; busy = false;
+    remoteAudio.srcObject = null;
+    setMode("idle");
+    callBtn.querySelector("span").textContent = "Call again";
+    setStatus(text);
+    try { agent && agent.stopApplicationSession(); } catch (e) {}
+    agent = null;
+  }
+
+  async function startCall() {
+    if (busy) return;
+    if (!window.anCti) return setStatus("The calling service could not be reached. Check your connection and try again.");
+    busy = true;
+    setMode("ringing");
+    setStatus("Requesting microphone…");
+    try {
+      const s = await navigator.mediaDevices.getUserMedia({ audio: true });
+      s.getTracks().forEach((t) => t.stop());
+    } catch (e) {
+      busy = false; setMode("idle");
+      return setStatus("Microphone access is needed to call. Allow it in your browser and tap Call again.");
+    }
+    setStatus("Connecting to Resolute A.I.…");
+
+    agent = anCti.newAgent();
+    agent.on("call", (event) => {
+      call = event.call;
+      const st = call.state || call.localConnectionInfo;
+      if (st === "connected") { setMode("connected"); setStatus("Connected. Our A.I. agent is on the line, so go ahead and speak."); }
+      else if (st === "alerting" || st === "calling" || st === "initiated" || st === "queued") { setMode("ringing"); setStatus("Ringing Resolute A.I.…"); }
+      else if (st === "hold" || st === "held") setStatus("Please hold, we'll be right back.");
+      else if (st === "fail") ended("The call could not be completed. Please try again.");
+      else if (st === "null") ended("Call ended. Thanks for calling Resolute A.I.");
+    });
+    // The library only hands over the far end's audio; the page has to play it.
+    agent.on("remotestream", (event) => {
+      const stream = event.audioStream || event.stream || null;
+      if (remoteAudio.srcObject !== stream) remoteAudio.srcObject = stream;
+      if (stream) remoteAudio.play().catch(() => {});
+    });
+    agent.on("applicationsessionterminated", (event) => {
+      if (busy) ended(event.reason === "normal" ? "Call ended. Thanks for calling Resolute A.I." : "The connection was closed. Please try again.");
+    });
+
+    try {
+      await agent.startApplicationSession({
+        url: WS_URL,
+        reconnect: false,
+        clickToCall: { deviceID: DEVICE, audio: true, video: false },
+      });
+      setStatus("Ringing Resolute A.I.…");
+    } catch (e) {
+      console.error(e);
+      ended("The line is unreachable right now. Please try again.");
+    }
+  }
+
+  async function endCall() {
+    try { call ? await call.clearConnection() : null; } catch (e) {}
+    ended("Call ended. Thanks for calling Resolute A.I.");
+  }
+
+  callBtn.addEventListener("click", startCall);
+  endBtn.addEventListener("click", endCall);
+  muteBtn.addEventListener("click", () => setMuted(!muteBtn.classList.contains("on")));
+  // Opened from a "Call Resolute A.I." button: dial straight away (?manual=1 to wait for a tap).
+  if (!new URLSearchParams(location.search).has("manual")) startCall();
+  window.addEventListener("pagehide", () => { try { call && call.clearConnection(); } catch (e) {} });
+</script>
+</body>
+</html>
