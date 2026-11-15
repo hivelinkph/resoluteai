@@ -5,7 +5,7 @@ const [inp, outp, instr] = process.argv.slice(2);
 const form = new FormData();
 form.append('model', process.env.OPENAI_MODEL || 'gpt-image-2.5-sunburst');
 form.append('prompt', `Edit this photo. Keep EVERYTHING identical: every person, face, light, sign, panel, number and label. ${instr} No other changes.`);
-form.append('size', '1024x1536'); form.append('quality', 'high'); form.append('n', '2');
+form.append('size', process.env.SIZE || '1024x1536'); form.append('quality', 'high'); form.append('n', '2');
 form.append('image[]', new Blob([fs.readFileSync(inp)], { type: 'image/png' }), 'in.png');
 let r;
 for (let a = 1; a <= 5; a++) {
