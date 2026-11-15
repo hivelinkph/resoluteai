@@ -201,6 +201,9 @@ a{color:inherit}
 .hmarq:hover .mtrack{animation-play-state:paused}
 .hmarq .mtrack img{height:36px;max-width:160px;filter:none;opacity:1}
 .hmarq .mtrack .you{color:var(--blue);font-size:24px}
+/* client strip switched off for now: remove "hidden" on .hmarq and "no-clients" on #hero to bring it back */
+#hero.no-clients{--mq:0px}
+.hmarq[hidden]{display:none}
 @keyframes marqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
 /* ---------- content: day ---------- */
@@ -537,7 +540,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
     <span class="nav-links">
       <a href="#systems">Systems</a>
       <a href="#platforms">Platforms</a>
-      <a href="#trusted">Clients</a>
+      <!--<a href="#trusted">Clients</a>-->
       <a href="#industries">Industries</a>
       <a href="#technology">Technology</a>
       <a href="#case-studies">Case Studies</a>
@@ -554,7 +557,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   <button class="x" id="mx" aria-label="Close menu">×</button>
   <button class="theme-btn" id="tbtn2" type="button" aria-label="Switch to dark theme"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></button>
   <nav aria-label="Mobile">
-    <a href="#systems">Systems</a><a href="#platforms">Platforms</a><a href="#trusted">Clients</a><a href="#industries">Industries</a>
+    <a href="#systems">Systems</a><a href="#platforms">Platforms</a><!--<a href="#trusted">Clients</a>--><a href="#industries">Industries</a>
     <a href="#technology">Technology</a><a href="#case-studies">Case Studies</a><a href="#company">Company</a><a href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20%E2%80%94%20Resolute%20A.I.">Start a project <span class="arr">→</span></a>
@@ -568,7 +571,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 </div>
 
 <main id="top" style="position:relative">
-<section id="hero" aria-label="Resolute A.I. headquarters">
+<section id="hero" class="no-clients" aria-label="Resolute A.I. headquarters">
   <picture>
     <source media="(orientation: portrait) and (max-width: 860px)" srcset="assets/hero/hero-tall-v4.webp">
     <img class="hbg" src="assets/hero/hero-wide-v4.webp" alt="Inside the Resolute A.I. office in Bonifacio Global City at night: the illuminated acrylic Resolute A.I. sign on the wall, a contact-centre operations dashboard tracking live AI call campaigns, and the team at their desks." width="1536" height="1024" fetchpriority="high" draggable="false">
@@ -583,7 +586,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
     </div>
   </div>
 
-  <div class="hmarq" id="trusted" aria-label="Trusted by">
+  <div class="hmarq" id="trusted" aria-label="Trusted by" hidden>
     <span class="lbl">Trusted by:</span>
     <div class="mwin"><div class="mtrack">
         <img src="assets/clients/maxicare_pantone.png" alt="Maxicare Group" width="150" height="34">
@@ -915,7 +918,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   <div class="fw">
     <a class="brand" href="#top" aria-label="Back to top"><img class="bh" src="assets/brand/head-sm.webp" alt="" width="180" height="173"><img class="bw" src="assets/brand/wordmark.webp" alt="Resolute A.I. Inc" width="1100" height="181"></a>
     <nav aria-label="Footer">
-      <a href="#systems">Systems</a><a href="#platforms">Platforms</a><a href="#trusted">Clients</a><a href="#testimonials">Testimonials</a>
+      <a href="#systems">Systems</a><a href="#platforms">Platforms</a><!--<a href="#trusted">Clients</a>--><a href="#testimonials">Testimonials</a>
       <a href="#industries">Industries</a><a href="#technology">Technology</a><a href="#case-studies">Case Studies</a><a href="#company">Company</a>
       <a href="#faq">FAQ</a><a href="company-profile/">Company Profile</a>
     </nav>
