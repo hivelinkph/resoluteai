@@ -115,7 +115,7 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
 
 /* ---------- header ---------- */
-.hdr{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;
+.hdr{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:flex-end;gap:24px;
   padding:16px var(--gut);color:#fff;transition:background .5s,color .4s,box-shadow .5s}
 .hdr::before{content:"";position:absolute;inset:0 0 auto;height:190%;z-index:-1;pointer-events:none;
   background:linear-gradient(to bottom,rgba(4,6,10,.66),rgba(4,6,10,0));transition:opacity .5s}
@@ -164,13 +164,11 @@ a{color:inherit}
 .hact{position:absolute;z-index:2;right:var(--gut);bottom:calc(var(--mq) + clamp(20px,3.6vh,40px));width:min(560px,calc(100% - 2*var(--gut)));text-align:right}
 .hact h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.4vw,56px);line-height:1;letter-spacing:-.01em;margin:0 0 8px;text-shadow:0 2px 30px rgba(0,0,0,.7)}
 .hact h1 em{color:var(--ice)}
-.hact p{margin:0 0 18px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,242,255,.9);text-shadow:0 1px 14px rgba(0,0,0,.8)}
+.hact h1 .ch{display:block;margin:12px 0 18px;line-height:1.5;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(232,242,255,.9);text-shadow:0 1px 14px rgba(0,0,0,.8)}
 .hact .ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
 #hero .shade-br{position:absolute;inset:auto 0 0 auto;width:62%;height:62%;pointer-events:none;
   background:radial-gradient(80% 80% at 100% 100%,rgba(4,7,14,.82),rgba(4,7,14,.4) 50%,transparent 78%)}
-@media (max-height:780px) and (min-width:861px){#hero{--mq:72px}.hact p{display:none}.signin{padding:20px 22px 18px}.signin .sub,.signin .alt{display:none}.signin h2{font-size:28px;margin-top:10px}.signin label{margin-top:8px}}
-.hdr:not(.solid) .brand{opacity:0;visibility:hidden}
-.brand{transition:opacity .4s,visibility .4s}
+@media (max-height:780px) and (min-width:861px){#hero{--mq:72px}.hact h1 .ch{font-size:10.5px;margin:8px 0 12px}.signin{padding:20px 22px 18px}.signin .sub,.signin .alt{display:none}.signin h2{font-size:28px;margin-top:10px}.signin label{margin-top:8px}}
 
 /* sign-in card */
 .signin{position:absolute;z-index:3;right:clamp(20px,2.8vw,72px);top:92px;width:316px;padding:24px 22px 20px;border-radius:20px;color:#fff;
@@ -495,7 +493,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   #hero .hbg{object-position:50% 50%}
   .hact{left:var(--gut);right:var(--gut);width:auto;text-align:left;bottom:calc(var(--mq) + 20px)}
   .hact h1{font-size:38px}
-  .hact p{font-size:10.5px;letter-spacing:.1em;margin-bottom:14px}
+  .hact h1 .ch{font-size:10.5px;letter-spacing:.1em;margin:10px 0 14px}
   .hact .ctas{justify-content:flex-start;flex-wrap:nowrap;gap:8px}
   .hact .ctas .btn{padding:12px 14px;font-size:13px}
   .hact .ctas .btn svg{width:14px;height:14px}
@@ -531,10 +529,6 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 <body>
 
 <header class="hdr" id="hdr">
-  <a class="brand" href="#top" aria-label="Resolute A.I. Solutions Inc. home">
-    <img class="bh" src="assets/brand/head-sm.webp" alt="" width="180" height="173">
-    <img class="bw" src="assets/brand/wordmark.webp" alt="Resolute A.I. Inc" width="1100" height="181">
-  </a>
   <nav class="nav" aria-label="Primary">
     <span class="nav-links">
       <a href="#systems">Systems</a>
@@ -578,8 +572,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   <div class="shade-tr"></div><div class="shade-br"></div><div class="shade-b"></div>
 
   <div class="hact">
-    <h1>AI BPO campaigns, <em>24/7</em></h1>
-    <p>Inbound, outbound, voice, chat, email, SMS, Viber, Telegram</p>
+    <h1>AI BPO campaigns, <em>24/7</em><span class="ch">Inbound, outbound, voice, chat, email, SMS, Viber, Telegram</span></h1>
     <div class="ctas">
       <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Start%20a%20BPO%20campaign%20%E2%80%94%20Resolute%20A.I.">Start a BPO campaign <span class="arr">→</span></a>
       <a class="btn btn-call" href="/call/" target="_blank" rel="noopener" aria-label="Test an AI call now (opens a web call)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Test AI call</a>
