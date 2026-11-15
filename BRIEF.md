@@ -1,4 +1,24 @@
-# RESOLUTE AI — Scroll-Film Rebuild BRIEF (survives context compaction)
+# RESOLUTE AI — site BRIEF (survives context compaction)
+
+## CURRENT (2026-11-15): "THE QUEUE" — H3 scroll-film + full page redesign (branch feat/h3-scroll-film)
+- Film: 3 a.m. BGC contact-centre aisle → dawn. Camera only glides forward; overflow wallboards go
+  red → amber → blue; ends on the Filipina agent at the window desk smiling at sunrise.
+- Made with /resoluteamazingwebsite_MinimaxH3_H100: Sunburst (gpt-image-2.5-sunburst) chained keyframes →
+  MiniMax H3 FL2VA on the Resolute H100, max profile (1920x1088 BF16, 30 steps, two-phase), 5 clips x 5 s,
+  both ends pinned. Desktop = 16:9 film; mobile = its own native 9:16 film (1088x1920).
+- Frames: site/frames 616 @1024w (seam #342321) · site/frames-m 616 @608w (seam #18120a). Counts and seams
+  live in the FILM config at the top of the page script.
+- Build intermediates: film/h3/ (gitignored): storyboards, keyframes, clips, h3-jobs.json, rejected takes.
+- Page: Instrument Serif / Manrope / JetBrains Mono. Night film → warm paper day sections → dark CX demo,
+  platforms, process run → paper → dawn-to-night contact. Logo assets site/assets/brand/* cut ONLY from
+  ResoluteVideoGen/Resolute_Transparent.png. All SEO head, JSON-LD (Organization + FAQPage), FAQ, company
+  profile, audio demo and contact details carried over from origin/main 644918d.
+- Checks: copy-gate PASS; jank p95 17.5 ms, max < 50 ms; continuity gate PASS on both films.
+- Deploy: PREVIEW FIRST (Vercel git preview of this branch). Production only after the user approves.
+
+---
+
+## PREVIOUS FILM (archived notes — "SIGNAL TO SCALE", Seedance, 2026-08)
 
 ## Decisions (user-confirmed 2026-08-03)
 - Concept: **SIGNAL TO SCALE** — one continuous 25s pull-back. Vector: "the camera only ever pulls back." Storyboard: `film/storyboard.json` (vector-check PASSES; do not add inward words).
