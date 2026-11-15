@@ -7,7 +7,8 @@
 <meta name="description" content="Web call to Resolute A.I.: talk to our AI voice agent from your browser, no phone needed.">
 <meta name="theme-color" content="#F4F1EA">
 <meta name="robots" content="noindex">
-<script>try{var t=localStorage.getItem("rai-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light")}catch(e){}</script>
+<script>try{var t=localStorage.getItem("rai-theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light")}catch(e){}
+if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add("embed");</script>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/icon-32.png">
 <link rel="apple-touch-icon" href="/assets/brand/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,6 +87,9 @@
   @media (max-width: 420px) { .wrap { padding-top: calc(env(safe-area-inset-top) + 84px); } }
   .foot { font-size: 12px; color: var(--muted); max-width: 42ch; line-height: 1.5; margin-top: 22px; }
   .foot a { color: var(--blue); }
+  /* inside the home-page call window: the window has its own close button */
+  .embed .back, .embed .theme, .embed .foot a { display: none; }
+  .embed .wrap { padding-top: calc(env(safe-area-inset-top) + 34px); }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
@@ -235,6 +239,7 @@
   // Opened from a "Call Resolute A.I." button: dial straight away (?manual=1 to wait for a tap).
   if (!new URLSearchParams(location.search).has("manual")) startCall();
   window.addEventListener("pagehide", () => { try { call && call.clearConnection(); } catch (e) {} });
+  if (document.documentElement.classList.contains("embed")) window.addEventListener("keydown", (e) => { if (e.key === "Escape") parent.postMessage("rai-call-close", location.origin); });
 </script>
 </body>
 </html>

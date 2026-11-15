@@ -86,8 +86,8 @@
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/icon-32.png">
 <link rel="apple-touch-icon" href="assets/brand/icon-180.png">
-<link rel="preload" as="image" href="assets/hero/hero-wide.webp" media="(orientation: landscape), (min-width: 861px)">
-<link rel="preload" as="image" href="assets/hero/hero-tall.webp" media="(orientation: portrait) and (max-width: 860px)">
+<link rel="preload" as="image" href="assets/hero/hero-wide-v2.webp" media="(orientation: landscape), (min-width: 861px)">
+<link rel="preload" as="image" href="assets/hero/hero-tall-v2.webp" media="(orientation: portrait) and (max-width: 860px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -471,6 +471,21 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 :root[data-theme="dark"] .btn-ink:hover{background:#fff}
 :root[data-theme="dark"] #company{background:linear-gradient(180deg,var(--paper) 0%,#1c2333 34%,#2a1d18 66%,var(--ink) 100%)}
 
+/* ---------- AI call modal ---------- */
+.cmodal{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:16px;background:rgba(3,6,12,.72);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.cmodal.open{opacity:1;visibility:visible}
+.cbox{position:relative;width:min(440px,100%);height:min(720px,calc(100dvh - 32px));border-radius:26px;overflow:hidden;
+  background:var(--paper);box-shadow:0 40px 120px -20px rgba(0,0,0,.8),0 0 0 1px rgba(169,219,255,.18);
+  transform:translateY(18px) scale(.98);transition:transform .35s var(--ease)}
+.cmodal.open .cbox{transform:none}
+.cbox iframe{display:block;width:100%;height:100%;border:0}
+.cclose{position:absolute;z-index:2;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(22,28,39,.16);
+  background:rgba(255,255,255,.92);color:#161C27;font:400 24px/1 var(--sans);cursor:pointer;display:grid;place-items:center}
+.cclose:hover{background:#fff}
+:root[data-theme="dark"] .cclose{background:rgba(16,24,39,.92);color:#F5F7FA;border-color:rgba(169,219,255,.2)}
+@media (max-width:560px){.cmodal{padding:0}.cbox{width:100%;height:100dvh;border-radius:0}}
+
 @media (max-width:1180px){
   .nav-links{display:none}
   .menu-btn{display:grid}
@@ -554,7 +569,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
     <a href="#technology">Technology</a><a href="#case-studies">Case Studies</a><a href="#company">Company</a><a href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20%E2%80%94%20Resolute%20A.I.">Start a project <span class="arr">→</span></a>
-  <a class="btn btn-call" href="/call/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call our A.I. now</a>
+  <a class="btn btn-call" href="/call/" data-call><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call our A.I. now</a>
   <div class="mc">
     <a href="tel:+639171567003">+63 917 156 7003 · Sales</a>
     <a href="tel:+639190567243">+63 919 056 7243 · A.I. Hotline</a>
@@ -566,8 +581,8 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 <main id="top" style="position:relative">
 <section id="hero" aria-label="Resolute A.I. headquarters">
   <picture>
-    <source media="(orientation: portrait) and (max-width: 860px)" srcset="assets/hero/hero-tall.webp">
-    <img class="hbg" src="assets/hero/hero-wide.webp" alt="Inside the Resolute A.I. office in Bonifacio Global City at night: the illuminated acrylic Resolute A.I. sign on the wall, a contact-centre operations dashboard tracking live AI call campaigns, and the team at their desks." width="1536" height="1024" fetchpriority="high" draggable="false">
+    <source media="(orientation: portrait) and (max-width: 860px)" srcset="assets/hero/hero-tall-v2.webp">
+    <img class="hbg" src="assets/hero/hero-wide-v2.webp" alt="Inside the Resolute A.I. office in Bonifacio Global City at night: the illuminated acrylic Resolute A.I. sign on the wall, a contact-centre operations dashboard tracking live AI call campaigns, and the team at their desks." width="1536" height="1024" fetchpriority="high" draggable="false">
   </picture>
   <div class="shade-tr"></div><div class="shade-br"></div><div class="shade-b"></div>
 
@@ -575,7 +590,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
     <h1>AI BPO campaigns, <em>24/7</em><span class="ch">Inbound, outbound, voice, chat, email, SMS, Viber, Telegram</span></h1>
     <div class="ctas">
       <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Start%20a%20BPO%20campaign%20%E2%80%94%20Resolute%20A.I.">Start a BPO campaign <span class="arr">→</span></a>
-      <a class="btn btn-call" href="/call/" target="_blank" rel="noopener" aria-label="Test an AI call now (opens a web call)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Test AI call</a>
+      <a class="btn btn-call" href="/call/" data-call aria-label="Test an AI call now (opens the call window)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Test AI call</a>
     </div>
   </div>
 
@@ -622,7 +637,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
     <p class="err" id="si-err" role="alert" aria-live="polite"></p>
     <button class="btn btn-primary" type="submit" id="si-btn">Sign in <span class="arr">→</span></button>
   </form>
-  <p class="alt"><span>New to Resolute?</span><a href="/call/" target="_blank" rel="noopener">Talk to our A.I.</a></p>
+  <p class="alt"><span>New to Resolute?</span><a href="/call/" data-call>Talk to our A.I.</a></p>
 </aside>
 
 <div class="day">
@@ -734,7 +749,7 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
         <canvas id="wave" aria-hidden="true"></canvas>
         <div class="cxa">
           <button class="btn btn-primary" id="play"><span id="playt">▶&nbsp; Hear the AI in action</span></button>
-          <a class="btn btn-call" href="/call/" target="_blank" rel="noopener" aria-label="Call the agent live (opens a web call)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call it live</a>
+          <a class="btn btn-call" href="/call/" data-call aria-label="Call the agent live (opens a web call)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call it live</a>
           <a class="btn btn-ghost" href="mailto:sales@resoluteaiph.com?subject=AI%20CX%20Agent%20Demo%20Request">Book a full demo</a>
         </div>
         <p class="cxn">Voice samples generated by the Resolute AI voice stack. Live deployments are trained on your scripts, products and brand voice.</p>
@@ -936,7 +951,14 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 </div>
 </main>
 
-<a class="callf" id="callf" href="/call/" target="_blank" rel="noopener" aria-label="Call Resolute A.I. (opens a web call)"><span class="ring"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg></span><span><b>Call Resolute A.I.</b><small>WEB CALL · NO PHONE NEEDED</small></span></a>
+<div class="cmodal" id="cmodal" role="dialog" aria-modal="true" aria-label="Test AI call" aria-hidden="true">
+  <div class="cbox">
+    <button class="cclose" id="cclose" type="button" aria-label="End call and close">×</button>
+    <iframe id="cframe" title="AI voice call" allow="microphone; autoplay"></iframe>
+  </div>
+</div>
+
+<a class="callf" id="callf" href="/call/" data-call aria-label="Call Resolute A.I. (opens a web call)"><span class="ring"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg></span><span><b>Call Resolute A.I.</b><small>WEB CALL · NO PHONE NEEDED</small></span></a>
 
 <footer>
   <div class="fw">
@@ -1124,6 +1146,30 @@ addEventListener("keydown", function(e){ if (e.key === "Escape") menu(false); })
       btn.disabled = false; btn.firstChild.textContent = "Sign in ";
     }
   });
+})();
+
+/* ================= AI call modal ================= */
+(function(){
+  var m = document.getElementById("cmodal"), fr = document.getElementById("cframe"), x = document.getElementById("cclose"), last = null;
+  function open(e){
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;   /* let new-tab clicks through */
+    e.preventDefault(); last = document.activeElement;
+    if (typeof menu === "function") menu(false);
+    fr.src = "/call/?embed=1";
+    m.classList.add("open"); m.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden";
+    setTimeout(function(){ x.focus(); }, 50);
+  }
+  function close(){
+    if (!m.classList.contains("open")) return;
+    fr.src = "about:blank";                       /* unloading the call page hangs up */
+    m.classList.remove("open"); m.setAttribute("aria-hidden", "true"); document.body.style.overflow = "";
+    if (last && last.focus) last.focus();
+  }
+  document.querySelectorAll("a[data-call]").forEach(function(a){ a.addEventListener("click", open); });
+  x.addEventListener("click", close);
+  m.addEventListener("click", function(e){ if (e.target === m) close(); });
+  addEventListener("keydown", function(e){ if (e.key === "Escape") close(); });
+  addEventListener("message", function(e){ if (e.origin === location.origin && e.data === "rai-call-close") close(); });
 })();
 
 /* ================= boot ================= */
