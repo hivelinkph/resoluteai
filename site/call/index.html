@@ -133,8 +133,8 @@
     btn.addEventListener("click", function(){ var t = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; apply(t); try { localStorage.setItem("rai-theme", t); } catch (e) {} });
   })();
 
-  // Click-to-call into the AS7 PBX (same line as the Medley demo): the server places the call to this device.
-  const DEVICE = "sip:30041@term.13508";
+  // Click-to-call into the AS7 PBX (QR-call line 9999999 on term.13584): the server places the call to this device.
+  const DEVICE = "sip:9999999@term.13584";
   const WS_URL = "wss://pbx.theconnex.cloud/cti/ws";
 
   const $ = (id) => document.getElementById(id);
