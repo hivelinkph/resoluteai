@@ -86,8 +86,8 @@
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/icon-32.png">
 <link rel="apple-touch-icon" href="assets/brand/icon-180.png">
-<link rel="preload" as="image" href="frames/f_0001.jpg" media="(orientation: landscape), (min-width: 1101px)">
-<link rel="preload" as="image" href="frames-m/f_0001.jpg" media="(orientation: portrait) and (max-width: 1100px)">
+<link rel="preload" as="image" href="assets/hero/hero-wide.webp" media="(orientation: landscape), (min-width: 861px)">
+<link rel="preload" as="image" href="assets/hero/hero-tall.webp" media="(orientation: portrait) and (max-width: 860px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -113,16 +113,6 @@ img{display:block;max-width:100%}
 a{color:inherit}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
-
-/* ---------- loader ---------- */
-#loader{position:fixed;inset:0;z-index:200;background:var(--ink);display:grid;place-items:center;
-  transition:opacity .8s var(--ease),visibility .8s}
-#loader.done{opacity:0;visibility:hidden}
-#loader .lw{display:grid;justify-items:center;gap:22px}
-#loader img{width:min(320px,62vw);height:auto}
-#loader .bar{width:min(240px,50vw);height:1px;background:rgba(169,219,255,.15);overflow:hidden}
-#loader .bar i{display:block;height:100%;width:0;background:var(--ice);transition:width .25s}
-#loader .lt{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:rgba(169,219,255,.6)}
 
 /* ---------- header ---------- */
 .hdr{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;
@@ -163,58 +153,60 @@ a{color:inherit}
 .btn-line:hover{border-color:var(--graphite)}
 .arr{font-family:var(--mono);font-weight:400}
 
-/* ---------- film ---------- */
-#film{position:relative;height:850vh}
-#stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--ink)}
-#cv{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;background:var(--ink)}
-#stage .vig{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 90% at 50% 45%,transparent 55%,rgba(3,5,8,.55) 100%)}
-#stage .grain{position:absolute;inset:-50%;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  animation:grain 1.2s steps(6) infinite}
-@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
-#stage .fade{position:absolute;inset:auto 0 0;height:46%;pointer-events:none;opacity:0;
-  background:linear-gradient(to bottom,transparent,var(--seam))}
+/* ---------- hero: the Resolute office, one still ---------- */
+#hero{--mq:84px;position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:var(--ink);color:#fff;isolation:isolate}
+#hero picture,#hero .hbg{position:absolute;inset:0;width:100%;height:100%}
+#hero .hbg{object-fit:cover;object-position:38% 40%;user-select:none;-webkit-user-drag:none}
+#hero .shade-tr{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 70% at 100% 0%,rgba(4,7,14,.72),rgba(4,7,14,.25) 55%,transparent 75%)}
+#hero .shade-b{position:absolute;inset:auto 0 0;height:58%;pointer-events:none;
+  background:linear-gradient(to top,rgba(4,7,14,.94) 0%,rgba(4,7,14,.72) 34%,rgba(4,7,14,.2) 72%,transparent)}
+.hcopy{position:absolute;left:var(--gut);bottom:calc(var(--mq) + clamp(22px,4vh,44px));width:min(980px,calc(100% - 2*var(--gut)))}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:1px solid rgba(169,219,255,.28);
+  background:rgba(6,9,14,.45);backdrop-filter:blur(8px);font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ice)}
+.pill i{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 10px #4ADE80;animation:blink 1.6s infinite}
+.hcopy h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.7vw,62px);line-height:1;letter-spacing:-.01em;margin:0 0 10px;
+  text-shadow:0 2px 40px rgba(0,0,0,.55)}
+.hcopy h1 em{color:var(--ice)}
+.hcopy p{margin:0 0 20px;max-width:820px;font-size:clamp(15px,1.25vw,18px);color:rgba(245,247,250,.88);text-shadow:0 1px 20px rgba(0,0,0,.6)}
+.hcopy .ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+@media (max-height:780px) and (min-width:861px){.hcopy p{display:none}#hero{--mq:72px}}
 
-.beat{position:absolute;left:var(--gut);bottom:clamp(96px,15vh,170px);width:min(640px,calc(100% - 2*var(--gut)));
-  opacity:0;will-change:opacity,transform;pointer-events:none;isolation:isolate}
-.beat::before{content:"";position:absolute;z-index:-1;inset:-60% -30% -60% -18%;
-  background:radial-gradient(58% 56% at 26% 54%,rgba(3,5,9,.66),rgba(3,5,9,.38) 46%,transparent 76%)}
-.beat.shown{pointer-events:auto}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ice)}
-.beat-hero{bottom:auto;top:50%;transform:translateY(-44%);width:min(820px,calc(100% - 2*var(--gut)))}
-.beat-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(50px,8.2vw,124px);line-height:.94;letter-spacing:-.015em;
-  margin:18px 0 22px;text-shadow:0 2px 40px rgba(0,0,0,.45)}
-.beat-hero h1 em{color:var(--ice)}
-.beat-hero p{font-size:clamp(16px,1.35vw,19px);max-width:540px;margin:0 0 30px;color:rgba(245,247,250,.88)}
-.ctas{display:flex;flex-wrap:wrap;gap:12px}
-.beat .big{font-family:var(--mono);font-weight:400;font-size:clamp(56px,9.5vw,148px);line-height:.9;letter-spacing:-.04em;
-  color:#fff;margin:14px 0 14px;text-shadow:0 2px 40px rgba(0,0,0,.5)}
-.beat .big small{font-size:.42em;letter-spacing:-.02em;color:var(--ice)}
-.beat h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,50px);line-height:1.04;margin:0 0 12px}
-.beat p.s{margin:0;max-width:470px;color:rgba(245,247,250,.86);font-size:clamp(15px,1.2vw,18px)}
-.beat-fin{bottom:auto;top:50%;transform:translateY(-50%);width:min(500px,calc(100% - 2*var(--gut)))}
-.beat-fin h2{font-size:clamp(38px,4.4vw,70px);line-height:.98;margin-bottom:22px}
-.beat-fin h2 em{color:var(--dawn)}
+/* sign-in card */
+.signin{position:absolute;z-index:3;right:var(--gut);top:96px;width:350px;padding:26px 26px 22px;border-radius:20px;color:#fff;
+  background:rgba(5,9,16,.58);backdrop-filter:blur(22px) saturate(1.2);-webkit-backdrop-filter:blur(22px) saturate(1.2);
+  border:1px solid rgba(169,219,255,.16);box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.signin .sk{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);display:flex;align-items:center;gap:10px}
+.signin .sk img{width:26px;height:auto}
+.signin h2{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1;margin:14px 0 4px}
+.signin .sub{margin:0 0 18px;font-size:13.5px;color:rgba(245,247,250,.66)}
+.signin label{display:block;font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(245,247,250,.78);margin:12px 0 6px}
+.signin input{width:100%;height:46px;padding:0 14px;border-radius:12px;border:1px solid rgba(169,219,255,.2);background:rgba(255,255,255,.06);
+  color:#fff;font:500 15px var(--sans);outline:none;transition:border-color .2s,background .2s}
+.signin input::placeholder{color:rgba(245,247,250,.38)}
+.signin input:focus{border-color:var(--blue);background:rgba(255,255,255,.1)}
+.signin .err{min-height:1.3em;margin:10px 0 0;font-size:13px;color:#FF8A80}
+.signin button[type=submit]{width:100%;justify-content:center;margin-top:8px;height:48px}
+.signin button[disabled]{opacity:.7;cursor:progress}
+.signin .alt{margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(169,219,255,.12);font-size:13px;color:rgba(245,247,250,.62);
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.signin .alt a{color:var(--ice);text-decoration:none;font-weight:600}
+.signin .alt a:hover{text-decoration:underline}
 
-/* readout HUD */
-.hud{position:absolute;right:var(--gut);bottom:clamp(28px,5vh,52px);display:flex;align-items:center;gap:18px;
-  font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:rgba(255,255,255,.86);text-transform:uppercase;
-  text-shadow:0 1px 14px rgba(0,0,0,.6);pointer-events:none}
-.hud .clock{font-size:26px;letter-spacing:.02em;color:#fff;font-variant-numeric:tabular-nums}
-.hud .q{display:flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;
-  background:rgba(4,6,10,.3);backdrop-filter:blur(6px)}
-.hud .dot{width:8px;height:8px;border-radius:50%;background:var(--alarm);box-shadow:0 0 12px var(--alarm)}
-.hud .trk{width:110px;height:1px;background:rgba(255,255,255,.22);position:relative}
-.hud .trk i{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
-.cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.3em;
-  color:rgba(255,255,255,.7);text-transform:uppercase;display:grid;justify-items:center;gap:10px;transition:opacity .4s}
-.cue i{width:1px;height:36px;background:linear-gradient(var(--ice),transparent);animation:cue 1.8s var(--ease) infinite}
-@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* clients marquee across the bottom of the hero, travelling left to right */
+.hmarq{position:absolute;inset:auto 0 0;height:var(--mq);display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(169,219,255,.12);
+  background:linear-gradient(to top,rgba(4,7,14,.9),rgba(4,7,14,.55));backdrop-filter:blur(6px);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.hmarq .mtrack{padding:0;animation:marqR 52s linear infinite}
+.hmarq:hover .mtrack{animation-play-state:paused}
+.hmarq .mtrack img{height:32px;max-width:150px;filter:grayscale(1) invert(1) brightness(1.25) contrast(1.15);mix-blend-mode:screen;opacity:.8}
+.hmarq .mtrack img:hover{opacity:1}
+.hmarq .mtrack .you{color:var(--ice);font-size:24px}
+.hmarq .lbl{position:absolute;left:var(--gut);top:-30px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(169,219,255,.7)}
+@keyframes marqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
 /* ---------- content: day ---------- */
 .day{background:var(--paper);color:var(--graphite);transition:background .4s,color .4s}
-.landing{height:38vh;background:var(--landing)}
 .section{position:relative;padding:clamp(90px,13vh,150px) var(--gut);min-height:min(92vh,900px);display:flex;align-items:center}
 .section>.wrap{width:100%;max-width:1320px;margin:0 auto}
 .k{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px}
@@ -251,12 +243,11 @@ a{color:inherit}
 .trow h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.6vw,54px);line-height:1;margin:16px 0 0;max-width:18ch}
 .marq{margin-top:46px;overflow:hidden;border-block:1px solid var(--rule);
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.mtrack{display:flex;align-items:center;gap:clamp(48px,6vw,90px);padding:34px 0;width:max-content;animation:marq 46s linear infinite}
+.mtrack{display:flex;align-items:center;gap:clamp(48px,6vw,90px);padding:34px 0;width:max-content;animation:marqR 46s linear infinite}
 .marq:hover .mtrack{animation-play-state:paused}
 .mtrack img{height:44px;width:auto;max-width:170px;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.7;transition:filter .3s,opacity .3s}
 .mtrack img:hover{filter:none;opacity:1}
 .mtrack .you{font-family:var(--serif);font-size:30px;font-style:italic;white-space:nowrap;color:var(--warm)}
-@keyframes marq{to{transform:translateX(-50%)}}
 
 /* systems: index rows */
 #systems .display{font-size:clamp(44px,6vw,96px);max-width:13ch}
@@ -499,12 +490,21 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   .plat{min-height:0}
   .plat ul{grid-template-columns:1fr}
   .clist{grid-template-columns:1fr 1fr}
-  .hud{left:var(--gut);right:var(--gut);justify-content:space-between;bottom:22px}
-  .hud .trk{display:none}
-  .cue{display:none}
-  .beat{bottom:96px}
-  .beat-hero{top:auto;bottom:110px;transform:none}
-  .beat-fin{top:auto;bottom:100px;transform:none}
+  #hero .hbg{object-position:50% 50%}
+  .hcopy{bottom:calc(var(--mq) + 22px)}
+  .hcopy h1{font-size:40px;line-height:1.02}
+  .hcopy .pill{display:none}
+  .hcopy p{display:none}
+  .hcopy .ctas{flex-wrap:nowrap;gap:8px}
+  .hcopy .ctas .btn{padding:12px 15px;font-size:13px}
+  .hcopy .ctas .btn svg{width:14px;height:14px}
+  .hcopy p{font-size:15px}
+  .signin{position:relative;inset:auto;width:auto;margin:0;border-radius:0;border:0;border-bottom:1px solid rgba(169,219,255,.12);
+    padding:34px var(--gut) 34px;background:var(--ink);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+  .signin form{max-width:460px}
+  #hero{--mq:70px}
+  .hmarq .mtrack img{height:28px}
+  .hmarq .lbl{display:none}
   #technology{height:auto}
   .pstick{position:relative;height:auto;padding-top:100px;padding-bottom:100px}
   .ptrack{flex-direction:column;transform:none!important;padding-left:0}
@@ -519,7 +519,6 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   .ind{min-height:0}
   .stats{grid-template-columns:1fr 1fr}
   .stat b{font-size:48px}
-  .hud .clock{font-size:20px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -528,14 +527,6 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 </style>
 </head>
 <body>
-
-<div id="loader" role="status" aria-label="Loading">
-  <div class="lw">
-    <img src="assets/brand/lockup.webp" alt="Resolute A.I. Inc logo" width="1100" height="830">
-    <div class="bar"><i id="lbar"></i></div>
-    <div class="lt" id="lpct">00%</div>
-  </div>
-</div>
 
 <header class="hdr" id="hdr">
   <a class="brand" href="#top" aria-label="Resolute A.I. Solutions Inc. home">
@@ -576,70 +567,71 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
   </div>
 </div>
 
-<main id="top">
-<!-- ================= FILM ================= -->
-<section id="film" aria-label="Resolute A.I. introduction">
-  <div id="stage">
-    <canvas id="cv" role="img" aria-label="A Manila contact centre through the night: as the AI takes the overflow, the floor calms, and an agent watches the sun come up over Bonifacio Global City."></canvas>
-    <div class="vig"></div>
-    <div class="grain"></div>
-    <div class="fade" id="fade"></div>
+<main id="top" style="position:relative">
+<section id="hero" aria-label="Resolute A.I. headquarters">
+  <picture>
+    <source media="(orientation: portrait) and (max-width: 860px)" srcset="assets/hero/hero-tall.webp">
+    <img class="hbg" src="assets/hero/hero-wide.webp" alt="Inside the Resolute A.I. office in Bonifacio Global City at night: the illuminated acrylic Resolute A.I. sign on the wall, a video wall showing AI CX running call campaigns in the cloud, and the team at their desks." width="1536" height="1024" fetchpriority="high" draggable="false">
+  </picture>
+  <div class="shade-tr"></div><div class="shade-b"></div>
 
-    <div class="beat beat-hero" data-in="-0.1" data-peak="0" data-out="0.12">
-      <div class="eyebrow">Resolute A.I. Solutions Inc. · Enterprise AI, built in the Philippines</div>
-      <h1>Every call answered. <em>Every hour.</em></h1>
-      <p>We design, build and operate custom enterprise AI: voice agents that clear the queue in 150+ languages, agentic workflows, knowledge and vision systems. Eighteen of them are in production today.</p>
-      <div class="ctas">
-        <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20%E2%80%94%20Resolute%20A.I.">Start a project <span class="arr">→</span></a>
-        <a class="btn btn-call" href="/call/" target="_blank" rel="noopener" aria-label="Call our A.I. agent now (opens a web call)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call our A.I. now</a>
-        <a class="btn btn-ghost" href="#cx">Hear the agent</a>
-      </div>
+  <div class="hcopy">
+    <h1>Your BPO campaigns, <em>running in the cloud.</em></h1>
+    <p>AI CX Agent answers inbound and outbound calls in 150+ languages: 13,556 calls handled, 93.7% resolved without escalation.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20%E2%80%94%20Resolute%20A.I.">Start a project <span class="arr">→</span></a>
+      <a class="btn btn-call" href="/call/" target="_blank" rel="noopener" aria-label="Call our A.I. agent now (opens a web call)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8z"/></svg> Call our A.I. now</a>
+      <span class="pill"><i></i>AI CX Agent · Voice · Chat · Email · 24/7</span>
     </div>
+  </div>
 
-    <div class="beat" data-in="0.14" data-peak="0.22" data-out="0.32">
-      <div class="eyebrow">AI CX Agent · April to September 2026</div>
-      <div class="big">13,556</div>
-      <h2>calls handled across nine deployments.</h2>
+  <div class="hmarq" aria-label="Clients">
+    <span class="lbl">Running on Resolute</span>
+    <div class="mtrack">
+        <img src="assets/clients/maxicare_pantone.png" alt="Maxicare Group" width="150" height="34">
+        <img src="assets/clients/inspiro.svg" alt="Inspiro" width="150" height="34">
+        <img src="assets/clients/top1movers.png" alt="Top1 Movers Worldwide" width="150" height="34">
+        <img src="assets/clients/officium.png" alt="Officium" width="150" height="34">
+        <img src="assets/clients/solviva.png" alt="Solviva Energy" width="150" height="34">
+        <img src="assets/clients/cebucable.png" alt="Cebu Cable Internet" width="150" height="34">
+        <img src="assets/clients/actionlabs.png" alt="ActionLabs" width="150" height="34">
+        <img src="assets/clients/hgc_intl.png" alt="HGC Global Communications" width="150" height="34">
+        <img src="assets/clients/steadfast.png" alt="Steadfast Fiber Internet" width="150" height="34">
+        <img src="assets/clients/infocom.png" alt="Infocom" width="150" height="34">
+        <img src="assets/clients/cna_official.png" alt="Climate Neutral Awards" width="150" height="34">
+        <span class="you">Next up: you.</span>
+        <img src="assets/clients/maxicare_pantone.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/inspiro.svg" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/top1movers.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/officium.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/solviva.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/cebucable.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/actionlabs.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/hgc_intl.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/steadfast.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/infocom.png" alt="" aria-hidden="true" width="150" height="34">
+        <img src="assets/clients/cna_official.png" alt="" aria-hidden="true" width="150" height="34">
+        <span class="you" aria-hidden="true">Next up: you.</span>
     </div>
-
-    <div class="beat" data-in="0.33" data-peak="0.41" data-out="0.5">
-      <div class="eyebrow">Resolved without escalation</div>
-      <div class="big">93.7<small>%</small></div>
-      <p class="s">of inbound calls closed by the agent alone. Your people keep the conversations that need a person.</p>
-    </div>
-
-    <div class="beat" data-in="0.51" data-peak="0.59" data-out="0.68">
-      <div class="eyebrow">Tagalog · Cebuano · English · 한국어 · 中文</div>
-      <div class="big">150<small>+</small></div>
-      <h2>languages. If the caller switches mid-sentence, so does the agent.</h2>
-    </div>
-
-    <div class="beat" data-in="0.69" data-peak="0.77" data-out="0.86">
-      <div class="eyebrow">Warm transfer</div>
-      <div class="big">1–2<small> s</small></div>
-      <p class="s">for a human to pick up when a call needs one, already briefed, so nobody repeats themselves.</p>
-    </div>
-
-    <div class="beat beat-fin" data-in="0.88" data-peak="0.95" data-out="2">
-      <div class="eyebrow">Intelligent solutions · Limitless future</div>
-      <h2>Your team keeps the hard calls. <em>We engineer the rest.</em></h2>
-      <div class="ctas">
-        <a class="btn btn-primary" href="mailto:sales@resoluteaiph.com?subject=Project%20Inquiry%20%E2%80%94%20Resolute%20A.I.">Start a project <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="#systems">See the systems</a>
-      </div>
-    </div>
-
-    <div class="hud" aria-hidden="true">
-      <span class="clock" id="clock">03:00</span>
-      <span class="trk"><i id="trk"></i></span>
-      <span class="q"><span class="dot" id="qdot"></span><span id="qtxt">Queue · overflow</span></span>
-    </div>
-    <div class="cue" id="cue" aria-hidden="true">Scroll<i></i></div>
   </div>
 </section>
 
+<aside class="signin" id="signin" aria-labelledby="si-h">
+  <div class="sk"><img src="assets/brand/head-sm.webp" alt="" width="180" height="173">AI CX Agent · Client portal</div>
+  <h2 id="si-h">Welcome back.</h2>
+  <p class="sub">Sign in to manage your campaigns.</p>
+  <form id="siform" novalidate>
+    <label for="si-email">Email</label>
+    <input id="si-email" name="email" type="email" autocomplete="username" placeholder="you@company.com" required>
+    <label for="si-pass">Password</label>
+    <input id="si-pass" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+    <p class="err" id="si-err" role="alert" aria-live="polite"></p>
+    <button class="btn btn-primary" type="submit" id="si-btn">Sign in <span class="arr">→</span></button>
+  </form>
+  <p class="alt"><span>New to Resolute?</span><a href="/call/" target="_blank" rel="noopener">Talk to our A.I.</a></p>
+</aside>
+
 <div class="day">
-<div class="landing" aria-hidden="true"></div>
 
 <!-- ================= MISSION ================= -->
 <section class="section" id="mission">
@@ -972,155 +964,8 @@ footer{background:var(--ink);color:rgba(245,247,250,.6);padding:40px var(--gut) 
 (function(){
 "use strict";
 /* ================= config ================= */
-var FILM = {
-  desk:{dir:"frames/", count:window.__FC_DESK||616, seam:"#342321"},
-  mob:{dir:"frames-m/", count:window.__FC_MOB||616, seam:"#18120a"}
-};
-var REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 var JUMP = new URLSearchParams(location.search).get("jump");
-if (JUMP !== null) history.scrollRestoration = "manual";
-var mqMob = matchMedia("(orientation: portrait) and (max-width: 1100px)");
-
-/* ================= film engine ================= */
-var film = document.getElementById("film"), cv = document.getElementById("cv"), ctx = cv.getContext("2d");
-var set = mqMob.matches ? FILM.mob : FILM.desk, N = set.count;
-function seam(){ document.documentElement.style.setProperty("--seam", set.seam); }
-seam();
-var images = [], bitmaps = new Map(), decoding = new Set(), bmpCenter = -999;
-var B_AHEAD = 48, B_KEEP = 32, DEC_MAX = 8;
-var cur = 0, target = 0, displayed = -1, progress = 0;
-var DPR = 1;
-
-function src(i){ var s = String(i+1); while (s.length < 4) s = "0"+s; return set.dir+"f_"+s+".jpg"; }
-/* The canvas backing store matches the frames 1:1 and CSS object-fit scales it on the
-   compositor: drawImage never resamples (a scaled per-frame drawImage measured p95 22 ms). */
-function fitMode(){
-  var w0 = cv.width || 16, h0 = cv.height || 9, vw = innerWidth, vh = innerHeight;
-  var sC = Math.max(vw/w0, vh/h0), crop = 1 - Math.min(vw/(w0*sC), vh/(h0*sC));
-  cv.style.objectFit = crop > MAX_CROP ? "contain" : "cover";
-}
-function size(){ fitMode(); displayed = -1; draw(Math.round(cur), true); }
-var MAX_CROP = 0.34;
-/* A decoded neighbour a few frames away beats the exact frame as a raw JPEG: drawing an
-   undecoded <img> forces a ~20 ms synchronous decode on the main thread (measured p95 22 ms).
-   Only when no bitmap is near, and nothing has been drawn yet, fall back to an <img>. */
-function nearest(i){
-  for (var d = 1; d <= 12; d++){
-    if (bitmaps.has(i-d)) return bitmaps.get(i-d); if (bitmaps.has(i+d)) return bitmaps.get(i+d);
-  }
-  if (displayed >= 0) return null;               /* keep the last frame on the canvas */
-  for (var e = 0; e < N; e++){
-    var a = images[i-e], b = images[i+e];
-    if (a && a.complete && a.naturalWidth) return a; if (b && b.complete && b.naturalWidth) return b;
-  }
-  return null;
-}
-function draw(i, force){
-  if (!force && i === displayed) return;
-  var bm = bitmaps.get(i) || nearest(i); if (!bm) return;
-  var w0 = bm.width || bm.naturalWidth, h0 = bm.height || bm.naturalHeight;
-  if (cv.width !== w0 || cv.height !== h0){ cv.width = w0; cv.height = h0; fitMode(); }
-  ctx.drawImage(bm, 0, 0);
-  displayed = i;
-}
-function ensure(center){
-  if (Math.abs(center - bmpCenter) < 3 && decoding.size >= DEC_MAX) return; bmpCenter = center;
-  var lo = Math.max(0, center - B_KEEP), hi = Math.min(N-1, center + B_AHEAD);
-  /* never more than DEC_MAX decodes in flight, nearest the playhead first: dispatching dozens of
-     createImageBitmap calls in one tick stalls the main thread */
-  var order = []; for (var i = lo; i <= hi; i++) order.push(i);
-  order.sort(function(a, b){ return Math.abs(a - center) - Math.abs(b - center); });
-  for (var oi = 0; oi < order.length && decoding.size < DEC_MAX; oi++){
-    i = order[oi];
-    if (bitmaps.has(i) || decoding.has(i)) continue;
-    var im = images[i]; if (!im || !im.complete || !im.naturalWidth) continue;
-    (function(i, im){
-      decoding.add(i);
-      createImageBitmap(im).then(function(b){
-        decoding.delete(i);
-        if (i < bmpCenter - B_KEEP - 8 || i > bmpCenter + B_AHEAD + 8){ b.close(); return; }
-        bitmaps.set(i, b); if (i === Math.round(cur)) draw(i, true);
-      }).catch(function(){ decoding.delete(i); });
-    })(i, im);
-  }
-  bitmaps.forEach(function(b, k){ if (k < center - B_KEEP - 8 || k > center + B_AHEAD + 8){ b.close(); bitmaps.delete(k); } });
-}
-/* concurrency-capped loader: opening run first, then stream outward from the playhead */
-var queue = [], inflight = 0, loaded = 0, MAXF = 10, firstRun = 36, onFirst = null;
-function buildQueue(){
-  queue = []; for (var i = 0; i < N; i++) queue.push(i);
-}
-function pump(){
-  while (inflight < MAXF && queue.length){
-    var c = Math.round(cur), best = 0, bd = 1e9;
-    for (var q = 0; q < Math.min(queue.length, 400); q++){ var d = Math.abs(queue[q]-c) + (queue[q] < c ? 6 : 0); if (d < bd){ bd = d; best = q; } }
-    var i = queue.splice(best, 1)[0];
-    (function(i){
-      var im = new Image(); im.decoding = "async"; images[i] = im; inflight++;
-      im.onload = im.onerror = function(){ inflight--; loaded++; onLoad(i); pump(); };
-      im.src = src(i);
-    })(i);
-  }
-}
-function onLoad(i){
-  if (onFirst && loaded >= Math.min(firstRun, N)){ var f = onFirst; onFirst = null; f(); }
-  if (Math.abs(i - Math.round(cur)) < 2) { bmpCenter = -999; ensure(Math.round(cur)); draw(Math.round(cur), true); }
-  var p = Math.min(1, loaded/Math.min(firstRun, N));
-  lbar.style.width = (p*100)+"%"; lpct.textContent = (p < 1 ? String(Math.floor(p*99)).padStart(2,"0") : "99")+"%";
-}
-function switchSet(){
-  var next = mqMob.matches ? FILM.mob : FILM.desk; if (next === set) return;
-  bitmaps.forEach(function(b){ b.close(); }); bitmaps.clear(); decoding.clear();
-  images.forEach(function(im){ if (im) im.src = ""; });
-  set = next; N = set.count; images = []; bmpCenter = -999; displayed = -1; loaded = 0; seam();
-  cur = target = progress*(N-1);
-  buildQueue(); pump(); size();
-}
-mqMob.addEventListener ? mqMob.addEventListener("change", switchSet) : mqMob.addListener(switchSet);
-
-/* ================= beats + hud ================= */
-var beats = [].slice.call(document.querySelectorAll(".beat")).map(function(el){
-  return {el:el, a:+el.dataset.in, p:+el.dataset.peak, o:+el.dataset.out};
-});
-function alpha(b, p){
-  if (p < b.a || p > b.o) return 0;
-  if (p < b.p) return (p - b.a)/Math.max(1e-4, b.p - b.a);
-  if (b.o > 1.5) return 1;
-  return 1 - (p - b.p)/Math.max(1e-4, b.o - b.p);
-}
-var clock = document.getElementById("clock"), trk = document.getElementById("trk"), qdot = document.getElementById("qdot"),
-    qtxt = document.getElementById("qtxt"), fade = document.getElementById("fade"), cue = document.getElementById("cue"),
-    hdr = document.getElementById("hdr"), lbar = document.getElementById("lbar"), lpct = document.getElementById("lpct");
-var STATES = [[0,"Queue · overflow","#FF4A3D"],[.17,"Queue · easing","#FFB547"],[.36,"Queue · clear","#7CC4FF"],[.72,"Queue · clear","#7CC4FF"],[.86,"Sunrise · handed back","#F2B36B"]];
-var lastQ = "";
-var lastP = -1, lastClock = "";
-function hud(p){
-  if (Math.abs(p - lastP) < 1e-5) return; lastP = p;
-  var mins = Math.round(180 + p*172), h = Math.floor(mins/60), m = mins%60, ct = "0"+h+":"+(m<10?"0":"")+m;
-  if (ct !== lastClock){ clock.textContent = ct; lastClock = ct; }
-  trk.style.transform = "scaleX("+p.toFixed(4)+")";
-  var s = STATES[0]; for (var i = 0; i < STATES.length; i++) if (p >= STATES[i][0]) s = STATES[i];
-  if (s[1]+s[2] !== lastQ){ lastQ = s[1]+s[2]; qtxt.textContent = s[1]; qdot.style.background = s[2]; qdot.style.boxShadow = "0 0 12px "+s[2]; }
-  var f = Math.max(0, (p - .93)/.07); fade.style.opacity = f;
-  cue.style.opacity = p > .02 ? 0 : 1;
-}
-function filmProgress(){
-  var r = film.getBoundingClientRect(), span = r.height - innerHeight;
-  return Math.max(0, Math.min(1, -r.top/Math.max(1, span)));
-}
-var lastBeats = [];
-function paintBeats(p){
-  for (var i = 0; i < beats.length; i++){
-    var b = beats[i], a = alpha(b, p);
-    if (lastBeats[i] === a) continue; lastBeats[i] = a;
-    var dy = (1 - a)*18*(p < b.p ? 1 : -1);
-    b.el.style.opacity = a.toFixed(3);
-    var base = b.el.classList.contains("beat-hero") ? "translateY(-44%) " : (b.el.classList.contains("beat-fin") ? "translateY(-50%) " : "");
-    if (innerWidth <= 860 && base) base = "";
-    b.el.style.transform = base+"translateY("+dy.toFixed(1)+"px)";
-    b.el.classList.toggle("shown", a > .5);
-  }
-}
+var hdr = document.getElementById("hdr"), hero = document.getElementById("hero");
 
 /* ================= theme (light by default) ================= */
 var callf = document.getElementById("callf");
@@ -1139,13 +984,10 @@ var callf = document.getElementById("callf");
 })();
 
 /* ================= header ================= */
-var sampler = document.createElement("canvas"); sampler.width = 16; sampler.height = 4; var sctx = sampler.getContext("2d", {willReadFrequently:true});
 function headerState(){
-  var y = scrollY, filmEnd = film.offsetTop + film.offsetHeight - innerHeight;
-  var inFilm = y < filmEnd - 10;
-  callf.classList.toggle("on", !inFilm);
-  if (inFilm){ hdr.classList.remove("solid"); return; }
-  hdr.classList.add("solid");
+  var y = scrollY;
+  callf.classList.toggle("on", y > hero.offsetHeight * .7);
+  hdr.classList.toggle("solid", y > 40);
 }
 
 /* ================= process horizontal run ================= */
@@ -1166,20 +1008,13 @@ measureRun(); addEventListener("resize", measureRun); addEventListener("load", m
 /* ================= main loop ================= */
 var jank = {last:0, max:0, t:0};
 function tick(t){
-  progress = filmProgress();
-  target = progress*(N-1);
-  cur = REDUCED ? target : cur + (target - cur)*0.14;
-  if (Math.abs(target - cur) < .01) cur = target;
-  var idx = Math.round(cur);
-  ensure(idx); draw(idx);
-  paintBeats(cur/(N-1)); hud(cur/(N-1));
   processRun();
   if (jank.last){ var d = t - jank.last; if (d > jank.max) jank.max = d; }
   jank.last = t;
   requestAnimationFrame(tick);
 }
 addEventListener("scroll", headerState, {passive:true});
-addEventListener("resize", function(){ size(); headerState(); });
+addEventListener("resize", headerState);
 
 /* ================= sections rise ================= */
 var io = new IntersectionObserver(function(es){
@@ -1259,26 +1094,50 @@ addEventListener("keydown", function(e){ if (e.key === "Escape") menu(false); })
   setLang("en", false); drawWave();
 })();
 
+/* ================= sign-in: AI CX Agent (same Supabase project as aicxagent.live) ================= */
+(function(){
+  var SB_URL = "https://ffhmrhhwrzkostjhbjhl.supabase.co", SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmaG1yaGh3cnprb3N0amhiamhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4NjIyNDgsImV4cCI6MjA5MjQzODI0OH0.JVhQrQwuovaEPyPwxovehKL8guG7P0qcGv8OxAOEDQU", APP = "https://aicxagent.live";
+  var f = document.getElementById("siform"), err = document.getElementById("si-err"), btn = document.getElementById("si-btn");
+  var sbP = null;
+  function sb(){
+    if (!sbP) sbP = new Promise(function(res, rej){
+      var sc = document.createElement("script");
+      sc.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
+      sc.onload = function(){ res(window.supabase.createClient(SB_URL, SB_ANON, {auth:{persistSession:false, autoRefreshToken:false, detectSessionInUrl:false}})); };
+      sc.onerror = function(){ sbP = null; rej(new Error("load")); };
+      document.head.appendChild(sc);
+    });
+    return sbP;
+  }
+  f.querySelectorAll("input").forEach(function(i){ i.addEventListener("focus", sb, {once:true}); });
+  f.addEventListener("submit", async function(e){
+    e.preventDefault(); err.textContent = "";
+    var email = f.email.value.trim(), password = f.password.value;
+    if (!email || !password){ err.textContent = "Enter your email and password."; return; }
+    btn.disabled = true; btn.firstChild.textContent = "Signing in… ";
+    try {
+      var client = await sb();
+      var r = await client.auth.signInWithPassword({email: email, password: password});
+      if (r.error) throw r.error;
+      var se = r.data.session;
+      /* hand the session to the platform: supabase-js there picks it up from the URL fragment */
+      var h = "access_token=" + encodeURIComponent(se.access_token) + "&refresh_token=" + encodeURIComponent(se.refresh_token) +
+              "&expires_in=" + se.expires_in + "&expires_at=" + se.expires_at + "&token_type=bearer&type=signin";
+      location.href = APP + "/dashboard#" + h;
+    } catch (x) {
+      err.textContent = x && x.message === "load" ? "Sign-in is unavailable right now. Check your connection and try again." :
+        (x && x.message ? x.message : "Sign-in failed. Please try again.");
+      btn.disabled = false; btn.firstChild.textContent = "Sign in ";
+    }
+  });
+})();
+
 /* ================= boot ================= */
-DPR = Math.min(window.devicePixelRatio || 1, 1);
-buildQueue();
-onFirst = function(){
-  size();
-  var go = function(){
-    document.getElementById("loader").classList.add("done");
-    if (JUMP !== null){
-      scrollTo(0, +JUMP || 0);
-      progress = filmProgress(); cur = target = progress*(N-1);
-      bmpCenter = -999; ensure(Math.round(cur));
-      document.querySelectorAll(".rise").forEach(function(s){ var r = s.getBoundingClientRect(); if (r.top < innerHeight) s.classList.add("in"); });
-      headerState();
-      setTimeout(function(){ draw(Math.round(cur), true); paintBeats(progress); hud(progress); processRun(); window.__ready = true; }, 700);
-    } else { window.__ready = true; }
-  };
-  setTimeout(go, 250);
-  requestAnimationFrame(tick);
-};
-pump(); headerState();
+headerState();
+requestAnimationFrame(tick);
+if (JUMP !== null) scrollTo(0, +JUMP || 0);
+document.querySelectorAll(".rise").forEach(function(s){ var r = s.getBoundingClientRect(); if (r.top < innerHeight) s.classList.add("in"); });
+window.__ready = true;
 window.__jank = jank;
 })();
 </script>

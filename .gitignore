@@ -29,3 +29,4 @@ film/
 
 # graphify knowledge-graph output (local analysis, never deployed)
 graphify-out/
+Assets/login/
